@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{990A7B2C-D91D-40CC-9B45-F83B3DA09CE8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Capability_Log.My.MyApplication</StartupObject>
+    <RootNamespace>Capability_Log</RootNamespace>
+    <AssemblyName>Capability Log</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Capability Log.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Capability Log.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CapabilityLogDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CapabilityLogDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CapabilityLogDataSet.vb">
+      <DependentUpon>CapabilityLogDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="clm_Report.Designer.vb">
+      <DependentUpon>clm_Report.vb</DependentUpon>
+    </Compile>
+    <Compile Include="clm_Report.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clm_Resource_Type.Designer.vb">
+      <DependentUpon>clm_Resource_Type.vb</DependentUpon>
+    </Compile>
+    <Compile Include="clm_Resource_Type.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clm_Search.Designer.vb">
+      <DependentUpon>clm_Search.vb</DependentUpon>
+    </Compile>
+    <Compile Include="clm_Search.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clm_Tasks_Type.Designer.vb">
+      <DependentUpon>clm_Tasks_Type.vb</DependentUpon>
+    </Compile>
+    <Compile Include="clm_Tasks_Type.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Custom.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms.Designer.vb">
+      <DependentUpon>Forms.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBase.Designer.vb">
+      <DependentUpon>frmBase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCMEntry.Designer.vb">
+      <DependentUpon>frmCMEntry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCMEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCollaborationModule.Designer.vb">
+      <DependentUpon>frmCollaborationModule.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCollaborationModule.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMant.Designer.vb">
+      <DependentUpon>frmMant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMant.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProject.Designer.vb">
+      <DependentUpon>frmProject.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProject.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProjectPriority.Designer.vb">
+      <DependentUpon>frmProjectPriority.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProjectPriority.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProject_Category.Designer.vb">
+      <DependentUpon>frmProject_Category.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProject_Category.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearch.Designer.vb">
+      <DependentUpon>frmSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmService_Line.Designer.vb">
+      <DependentUpon>frmService_Line.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmService_Line.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStatus.Designer.vb">
+      <DependentUpon>frmStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTask.Designer.vb">
+      <DependentUpon>frmTask.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTask.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTask_Entry.Designer.vb">
+      <DependentUpon>frmTask_Entry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTask_Entry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTask_Entry_Values.Designer.vb">
+      <DependentUpon>frmTask_Entry_Values.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTask_Entry_Values.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsers.Designer.vb">
+      <DependentUpon>frmUsers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmValue_Stream.Designer.vb">
+      <DependentUpon>frmValue_Stream.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmValue_Stream.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Globals.vb" />
+    <Compile Include="Main.Designer.vb">
+      <DependentUpon>Main.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Main.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Profile.Designer.vb">
+      <DependentUpon>Profile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="clm_Report.resx">
+      <DependentUpon>clm_Report.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clm_Resource_Type.resx">
+      <DependentUpon>clm_Resource_Type.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clm_Search.resx">
+      <DependentUpon>clm_Search.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clm_Tasks_Type.resx">
+      <DependentUpon>clm_Tasks_Type.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms.resx">
+      <DependentUpon>Forms.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBase.resx">
+      <DependentUpon>frmBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCMEntry.resx">
+      <DependentUpon>frmCMEntry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCollaborationModule.resx">
+      <DependentUpon>frmCollaborationModule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMant.resx">
+      <DependentUpon>frmMant.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProject.resx">
+      <DependentUpon>frmProject.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProjectPriority.resx">
+      <DependentUpon>frmProjectPriority.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProject_Category.resx">
+      <DependentUpon>frmProject_Category.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearch.resx">
+      <DependentUpon>frmSearch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmService_Line.resx">
+      <DependentUpon>frmService_Line.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStatus.resx">
+      <DependentUpon>frmStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTask.resx">
+      <DependentUpon>frmTask.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTask_Entry.resx">
+      <DependentUpon>frmTask_Entry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTask_Entry_Values.resx">
+      <DependentUpon>frmTask_Entry_Values.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsers.resx">
+      <DependentUpon>frmUsers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmValue_Stream.resx">
+      <DependentUpon>frmValue_Stream.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile.resx">
+      <DependentUpon>Profile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Custom\Custom.vbproj">
+      <Project>{4A670AC1-D5D2-4102-BD51-3989D877A6C1}</Project>
+      <Name>Custom</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Objects\Objects.vbproj">
+      <Project>{5B83ABD0-0595-4985-B08A-32267692FB26}</Project>
+      <Name>Objects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view_remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\khexedit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\todo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agt_action_fail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agt_family.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agt_action_success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CapabilityLogDataSet.xsc">
+      <DependentUpon>CapabilityLogDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CapabilityLogDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CapabilityLogDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CapabilityLogDataSet.xss">
+      <DependentUpon>CapabilityLogDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\DataSources\Objects.Connection.datasource" />
+    <None Include="Resources\reload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rebuild.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

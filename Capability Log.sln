@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Capability Log", "Capability Log\Capability Log.vbproj", "{990A7B2C-D91D-40CC-9B45-F83B3DA09CE8}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Objects", "Objects\Objects.vbproj", "{5B83ABD0-0595-4985-B08A-32267692FB26}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Custom", "Custom\Custom.vbproj", "{4A670AC1-D5D2-4102-BD51-3989D877A6C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{990A7B2C-D91D-40CC-9B45-F83B3DA09CE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{990A7B2C-D91D-40CC-9B45-F83B3DA09CE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{990A7B2C-D91D-40CC-9B45-F83B3DA09CE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{990A7B2C-D91D-40CC-9B45-F83B3DA09CE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B83ABD0-0595-4985-B08A-32267692FB26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B83ABD0-0595-4985-B08A-32267692FB26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B83ABD0-0595-4985-B08A-32267692FB26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B83ABD0-0595-4985-B08A-32267692FB26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A670AC1-D5D2-4102-BD51-3989D877A6C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A670AC1-D5D2-4102-BD51-3989D877A6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A670AC1-D5D2-4102-BD51-3989D877A6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A670AC1-D5D2-4102-BD51-3989D877A6C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
