@@ -20,7 +20,7 @@ Partial Class clm_Report
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource
+        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource
         Me.vw_CM_Raw_DataBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CapabilityLogDataSet = New Capability_Log.CapabilityLogDataSet
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
@@ -265,10 +265,10 @@ Partial Class clm_Report
         Me.rtpReport.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        ReportDataSource2.Name = "CapabilityLogDataSet_vw_CM_Raw_Data"
-        ReportDataSource2.Value = Me.vw_CM_Raw_DataBindingSource
-        Me.rtpReport.LocalReport.DataSources.Add(ReportDataSource2)
-        Me.rtpReport.LocalReport.ReportEmbeddedResource = "Capability_Log.Report1.rdlc"
+        ReportDataSource1.Name = "CapabilityLogDataSet_vw_CM_Raw_Data"
+        ReportDataSource1.Value = Me.vw_CM_Raw_DataBindingSource
+        Me.rtpReport.LocalReport.DataSources.Add(ReportDataSource1)
+        Me.rtpReport.LocalReport.ReportEmbeddedResource = "Capability_Log.clm_Allocation.rdlc"
         Me.rtpReport.Location = New System.Drawing.Point(7, 110)
         Me.rtpReport.Name = "rtpReport"
         Me.rtpReport.Size = New System.Drawing.Size(870, 479)

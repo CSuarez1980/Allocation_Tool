@@ -647,7 +647,22 @@ Friend Class Server
 
     End Function
     Public Sub New()
-        GetDefaultConnectionString()
+        'Read the XML ServerConfiguration file
+        Dim ServerTable As New DataTable
+        ServerTable.TableName = "ServerConfiguration"
+        ServerTable.Columns.Add("Server")
+        ServerTable.Columns.Add("DataBase")
+
+        If IO.File.Exists(My.Application.Info.DirectoryPath & "\ServerConfig.xml") Then
+            ServerTable.ReadXml(My.Application.Info.DirectoryPath & "\ServerConfig.xml")
+            _ServerName = ServerTable.Rows(0)("Server")
+            _DataBase = ServerTable.Rows(0)("DataBase")
+            _LoginUser = "SA"
+            _LoginPassword = "heavymetal"
+        Else
+            MsgBox("Server configuration file not found. Tryign default connection string")
+            GetDefaultConnectionString()
+        End If
     End Sub
 #End Region
 End Class

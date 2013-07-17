@@ -1,4 +1,5 @@
 ﻿Imports System.Windows.Forms
+Imports System.Xml
 
 Public Class Main
 #Region "Menu Options"
@@ -66,15 +67,34 @@ Public Class Main
     Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         goUser = New Objects.User
         goUser.Load(Environ("USERID"))
-
-        'Dim SP As New Objects.Stored_Procedure
-        'SP.Stored_Procedure_Name = "sp_Get_Next_Project_ID"
-        'SP.Include_Parameter("@ID", 0, ParameterDirection.Output)
-        'SP.Execute()
-        'MsgBox(SP.Get_Parameter_Value("@ID", Objects.Get_Param_From.Server))
     End Sub
 
+    'Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    '    Dim writer As New XmlTextWriter("product.xml", System.Text.Encoding.UTF8)
+    '    writer.WriteStartDocument(True)
+    '    writer.Formatting = Formatting.Indented
+    '    writer.Indentation = 2
+    '    writer.WriteStartElement("Table")
+    '    createNode(1, "Product 1", "1000", writer)
+    '    createNode(2, "Product 2", "2000", writer)
+    '    createNode(3, "Product 3", "3000", writer)
+    '    createNode(4, "Product 4", "4000", writer)
+    '    writer.WriteEndElement()
+    '    writer.WriteEndDocument()
+    '    writer.Close()
+    'End Sub
 
-
-
+    'Private Sub createNode(ByVal pID As String, ByVal pName As String, ByVal pPrice As String, ByVal writer As XmlTextWriter)
+    '    writer.WriteStartElement("Product")
+    '    writer.WriteStartElement("Product_id")
+    '    writer.WriteString(pID)
+    '    writer.WriteEndElement()
+    '    writer.WriteStartElement("Product_name")
+    '    writer.WriteString(pName)
+    '    writer.WriteEndElement()
+    '    writer.WriteStartElement("Product_price")
+    '    writer.WriteString(pPrice)
+    '    writer.WriteEndElement()
+    '    writer.WriteEndElement()
+    'End Sub
 End Class

@@ -95,6 +95,7 @@ Partial Class frmBase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(252, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(378, 203)
         Me.Controls.Add(Me.tlbEstado)
         Me.Name = "frmBase"

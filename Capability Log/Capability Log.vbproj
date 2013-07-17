@@ -303,7 +303,7 @@
     <EmbeddedResource Include="Profile.resx">
       <DependentUpon>Profile.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="clm_Allocation.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -379,6 +379,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rebuild.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\network.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\agt_internet.png" />
+    <None Include="Resources\playlist.png" />
+    <Content Include="ServerConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

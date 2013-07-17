@@ -278,4 +278,32 @@
     Private Sub New_Rec() Handles cmdNew.Click
         Refresh_Binding()
     End Sub
+
+    Public Overrides Sub Unlock_GUI(Optional ByVal Unlock_Type As Unlock_Type = Unlock_Type.Create_Record)
+        txtProjectName.ReadOnly = False
+        txtGBSPM.ReadOnly = False
+        txtPSSPM.ReadOnly = False
+        cboProject_Type.Enabled = True
+        dtgMapingAndMatching.ReadOnly = False
+        dtgTransWork.ReadOnly = False
+        dtgHypercare.ReadOnly = False
+        dtgMeetings.ReadOnly = False
+        dtgScope.ReadOnly = False
+        dtgExpertice.ReadOnly = False
+
+    End Sub
+
+    Public Overrides Sub Lock_Gui()
+        txtProjectName.ReadOnly = True
+        txtGBSPM.ReadOnly = True
+        txtPSSPM.ReadOnly = True
+        cboProject_Type.Enabled = False
+        dtgMapingAndMatching.ReadOnly = True
+        dtgTransWork.ReadOnly = True
+        dtgHypercare.ReadOnly = True
+        dtgMeetings.ReadOnly = True
+        dtgScope.ReadOnly = True
+        dtgExpertice.ReadOnly = True
+    End Sub
+
 End Class

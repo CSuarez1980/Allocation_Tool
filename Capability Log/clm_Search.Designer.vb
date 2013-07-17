@@ -35,10 +35,11 @@ Partial Class clm_Search
         Me.dtgData.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtgData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dtgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgData.Location = New System.Drawing.Point(5, 31)
         Me.dtgData.Name = "dtgData"
-        Me.dtgData.Size = New System.Drawing.Size(399, 278)
+        Me.dtgData.Size = New System.Drawing.Size(368, 278)
         Me.dtgData.TabIndex = 2
         '
         'ToolStrip1
@@ -46,7 +47,7 @@ Partial Class clm_Search
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAcept, Me.ToolStripSeparator1, Me.ToolStripButton2})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(410, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(379, 25)
         Me.ToolStrip1.TabIndex = 3
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -57,7 +58,7 @@ Partial Class clm_Search
         Me.cmdAcept.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAcept.Name = "cmdAcept"
         Me.cmdAcept.Size = New System.Drawing.Size(23, 22)
-        Me.cmdAcept.Text = "ToolStripButton1"
+        Me.cmdAcept.ToolTipText = "Set parameters"
         '
         'ToolStripSeparator1
         '
@@ -78,7 +79,7 @@ Partial Class clm_Search
         'clm_Search
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(410, 344)
+        Me.ClientSize = New System.Drawing.Size(379, 344)
         Me.ControlBox = False
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.dtgData)

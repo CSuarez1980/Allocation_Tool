@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <ServerConfiguration>
+    <Server>131.190.71.208</Server>
+    <DataBase>CapabilityLog</DataBase>
+  </ServerConfiguration>
+</DocumentElement>

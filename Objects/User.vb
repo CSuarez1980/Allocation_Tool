@@ -136,7 +136,7 @@
     Public Overrides Function Load(Optional ByVal Code_ID As Object = Nothing) As Boolean
         MyBase.Load(Code_ID)
 
-        If Not Data Is Nothing AndAlso Not Code_ID Is Nothing Then
+        If Data.Rows.Count > 0 AndAlso Not Code_ID Is Nothing Then
             _TNumber = Data(0)("TNumber").ToString
             _Name = Data(0)("Name").ToString
             Get_User_Profiles()

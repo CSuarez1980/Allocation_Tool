@@ -67,6 +67,13 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property _exit() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("exit", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property agt_action_fail() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("agt_action_fail", resourceCulture)
@@ -84,6 +91,13 @@ Namespace My.Resources
         Friend ReadOnly Property agt_family() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("agt_family", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property agt_internet() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("agt_internet", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -109,6 +123,13 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property edit() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("edit", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property edit_add() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("edit_add", resourceCulture)
@@ -119,6 +140,20 @@ Namespace My.Resources
         Friend ReadOnly Property khexedit() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("khexedit", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property network() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("network", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property playlist() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("playlist", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

@@ -92,6 +92,8 @@ Partial Class frmCollaborationModule
         Me.DateTimePicker12 = New System.Windows.Forms.DateTimePicker
         Me.Label19 = New System.Windows.Forms.Label
         Me.GroupBox7 = New System.Windows.Forms.GroupBox
+        Me.cboProject_Type = New System.Windows.Forms.ComboBox
+        Me.Label6 = New System.Windows.Forms.Label
         Me.txtPSSPM = New System.Windows.Forms.TextBox
         Me.Label23 = New System.Windows.Forms.Label
         Me.txtGBSPM = New System.Windows.Forms.TextBox
@@ -101,8 +103,6 @@ Partial Class frmCollaborationModule
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
         Me.cmdShowResources = New System.Windows.Forms.ToolStripButton
         Me.cmdDeleteResource = New System.Windows.Forms.ToolStripButton
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.cboProject_Type = New System.Windows.Forms.ComboBox
         Me.tabPhases.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -167,6 +167,7 @@ Partial Class frmCollaborationModule
         Me.TextBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox2.Location = New System.Drawing.Point(668, 38)
         Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(61, 20)
         Me.TextBox2.TabIndex = 14
         '
@@ -185,6 +186,7 @@ Partial Class frmCollaborationModule
         Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.Location = New System.Drawing.Point(668, 9)
         Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(61, 20)
         Me.TextBox1.TabIndex = 12
         '
@@ -235,6 +237,7 @@ Partial Class frmCollaborationModule
         Me.dtgMapingAndMatching.DefaultCellStyle = DataGridViewCellStyle2
         Me.dtgMapingAndMatching.Location = New System.Drawing.Point(6, 19)
         Me.dtgMapingAndMatching.Name = "dtgMapingAndMatching"
+        Me.dtgMapingAndMatching.ReadOnly = True
         Me.dtgMapingAndMatching.Size = New System.Drawing.Size(708, 170)
         Me.dtgMapingAndMatching.TabIndex = 7
         '
@@ -347,6 +350,7 @@ Partial Class frmCollaborationModule
         Me.dtgTransWork.DefaultCellStyle = DataGridViewCellStyle4
         Me.dtgTransWork.Location = New System.Drawing.Point(6, 19)
         Me.dtgTransWork.Name = "dtgTransWork"
+        Me.dtgTransWork.ReadOnly = True
         Me.dtgTransWork.Size = New System.Drawing.Size(708, 170)
         Me.dtgTransWork.TabIndex = 7
         '
@@ -468,6 +472,7 @@ Partial Class frmCollaborationModule
         Me.dtgHypercare.DefaultCellStyle = DataGridViewCellStyle6
         Me.dtgHypercare.Location = New System.Drawing.Point(6, 19)
         Me.dtgHypercare.Name = "dtgHypercare"
+        Me.dtgHypercare.ReadOnly = True
         Me.dtgHypercare.Size = New System.Drawing.Size(708, 170)
         Me.dtgHypercare.TabIndex = 7
         '
@@ -589,6 +594,7 @@ Partial Class frmCollaborationModule
         Me.dtgMeetings.DefaultCellStyle = DataGridViewCellStyle8
         Me.dtgMeetings.Location = New System.Drawing.Point(6, 19)
         Me.dtgMeetings.Name = "dtgMeetings"
+        Me.dtgMeetings.ReadOnly = True
         Me.dtgMeetings.Size = New System.Drawing.Size(708, 170)
         Me.dtgMeetings.TabIndex = 7
         '
@@ -710,6 +716,7 @@ Partial Class frmCollaborationModule
         Me.dtgScope.DefaultCellStyle = DataGridViewCellStyle10
         Me.dtgScope.Location = New System.Drawing.Point(6, 19)
         Me.dtgScope.Name = "dtgScope"
+        Me.dtgScope.ReadOnly = True
         Me.dtgScope.Size = New System.Drawing.Size(708, 170)
         Me.dtgScope.TabIndex = 7
         '
@@ -831,6 +838,7 @@ Partial Class frmCollaborationModule
         Me.dtgExpertice.DefaultCellStyle = DataGridViewCellStyle12
         Me.dtgExpertice.Location = New System.Drawing.Point(6, 19)
         Me.dtgExpertice.Name = "dtgExpertice"
+        Me.dtgExpertice.ReadOnly = True
         Me.dtgExpertice.Size = New System.Drawing.Size(708, 170)
         Me.dtgExpertice.TabIndex = 7
         '
@@ -881,10 +889,32 @@ Partial Class frmCollaborationModule
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Project"
         '
+        'cboProject_Type
+        '
+        Me.cboProject_Type.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cboProject_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboProject_Type.Enabled = False
+        Me.cboProject_Type.FormattingEnabled = True
+        Me.cboProject_Type.Location = New System.Drawing.Point(551, 15)
+        Me.cboProject_Type.Name = "cboProject_Type"
+        Me.cboProject_Type.Size = New System.Drawing.Size(180, 21)
+        Me.cboProject_Type.TabIndex = 7
+        '
+        'Label6
+        '
+        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(478, 20)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(67, 13)
+        Me.Label6.TabIndex = 6
+        Me.Label6.Text = "Project Type"
+        '
         'txtPSSPM
         '
         Me.txtPSSPM.Location = New System.Drawing.Point(131, 68)
         Me.txtPSSPM.Name = "txtPSSPM"
+        Me.txtPSSPM.ReadOnly = True
         Me.txtPSSPM.Size = New System.Drawing.Size(176, 20)
         Me.txtPSSPM.TabIndex = 5
         '
@@ -901,6 +931,7 @@ Partial Class frmCollaborationModule
         '
         Me.txtGBSPM.Location = New System.Drawing.Point(131, 43)
         Me.txtGBSPM.Name = "txtGBSPM"
+        Me.txtGBSPM.ReadOnly = True
         Me.txtGBSPM.Size = New System.Drawing.Size(176, 20)
         Me.txtGBSPM.TabIndex = 3
         '
@@ -917,6 +948,7 @@ Partial Class frmCollaborationModule
         '
         Me.txtProjectName.Location = New System.Drawing.Point(93, 20)
         Me.txtProjectName.Name = "txtProjectName"
+        Me.txtProjectName.ReadOnly = True
         Me.txtProjectName.Size = New System.Drawing.Size(214, 20)
         Me.txtProjectName.TabIndex = 1
         '
@@ -958,26 +990,6 @@ Partial Class frmCollaborationModule
         Me.cmdDeleteResource.Size = New System.Drawing.Size(23, 22)
         Me.cmdDeleteResource.Text = "ToolStripButton1"
         Me.cmdDeleteResource.ToolTipText = "Delete resource"
-        '
-        'Label6
-        '
-        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(478, 20)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(67, 13)
-        Me.Label6.TabIndex = 6
-        Me.Label6.Text = "Project Type"
-        '
-        'cboProject_Type
-        '
-        Me.cboProject_Type.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cboProject_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboProject_Type.FormattingEnabled = True
-        Me.cboProject_Type.Location = New System.Drawing.Point(551, 15)
-        Me.cboProject_Type.Name = "cboProject_Type"
-        Me.cboProject_Type.Size = New System.Drawing.Size(180, 21)
-        Me.cboProject_Type.TabIndex = 7
         '
         'frmCollaborationModule
         '
