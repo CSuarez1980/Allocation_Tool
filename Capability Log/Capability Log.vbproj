@@ -388,6 +388,12 @@
     <None Include="Resources\edit.png" />
     <None Include="Resources\agt_internet.png" />
     <None Include="Resources\playlist.png" />
+    <None Include="Resources\top.png" />
+    <None Include="Resources\messagebox_critical.png" />
+    <None Include="Resources\compfile.png" />
+    <None Include="Resources\bottom.png" />
+    <None Include="Resources\agt_upgrade_misc.png" />
+    <None Include="Resources\agt_uninstall-product.png" />
     <Content Include="ServerConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

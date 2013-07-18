@@ -91,6 +91,14 @@ Partial Class frmCollaborationModule
         Me.DateTimePicker11 = New System.Windows.Forms.DateTimePicker
         Me.DateTimePicker12 = New System.Windows.Forms.DateTimePicker
         Me.Label19 = New System.Windows.Forms.Label
+        Me.TapFiles = New System.Windows.Forms.TabPage
+        Me.dtgFiles = New System.Windows.Forms.DataGridView
+        Me.tlbFiles = New System.Windows.Forms.ToolStrip
+        Me.cmdUploadFile = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
+        Me.cmdDownload = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
+        Me.cmdDeleteFile = New System.Windows.Forms.ToolStripButton
         Me.GroupBox7 = New System.Windows.Forms.GroupBox
         Me.cboProject_Type = New System.Windows.Forms.ComboBox
         Me.Label6 = New System.Windows.Forms.Label
@@ -103,6 +111,8 @@ Partial Class frmCollaborationModule
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
         Me.cmdShowResources = New System.Windows.Forms.ToolStripButton
         Me.cmdDeleteResource = New System.Windows.Forms.ToolStripButton
+        Me.fodFile = New System.Windows.Forms.OpenFileDialog
+        Me.sfdFile = New System.Windows.Forms.SaveFileDialog
         Me.tabPhases.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -122,6 +132,9 @@ Partial Class frmCollaborationModule
         Me.TabPage6.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         CType(Me.dtgExpertice, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TapFiles.SuspendLayout()
+        CType(Me.dtgFiles, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tlbFiles.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -137,6 +150,7 @@ Partial Class frmCollaborationModule
         Me.tabPhases.Controls.Add(Me.TabPage4)
         Me.tabPhases.Controls.Add(Me.TabPage5)
         Me.tabPhases.Controls.Add(Me.TabPage6)
+        Me.tabPhases.Controls.Add(Me.TapFiles)
         Me.tabPhases.Location = New System.Drawing.Point(6, 132)
         Me.tabPhases.Name = "tabPhases"
         Me.tabPhases.SelectedIndex = 0
@@ -870,6 +884,82 @@ Partial Class frmCollaborationModule
         Me.Label19.Text = "From"
         Me.Label19.Visible = False
         '
+        'TapFiles
+        '
+        Me.TapFiles.Controls.Add(Me.dtgFiles)
+        Me.TapFiles.Controls.Add(Me.tlbFiles)
+        Me.TapFiles.Location = New System.Drawing.Point(4, 22)
+        Me.TapFiles.Name = "TapFiles"
+        Me.TapFiles.Padding = New System.Windows.Forms.Padding(3)
+        Me.TapFiles.Size = New System.Drawing.Size(732, 268)
+        Me.TapFiles.TabIndex = 6
+        Me.TapFiles.Text = "Documents"
+        Me.TapFiles.UseVisualStyleBackColor = True
+        '
+        'dtgFiles
+        '
+        Me.dtgFiles.AllowUserToAddRows = False
+        Me.dtgFiles.AllowUserToDeleteRows = False
+        Me.dtgFiles.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtgFiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgFiles.Location = New System.Drawing.Point(4, 32)
+        Me.dtgFiles.Name = "dtgFiles"
+        Me.dtgFiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dtgFiles.Size = New System.Drawing.Size(723, 230)
+        Me.dtgFiles.TabIndex = 1
+        '
+        'tlbFiles
+        '
+        Me.tlbFiles.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdUploadFile, Me.ToolStripSeparator1, Me.cmdDownload, Me.ToolStripSeparator2, Me.cmdDeleteFile})
+        Me.tlbFiles.Location = New System.Drawing.Point(3, 3)
+        Me.tlbFiles.Name = "tlbFiles"
+        Me.tlbFiles.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.tlbFiles.Size = New System.Drawing.Size(726, 25)
+        Me.tlbFiles.TabIndex = 0
+        Me.tlbFiles.Text = "ToolStrip2"
+        '
+        'cmdUploadFile
+        '
+        Me.cmdUploadFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdUploadFile.Image = Global.Capability_Log.My.Resources.Resources.agt_uninstall_product
+        Me.cmdUploadFile.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdUploadFile.Name = "cmdUploadFile"
+        Me.cmdUploadFile.Size = New System.Drawing.Size(23, 22)
+        Me.cmdUploadFile.Text = "ToolStripButton1"
+        Me.cmdUploadFile.ToolTipText = "Upload file"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'cmdDownload
+        '
+        Me.cmdDownload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdDownload.Image = Global.Capability_Log.My.Resources.Resources.agt_upgrade_misc
+        Me.cmdDownload.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdDownload.Name = "cmdDownload"
+        Me.cmdDownload.Size = New System.Drawing.Size(23, 22)
+        Me.cmdDownload.Text = "ToolStripButton1"
+        Me.cmdDownload.ToolTipText = "download file"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
+        'cmdDeleteFile
+        '
+        Me.cmdDeleteFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdDeleteFile.Image = Global.Capability_Log.My.Resources.Resources.messagebox_critical
+        Me.cmdDeleteFile.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdDeleteFile.Name = "cmdDeleteFile"
+        Me.cmdDeleteFile.Size = New System.Drawing.Size(23, 22)
+        Me.cmdDeleteFile.Text = "ToolStripButton2"
+        Me.cmdDeleteFile.ToolTipText = "Remove file"
+        '
         'GroupBox7
         '
         Me.GroupBox7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -991,6 +1081,10 @@ Partial Class frmCollaborationModule
         Me.cmdDeleteResource.Text = "ToolStripButton1"
         Me.cmdDeleteResource.ToolTipText = "Delete resource"
         '
+        'fodFile
+        '
+        Me.fodFile.FileName = "OpenFileDialog1"
+        '
         'frmCollaborationModule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1028,6 +1122,11 @@ Partial Class frmCollaborationModule
         Me.TabPage6.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         CType(Me.dtgExpertice, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TapFiles.ResumeLayout(False)
+        Me.TapFiles.PerformLayout()
+        CType(Me.dtgFiles, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tlbFiles.ResumeLayout(False)
+        Me.tlbFiles.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
@@ -1108,5 +1207,15 @@ Partial Class frmCollaborationModule
     Friend WithEvents cmdDeleteResource As System.Windows.Forms.ToolStripButton
     Friend WithEvents cboProject_Type As System.Windows.Forms.ComboBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents TapFiles As System.Windows.Forms.TabPage
+    Friend WithEvents tlbFiles As System.Windows.Forms.ToolStrip
+    Friend WithEvents cmdUploadFile As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents cmdDeleteFile As System.Windows.Forms.ToolStripButton
+    Friend WithEvents dtgFiles As System.Windows.Forms.DataGridView
+    Friend WithEvents fodFile As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents cmdDownload As System.Windows.Forms.ToolStripButton
+    Friend WithEvents sfdFile As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
 
 End Class

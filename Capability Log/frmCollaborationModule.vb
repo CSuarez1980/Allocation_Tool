@@ -25,8 +25,7 @@
         txtGBSPM.DataBindings.Add("Text", BS, "GBS_PM", True, DataSourceUpdateMode.OnPropertyChanged)
         txtPSSPM.DataBindings.Add("Text", BS, "PSS_PM", True, DataSourceUpdateMode.OnPropertyChanged)
         cboProject_Type.DataBindings.Add("SelectedValue", BS, "Type", True, DataSourceUpdateMode.OnPropertyChanged)
-
-
+        dtgFiles.DataBindings.Add("DataSource", BS, "Documents", True, DataSourceUpdateMode.OnPropertyChanged)
 
 
         dtgMapingAndMatching.DataSource = BS1
@@ -306,4 +305,46 @@
         dtgExpertice.ReadOnly = True
     End Sub
 
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Dim File As Byte() = My.Computer.FileSystem.ReadAllBytes(My.Application.Info.DirectoryPath & "\Add new materials to OA.xlsx")
+        Dim S As String = ""
+
+        For Each B In File
+            S = S & B & ","
+        Next
+
+        My.Computer.FileSystem.WriteAllBytes(My.Computer.FileSystem.SpecialDirectories.Desktop & "\test.xlsx", File, True)
+
+    End Sub
+
+    Private Sub cmdUploadFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdUploadFile.Click
+        fodFile.ShowDialog()
+
+        Dim F As New Objects.Collaboration_Module.CM_Project_Files()
+        F.File_Name = fodFile.SafeFileName
+        F.Upload_File(fodFile.FileName, goUser.TNumber, _Project.ID)
+
+    End Sub
+
+    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDownload.Click
+        Dim F As New Objects.Collaboration_Module.CM_Project_Files(dtgFiles.CurrentRow.Cells("File_ID").Value)
+        sfdFile.FileName = F.File_Name
+        sfdFile.Filter = "Files (*." & F.Get_Default_Ext & ")|*." & F.Get_Default_Ext
+        sfdFile.DefaultExt = F.Get_Default_Ext
+
+        If sfdFile.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            F.Download_File(sfdFile.FileName & "." & F.Get_Default_Ext)
+        End If
+    End Sub
+
+  
+    Private Sub cmdDeleteFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDeleteFile.Click
+        Dim File As New Objects.Collaboration_Module.CM_Project_Files(dtgFiles.CurrentRow.Cells("File_ID").Value)
+        If File.Delete_File() Then
+            MsgBox("File deleted", MsgBoxStyle.Information)
+            Me.ShowMessage("File removed from this project.", MsgType.Information)
+        End If
+
+
+    End Sub
 End Class

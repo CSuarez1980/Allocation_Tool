@@ -102,9 +102,37 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property agt_uninstall_product() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("agt_uninstall-product", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property agt_upgrade_misc() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("agt_upgrade_misc", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property bottom() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("bottom", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property button_cancel() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("button_cancel", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property compfile() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("compfile", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -140,6 +168,13 @@ Namespace My.Resources
         Friend ReadOnly Property khexedit() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("khexedit", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property messagebox_critical() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("messagebox_critical", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -182,6 +217,13 @@ Namespace My.Resources
         Friend ReadOnly Property todo() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("todo", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property top() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("top", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

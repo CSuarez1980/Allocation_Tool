@@ -464,6 +464,7 @@ Public Class Connection
                 _Com = Nothing
             End Try
         End If
+        Return _Result
     End Function
 
     ''' <summary>

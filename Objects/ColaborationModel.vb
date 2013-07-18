@@ -37,6 +37,7 @@
         Private _Scope As New CM_Task("Scope")
         Private _Expertise As New CM_Task("Expertise")
 
+        Private _Documents As New List(Of CM_Project_Files)
 #End Region
 #Region "Properties"
         Public Property ID() As Integer
@@ -177,6 +178,11 @@
             End Set
         End Property
 
+        Public ReadOnly Property Documents() As List(Of CM_Project_Files)
+            Get
+                Return _Documents
+            End Get
+        End Property
 #End Region
 #Region "Methods"
         Public Sub New()
@@ -311,6 +317,14 @@
                 _GBS_PM = Data(0)("GBS_PM").ToString
                 _Type = Data(0)("Type_ID")
 
+                'Load documents:
+                Dim Doc As DataTable
+                Doc = GetTable("Select * From clm_Files Where Project_ID = " & _ID)
+
+                For Each R In Doc.Rows
+                    _Documents.Add(New CM_Project_Files(R("ID")))
+                Next
+
                 Dim Tasks As New DataTable
 
                 Tasks = GetTable("Select * From clm_Project_Task Where Project_ID = " & Code_ID)
@@ -340,7 +354,6 @@
         End Function
 #End Region
     End Class
-
     Public Class CM_Task
         Inherits Base
 
@@ -556,7 +569,6 @@
 #End Region
 
     End Class
-
     Public Class CM_Resource
         Inherits Base
 #Region "Variables"
@@ -756,7 +768,6 @@
         End Sub
 #End Region
     End Class
-
     Public Class Task_Type
         Inherits Base
 #Region "Variables"
@@ -971,7 +982,6 @@
         End Function
 #End Region
     End Class
-
     Public Class CM_Resource_Entry
         Inherits Objects.Base
         'Month Name @SQLServer: CAST(DATENAME(dbo.clm_Resource.Month, dbo.clm_Resource.Month) AS varchar(10)) + ' ' + CAST(DATEPART(year, dbo.clm_Resource.Month) AS varchar(4))
@@ -1198,6 +1208,187 @@
 
 #End Region
     End Class
+    Public Class CM_Project_Files
+#Region "Variables"
+        Private _File_ID As Integer
+        Private _Project_ID As Integer
+        Private _File_Name As String
+        Private _Owner As String
+        Private _Visibility As Integer
+        Private _Data As String = ""
+        Private _Upload_Date As Date
+        Private _Ext As String
+#End Region
+
+#Region "Properties"
+        Public ReadOnly Property File_ID() As Integer
+            Get
+                Return _File_ID
+            End Get
+        End Property
+        Protected Friend Property Project_ID() As Integer
+            Get
+                Return _Project_ID
+            End Get
+            Set(ByVal value As Integer)
+                _Project_ID = value
+            End Set
+        End Property
+        Public Property File_Name() As String
+            Get
+                Return _File_Name
+            End Get
+            Set(ByVal value As String)
+                _File_Name = value
+            End Set
+        End Property
+        Public ReadOnly Property Owner() As String
+            Get
+                Return _Owner
+            End Get
+        End Property
+        Public ReadOnly Property Upload_Date() As Date
+            Get
+                Return _Upload_Date
+            End Get
+        End Property
+        Protected Friend ReadOnly Property Extension() As String
+            Get
+                Return _Ext
+            End Get
+        End Property
+#End Region
+
+#Region "Methods"
+        Public Sub New(ByVal File_ID As Integer)
+            Load(File_ID)
+        End Sub
+        Public Sub New()
+
+        End Sub
+
+        Public Sub Load(ByVal File_ID As Integer)
+            Dim DB As New Objects.Connection
+            Dim Table As New DataTable
+
+            Table = DB.GetTable("Select * From clm_Files Where ID = " & File_ID)
+
+            If Table.Rows.Count > 0 Then
+                _File_ID = Table.Rows(0)("ID")
+                _Project_ID = Table.Rows(0)("Project_ID")
+                _File_Name = Table.Rows(0)("File_Name")
+                _Owner = Table.Rows(0)("Owner")
+                _Visibility = Table.Rows(0)("Visibility")
+                _Data = Table.Rows(0)("Data")
+                _Upload_Date = Table.Rows(0)("Upload_Date")
+                _Ext = Table.Rows(0)("Ext")
+
+            End If
+
+        End Sub
+
+        Public Function Upload_File(ByVal Path As String, ByVal pOwner As String, ByVal Pid As Integer, Optional ByVal pVisibility As Integer = 0) As Boolean
+            Dim Success As Boolean = False
+
+            If IO.File.Exists(Path) Then
+                Try
+                    'Get the file extention:
+                    Dim FE As String() = Split(Path, ".")
+                    _Ext = FE(FE.Count - 1)
+
+
+                    Dim Data As Byte()
+                    Dim S As String = ""
+
+                    Data = My.Computer.FileSystem.ReadAllBytes(Path)
+
+                    For Each B In Data
+                        S = S & B & ","
+                    Next
+
+                    _Data = Left(S, S.Length - 1)
+                    _Visibility = pVisibility
+                    _Project_ID = Pid
+
+                    Dim DB As New Objects.Connection
+                    Dim T As New Objects.Transaction
+
+                    T.SQL_String = "Insert Into clm_Files (Project_ID, File_Name, Owner, Visibility, Data, Upload_Date,Ext) Values(@Project_ID, @File_Name, @Owner, @Visibility, @Data, {fn Now()},@Ext)"
+                    T.Include_Parameter("@Project_ID", _Project_ID)
+                    T.Include_Parameter("@File_Name", _File_Name)
+                    T.Include_Parameter("@Owner", pOwner)
+                    T.Include_Parameter("@Visibility", _Visibility)
+                    T.Include_Parameter("@Data", _Data)
+                    T.Include_Parameter("@Ext", _Ext)
+
+                    If DB.Execute(T) Then
+                        Success = True
+                    End If
+
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    Success = False
+                End Try
+
+            Else
+                MsgBox("File not found.", MsgBoxStyle.Information)
+            End If
+
+            Return Success
+        End Function
+        Public Function Download_File(ByVal Path As String) As Boolean
+            Dim Status As Boolean = False
+            Dim DataFile As DataTable
+            Dim cn As New Objects.Connection
+            Dim F As Byte()
+
+            DataFile = cn.GetTable("Select * From clm_Files Where ID = " & _File_ID)
+
+            If DataFile.Rows.Count > 0 Then
+                _Data = DataFile(0)("Data")
+                If _Data.Length > 0 Then
+
+                    Dim D As String() = Split(_Data, ",")
+                    Dim c As Integer = -1
+
+                    For Each i In D
+                        c += 1
+                        ReDim Preserve F(c)
+                        F(c) = Byte.Parse(i)
+                    Next
+
+                    My.Computer.FileSystem.WriteAllBytes(Path, F, False)
+
+                Else
+                    MsgBox("File can't be created, data not found.", MsgBoxStyle.Exclamation)
+                End If
+            End If
+
+            Return Status
+        End Function
+        Public Function Delete_File() As Boolean
+            Dim Res As Boolean = False
+
+            Try
+                Dim DB As New Objects.Connection
+                If MsgBox("Do you really want to delete this file?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Delete file") = MsgBoxResult.Yes Then
+                    If DB.Execute("Delete From clm_Files Where ID = " & _File_ID) Then
+                        Res = True
+                    End If
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+
+            Return Res
+        End Function
+
+        Public Function Get_Default_Ext() As String
+            Return _Ext
+        End Function
+#End Region
+    End Class
+
 
 
     Namespace Variants

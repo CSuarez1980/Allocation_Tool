@@ -57,7 +57,6 @@ Public Class Main
     Private Sub MyTasksToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyTasksToolStripMenuItem.Click
         Launch("frmCMEntry")
     End Sub
-
     Private Sub ReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReportToolStripMenuItem.Click
         Launch("clm_Report")
     End Sub

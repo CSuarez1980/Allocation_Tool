@@ -116,9 +116,9 @@ Partial Class clm_Report
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(545, 34)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(31, 13)
+        Me.Label7.Size = New System.Drawing.Size(74, 13)
         Me.Label7.TabIndex = 27
-        Me.Label7.Text = "Task"
+        Me.Label7.Text = "Project stages"
         '
         'Button4
         '
