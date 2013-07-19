@@ -7,6 +7,7 @@
     Dim BS4 As New BindingSource ''Metting
     Dim BS5 As New BindingSource ''Scope / Data
     Dim BS6 As New BindingSource ''Expertice
+    Dim BS7 As New BindingSource ''Documents
 
     Private Sub frmCollaborationModule_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim cn As New Objects.Connection
@@ -25,8 +26,6 @@
         txtGBSPM.DataBindings.Add("Text", BS, "GBS_PM", True, DataSourceUpdateMode.OnPropertyChanged)
         txtPSSPM.DataBindings.Add("Text", BS, "PSS_PM", True, DataSourceUpdateMode.OnPropertyChanged)
         cboProject_Type.DataBindings.Add("SelectedValue", BS, "Type", True, DataSourceUpdateMode.OnPropertyChanged)
-        dtgFiles.DataBindings.Add("DataSource", BS, "Documents", True, DataSourceUpdateMode.OnPropertyChanged)
-
 
         dtgMapingAndMatching.DataSource = BS1
         dtgTransWork.DataSource = BS2
@@ -34,6 +33,8 @@
         dtgMeetings.DataSource = BS4
         dtgScope.DataSource = BS5
         dtgExpertice.DataSource = BS6
+        dtgFiles.DataSource = BS7
+
 
         Refresh_Binding()
         Fix_DataGrids()
@@ -187,13 +188,16 @@
         BS4.DataSource = _Project.Meeting.Resources
         BS5.DataSource = _Project.Scope.Resources
         BS6.DataSource = _Project.Expertise.Resources
+        BS7.DataSource = _Project.Documents
 
+        BS.ResetBindings(False)
         BS1.ResetBindings(False)
         BS2.ResetBindings(False)
         BS3.ResetBindings(False)
         BS4.ResetBindings(False)
         BS5.ResetBindings(False)
         BS6.ResetBindings(False)
+        BS7.ResetBindings(False)
 
         HideColumns()
     End Sub
@@ -322,19 +326,28 @@
 
         Dim F As New Objects.Collaboration_Module.CM_Project_Files()
         F.File_Name = fodFile.SafeFileName
-        F.Upload_File(fodFile.FileName, goUser.TNumber, _Project.ID)
+        If F.Upload_File(fodFile.FileName, goUser.TNumber, _Project.ID) Then
+
+            ShowMessage("File: " & sfdFile.FileName & " uploaded.", MsgType.Information)
+            _Project.Documents.Add(F)
+            Refresh_Binding()
+        End If
 
     End Sub
 
-    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDownload.Click
+    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDownloadFile.Click
         Dim F As New Objects.Collaboration_Module.CM_Project_Files(dtgFiles.CurrentRow.Cells("File_ID").Value)
         sfdFile.FileName = F.File_Name
         sfdFile.Filter = "Files (*." & F.Get_Default_Ext & ")|*." & F.Get_Default_Ext
         sfdFile.DefaultExt = F.Get_Default_Ext
 
         If sfdFile.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            F.Download_File(sfdFile.FileName & "." & F.Get_Default_Ext)
+            If F.Download_File(sfdFile.FileName & "." & F.Get_Default_Ext) Then
+                ShowMessage("File: " & sfdFile.FileName & " downloaded.", MsgType.Information)
+            End If
         End If
+
+        Refresh_Binding()
     End Sub
 
   
@@ -342,9 +355,20 @@
         Dim File As New Objects.Collaboration_Module.CM_Project_Files(dtgFiles.CurrentRow.Cells("File_ID").Value)
         If File.Delete_File() Then
             MsgBox("File deleted", MsgBoxStyle.Information)
+
+            For Each D In _Project.Documents
+                If (D.File_ID = File.File_ID) Then
+                    _Project.Documents.Remove(D)
+                    Exit For
+                End If
+
+
+                _Project.Documents.Remove(File)
+            Next
             Me.ShowMessage("File removed from this project.", MsgType.Information)
         End If
 
+        Refresh_Binding()
 
     End Sub
 End Class

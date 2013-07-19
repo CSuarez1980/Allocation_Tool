@@ -316,10 +316,11 @@
                 _PSS_PM = Data(0)("PSS_PM").ToString
                 _GBS_PM = Data(0)("GBS_PM").ToString
                 _Type = Data(0)("Type_ID")
+                _Documents.Clear()
 
                 'Load documents:
                 Dim Doc As DataTable
-                Doc = GetTable("Select * From clm_Files Where Project_ID = " & _ID)
+                Doc = GetTable("Select ID From clm_Files Where Project_ID = " & _ID)
 
                 For Each R In Doc.Rows
                     _Documents.Add(New CM_Project_Files(R("ID")))
@@ -1215,7 +1216,7 @@
         Private _File_Name As String
         Private _Owner As String
         Private _Visibility As Integer
-        Private _Data As String = ""
+        Private _Data As Byte()
         Private _Upload_Date As Date
         Private _Ext As String
 #End Region
@@ -1260,18 +1261,23 @@
 #End Region
 
 #Region "Methods"
-        Public Sub New(ByVal File_ID As Integer)
-            Load(File_ID)
+        Public Sub New(ByVal File_ID As Integer, Optional ByVal Load_File As Boolean = False)
+            Load(File_ID, Load_File)
         End Sub
         Public Sub New()
 
         End Sub
 
-        Public Sub Load(ByVal File_ID As Integer)
+        Public Sub Load(ByVal File_ID As Integer, ByVal Load_File As Boolean)
             Dim DB As New Objects.Connection
             Dim Table As New DataTable
 
-            Table = DB.GetTable("Select * From clm_Files Where ID = " & File_ID)
+            If Load_File Then
+                Table = DB.GetTable("Select * From clm_Files Where ID = " & File_ID)
+            Else
+                Table = DB.GetTable("Select ID, Project_ID, File_Name, Owner, Visibility, Upload_Date, Ext From clm_Files Where ID = " & File_ID)
+            End If
+
 
             If Table.Rows.Count > 0 Then
                 _File_ID = Table.Rows(0)("ID")
@@ -1279,7 +1285,11 @@
                 _File_Name = Table.Rows(0)("File_Name")
                 _Owner = Table.Rows(0)("Owner")
                 _Visibility = Table.Rows(0)("Visibility")
-                _Data = Table.Rows(0)("Data")
+
+                If (Load_File) Then
+                    _Data = Table.Rows(0)("Data")
+                End If
+
                 _Upload_Date = Table.Rows(0)("Upload_Date")
                 _Ext = Table.Rows(0)("Ext")
 
@@ -1296,19 +1306,16 @@
                     Dim FE As String() = Split(Path, ".")
                     _Ext = FE(FE.Count - 1)
 
-
-                    Dim Data As Byte()
+                    'Read file
                     Dim S As String = ""
+                    _Data = My.Computer.FileSystem.ReadAllBytes(Path)
 
-                    Data = My.Computer.FileSystem.ReadAllBytes(Path)
-
-                    For Each B In Data
-                        S = S & B & ","
-                    Next
-
-                    _Data = Left(S, S.Length - 1)
+                    'Optional: in the future for block file to others
                     _Visibility = pVisibility
+
                     _Project_ID = Pid
+                    _Owner = pOwner
+                    _Upload_Date = Now()
 
                     Dim DB As New Objects.Connection
                     Dim T As New Objects.Transaction
@@ -1340,25 +1347,13 @@
             Dim Status As Boolean = False
             Dim DataFile As DataTable
             Dim cn As New Objects.Connection
-            Dim F As Byte()
 
             DataFile = cn.GetTable("Select * From clm_Files Where ID = " & _File_ID)
 
             If DataFile.Rows.Count > 0 Then
                 _Data = DataFile(0)("Data")
                 If _Data.Length > 0 Then
-
-                    Dim D As String() = Split(_Data, ",")
-                    Dim c As Integer = -1
-
-                    For Each i In D
-                        c += 1
-                        ReDim Preserve F(c)
-                        F(c) = Byte.Parse(i)
-                    Next
-
-                    My.Computer.FileSystem.WriteAllBytes(Path, F, False)
-
+                    My.Computer.FileSystem.WriteAllBytes(Path, _Data, False)
                 Else
                     MsgBox("File can't be created, data not found.", MsgBoxStyle.Exclamation)
                 End If

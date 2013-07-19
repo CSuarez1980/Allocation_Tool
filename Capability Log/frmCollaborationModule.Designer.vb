@@ -96,7 +96,7 @@ Partial Class frmCollaborationModule
         Me.tlbFiles = New System.Windows.Forms.ToolStrip
         Me.cmdUploadFile = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdDownload = New System.Windows.Forms.ToolStripButton
+        Me.cmdDownloadFile = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
         Me.cmdDeleteFile = New System.Windows.Forms.ToolStripButton
         Me.GroupBox7 = New System.Windows.Forms.GroupBox
@@ -912,7 +912,7 @@ Partial Class frmCollaborationModule
         '
         'tlbFiles
         '
-        Me.tlbFiles.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdUploadFile, Me.ToolStripSeparator1, Me.cmdDownload, Me.ToolStripSeparator2, Me.cmdDeleteFile})
+        Me.tlbFiles.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdUploadFile, Me.ToolStripSeparator1, Me.cmdDownloadFile, Me.ToolStripSeparator2, Me.cmdDeleteFile})
         Me.tlbFiles.Location = New System.Drawing.Point(3, 3)
         Me.tlbFiles.Name = "tlbFiles"
         Me.tlbFiles.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -935,15 +935,15 @@ Partial Class frmCollaborationModule
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
         '
-        'cmdDownload
+        'cmdDownloadFile
         '
-        Me.cmdDownload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdDownload.Image = Global.Capability_Log.My.Resources.Resources.agt_upgrade_misc
-        Me.cmdDownload.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdDownload.Name = "cmdDownload"
-        Me.cmdDownload.Size = New System.Drawing.Size(23, 22)
-        Me.cmdDownload.Text = "ToolStripButton1"
-        Me.cmdDownload.ToolTipText = "download file"
+        Me.cmdDownloadFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdDownloadFile.Image = Global.Capability_Log.My.Resources.Resources.agt_upgrade_misc
+        Me.cmdDownloadFile.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdDownloadFile.Name = "cmdDownloadFile"
+        Me.cmdDownloadFile.Size = New System.Drawing.Size(23, 22)
+        Me.cmdDownloadFile.Text = "ToolStripButton1"
+        Me.cmdDownloadFile.ToolTipText = "download file"
         '
         'ToolStripSeparator2
         '
@@ -1214,7 +1214,7 @@ Partial Class frmCollaborationModule
     Friend WithEvents cmdDeleteFile As System.Windows.Forms.ToolStripButton
     Friend WithEvents dtgFiles As System.Windows.Forms.DataGridView
     Friend WithEvents fodFile As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents cmdDownload As System.Windows.Forms.ToolStripButton
+    Friend WithEvents cmdDownloadFile As System.Windows.Forms.ToolStripButton
     Friend WithEvents sfdFile As System.Windows.Forms.SaveFileDialog
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
 
