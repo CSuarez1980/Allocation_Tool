@@ -514,30 +514,15 @@ Public Class Connection
     Public Overridable Function GetTable(ByVal SQLString As String) As System.Data.DataTable
         Dim DataTableTmp As New DataTable
         Dim _Adapter As New SqlClient.SqlDataAdapter
-        Dim Pr As New SqlClient.SqlParameter
-
         Try
             DataTableTmp = New DataTable()
 
             If Me.OpenConnection() Then
                 _Adapter = New SqlClient.SqlDataAdapter(SQLString, _ConnectionDB)
-
-                'For Each P As A_Parameter In pTransaction.Parameters
-                '    Pr = New SqlClient.SqlParameter
-                '    Pr.ParameterName = P.Parameter_Name
-                '    Pr.Value = P.Value
-                '    _Adapter.SelectCommand.Parameters.Add(Pr)
-                'Next
-
                 _Adapter.Fill(DataTableTmp)
-
             End If
 
-            'If DataTableTmp.Rows.Count > 0 Then
             Return DataTableTmp
-            'Else
-            'Return Nothing
-            'End If
 
         Catch ex As Exception
             MsgBox(ex.Message)

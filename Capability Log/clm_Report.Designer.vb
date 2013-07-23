@@ -24,6 +24,8 @@ Partial Class clm_Report
         Me.vw_CM_Raw_DataBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CapabilityLogDataSet = New Capability_Log.CapabilityLogDataSet
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.tlbReport = New System.Windows.Forms.ToolStrip
+        Me.cmdExport2Excel = New System.Windows.Forms.ToolStripButton
         Me.Button5 = New System.Windows.Forms.Button
         Me.txtTask = New System.Windows.Forms.TextBox
         Me.Label7 = New System.Windows.Forms.Label
@@ -48,6 +50,7 @@ Partial Class clm_Report
         CType(Me.vw_CM_Raw_DataBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CapabilityLogDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        Me.tlbReport.SuspendLayout()
         Me.SuspendLayout()
         '
         'vw_CM_Raw_DataBindingSource
@@ -65,6 +68,7 @@ Partial Class clm_Report
         Me.GroupBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox2.Controls.Add(Me.tlbReport)
         Me.GroupBox2.Controls.Add(Me.Button5)
         Me.GroupBox2.Controls.Add(Me.txtTask)
         Me.GroupBox2.Controls.Add(Me.Label7)
@@ -91,6 +95,26 @@ Partial Class clm_Report
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Report parameters"
+        '
+        'tlbReport
+        '
+        Me.tlbReport.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.tlbReport.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdExport2Excel})
+        Me.tlbReport.Location = New System.Drawing.Point(3, 567)
+        Me.tlbReport.Name = "tlbReport"
+        Me.tlbReport.Size = New System.Drawing.Size(878, 25)
+        Me.tlbReport.TabIndex = 30
+        Me.tlbReport.Text = "ToolStrip1"
+        '
+        'cmdExport2Excel
+        '
+        Me.cmdExport2Excel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdExport2Excel.Image = Global.Capability_Log.My.Resources.Resources.excel8
+        Me.cmdExport2Excel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdExport2Excel.Name = "cmdExport2Excel"
+        Me.cmdExport2Excel.Size = New System.Drawing.Size(23, 22)
+        Me.cmdExport2Excel.Text = "ToolStripButton1"
+        Me.cmdExport2Excel.ToolTipText = "Export raw data to Excel"
         '
         'Button5
         '
@@ -271,7 +295,7 @@ Partial Class clm_Report
         Me.rtpReport.LocalReport.ReportEmbeddedResource = "Capability_Log.clm_Allocation.rdlc"
         Me.rtpReport.Location = New System.Drawing.Point(7, 110)
         Me.rtpReport.Name = "rtpReport"
-        Me.rtpReport.Size = New System.Drawing.Size(870, 479)
+        Me.rtpReport.Size = New System.Drawing.Size(870, 453)
         Me.rtpReport.TabIndex = 6
         '
         'vw_CM_Raw_DataTableAdapter
@@ -291,6 +315,8 @@ Partial Class clm_Report
         CType(Me.CapabilityLogDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.tlbReport.ResumeLayout(False)
+        Me.tlbReport.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -319,5 +345,7 @@ Partial Class clm_Report
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents txtTask As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents tlbReport As System.Windows.Forms.ToolStrip
+    Friend WithEvents cmdExport2Excel As System.Windows.Forms.ToolStripButton
 
 End Class

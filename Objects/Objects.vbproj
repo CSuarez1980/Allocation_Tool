@@ -36,6 +36,10 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Microsoft Visual Studio 11.0\Visual Studio Tools for Office\PIA\Office14\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -65,11 +69,13 @@
     <Compile Include="CustomObjects.vb" />
     <Compile Include="Forms.vb" />
     <Compile Include="Global_Functions.vb" />
+    <Compile Include="MS Tools.vb" />
     <Compile Include="Profile.vb" />
     <Compile Include="Project.vb" />
     <Compile Include="Project_Category.vb" />
     <Compile Include="Project_Priority.vb" />
     <Compile Include="Project_Status.vb" />
+    <Compile Include="PSS_Projects.vb" />
     <Compile Include="Task.vb" />
     <Compile Include="Service_Line.vb" />
     <Compile Include="Task_Entry.vb" />
@@ -111,6 +117,16 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{00000206-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

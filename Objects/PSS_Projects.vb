@@ -1,23 +1,5 @@
-﻿Namespace Collaboration_Module
-    'Public Enum EN_CM_Tasks
-    '    Mapping_And_Matching = 1
-    '    Transactional_Work = 2
-    '    Hypercare = 3
-    '    Meeting = 4
-    '    Scope_Data = 5
-    '    Expertice = 6
-    'End Enum
-    Public Enum CM_Resource_Type
-        None = 0
-        PSS_Project_Manager = 1
-        PMaaS = 2
-        Service_Management_Contact = 3
-        Service_Delivery_Contact_Direct = 4
-        Service_Delivery_Contact_Indirect = 5
-        Contractor = 6
-        Development_Resource = 7
-    End Enum
-    Public Class CM_Project
+﻿Namespace PSS_Projects
+    Public Class PSS_Project
         Inherits Base
 #Region "Events"
         Public Event Loaded()
@@ -27,16 +9,16 @@
         Private _Name As String
         Private _GBS_PM As String
         Private _PSS_PM As String
-        Private _Type As Integer
+        'Private _Type As Integer
 
-        Private _MappingMatching As New CM_Task("MappingMatching")
-        Private _Transactional As New CM_Task("Transactional")
-        Private _HyperCare As New CM_Task("HyperCare")
-        Private _Meeting As New CM_Task("Meeting")
-        Private _Scope As New CM_Task("Scope")
-        Private _Expertise As New CM_Task("Expertise")
+        Private _Discover As New PSS_Task("Discover")
+        Private _Design As New PSS_Task("Design")
+        Private _Qualify As New PSS_Task("Qualify")
+        Private _Ready As New PSS_Task("Ready")
+        Private _Launch As New PSS_Task("Launch")
+        'Private _Expertise As New PSS_Task("Expertise")
 
-        Private _Documents As New List(Of CM_Project_Files)
+        Private _Documents As New List(Of PSS_Project_Files)
 #End Region
 #Region "Properties"
         Public Property ID() As Integer
@@ -71,113 +53,65 @@
                 _Name = value
             End Set
         End Property
-        Public Property Type() As Integer
-            Get
-                Return _Type
-            End Get
-            Set(ByVal value As Integer)
-                _Type = value
-            End Set
-        End Property
-        'Public Property MM_List() As List(Of MC_Task_Resource)
+        'Public Property Type() As Integer
         '    Get
-        '        Return _MM_List
+        '        Return _Type
         '    End Get
-        '    Set(ByVal value As List(Of MC_Task_Resource))
-        '        _MM_List = value
-        '    End Set
-        'End Property
-        'Public Property TR_List() As List(Of MC_Task_Resource)
-        '    Get
-        '        Return _TR_List
-        '    End Get
-        '    Set(ByVal value As List(Of MC_Task_Resource))
-        '        _TR_List = value
-        '    End Set
-        'End Property
-        'Public Property HY_List() As List(Of MC_Task_Resource)
-        '    Get
-        '        Return _HY_List
-        '    End Get
-        '    Set(ByVal value As List(Of MC_Task_Resource))
-        '        _HY_List = value
-        '    End Set
-        'End Property
-        'Public Property MT_List() As List(Of MC_Task_Resource)
-        '    Get
-        '        Return _MT_List
-        '    End Get
-        '    Set(ByVal value As List(Of MC_Task_Resource))
-        '        _MT_List = value
-        '    End Set
-        'End Property
-        'Public Property SP_List() As List(Of MC_Task_Resource)
-        '    Get
-        '        Return _SP_List
-        '    End Get
-        '    Set(ByVal value As List(Of MC_Task_Resource))
-        '        _SP_List = value
-        '    End Set
-        'End Property
-        'Public Property EX_List() As List(Of MC_Task_Resource)
-        '    Get
-        '        Return _EX_List
-        '    End Get
-        '    Set(ByVal value As List(Of MC_Task_Resource))
-        '        _EX_List = value
+        '    Set(ByVal value As Integer)
+        '        _Type = value
         '    End Set
         'End Property
 
-        Public Property Mapping_Matching() As CM_Task
+        Public Property Discover() As PSS_Task
             Get
-                Return _MappingMatching
+                Return _Discover
             End Get
-            Set(ByVal value As CM_Task)
-                _MappingMatching = value
+            Set(ByVal value As PSS_Task)
+                _Discover = value
             End Set
         End Property
-        Public Property Transactional() As CM_Task
+        Public Property Design() As PSS_Task
             Get
-                Return _Transactional
+                Return _Design
             End Get
-            Set(ByVal value As CM_Task)
-                _Transactional = value
+            Set(ByVal value As PSS_Task)
+                _Design = value
             End Set
         End Property
-        Public Property HyperCare() As CM_Task
+        Public Property Qualify() As PSS_Task
             Get
-                Return _HyperCare
+                Return _Qualify
             End Get
-            Set(ByVal value As CM_Task)
-                _HyperCare = value
+            Set(ByVal value As PSS_Task)
+                _Qualify = value
             End Set
         End Property
-        Public Property Meeting() As CM_Task
+        Public Property Ready() As PSS_Task
             Get
-                Return _Meeting
+                Return _Ready
             End Get
-            Set(ByVal value As CM_Task)
-                _Meeting = value
+            Set(ByVal value As PSS_Task)
+                _Ready = value
             End Set
         End Property
-        Public Property Scope() As CM_Task
+        Public Property Launch() As PSS_Task
             Get
-                Return _Scope
+                Return _Launch
             End Get
-            Set(ByVal value As CM_Task)
-                _Scope = value
+            Set(ByVal value As PSS_Task)
+                _Launch = value
             End Set
         End Property
-        Public Property Expertise() As CM_Task
-            Get
-                Return _Expertise
-            End Get
-            Set(ByVal value As CM_Task)
-                _Expertise = value
-            End Set
-        End Property
+        'Public Property Expertise() As PSS_Task
+        '    Get
+        '        Return _Expertise
+        '    End Get
+        '    Set(ByVal value As PSS_Task)
+        '        _Expertise = value
+        '    End Set
+        'End Property
 
-        Public ReadOnly Property Documents() As List(Of CM_Project_Files)
+        Public ReadOnly Property Documents() As List(Of PSS_Project_Files)
             Get
                 Return _Documents
             End Get
@@ -192,14 +126,14 @@
             _Name = ""
             _PSS_PM = ""
             _GBS_PM = ""
-            _Type = 0
+            '_Type = 0
 
-            _MappingMatching = New CM_Task("MappingMatching")
-            _Transactional = New CM_Task("Transactional")
-            _HyperCare = New CM_Task("HyperCare")
-            _Meeting = New CM_Task("Meeting")
-            _Scope = New CM_Task("Scope")
-            _Expertise = New CM_Task("Expertise")
+            _Discover = New PSS_Task("Discover")
+            _Design = New PSS_Task("Design")
+            _Qualify = New PSS_Task("Qualify")
+            _Ready = New PSS_Task("Ready")
+            _Launch = New PSS_Task("Launch")
+            '_Expertise = New PSS_Task("Expertise")
         End Sub
         Public Overrides Function Get_Delete() As Transaction_Group
 
@@ -209,74 +143,74 @@
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
 
-            SP.Stored_Procedure_Name = "sp_Get_Next_Project_ID"
+            SP.Stored_Procedure_Name = "sp_Get_Next_PSS_Project_ID"
             SP.Include_Parameter("@ID", 0, ParameterDirection.Output)
             If SP.Execute() Then
                 _ID = SP.Get_Parameter_Value("@ID", Get_Param_From.Server)
 
-                T.SQL_String = "Insert Into clm_Project(ID, Name, GBS_PM, PSS_PM, Type_ID) Values(@ID, @Name, @GBS_PM, @PSS_PM, @Type_ID)"
+                T.SQL_String = "Insert Into pss_Project(ID, Name, GBS_PM, PSS_PM, Type_ID) Values(@ID, @Name, @GBS_PM, @PSS_PM, @Type_ID)"
                 T.Include_Parameter("@ID", _ID)
                 T.Include_Parameter("@Name", _Name)
                 T.Include_Parameter("@GBS_PM", _GBS_PM)
                 T.Include_Parameter("@PSS_PM", _PSS_PM)
-                T.Include_Parameter("@Type_ID", _Type)
+                'T.Include_Parameter("@Type_ID", _Type)
                 TG.Include_Transaction(T)
 
-                TG.Include_Transaction(_MappingMatching.Get_Insert)
-                TG.Include_Transaction(_Transactional.Get_Insert)
-                TG.Include_Transaction(_HyperCare.Get_Insert)
-                TG.Include_Transaction(_Meeting.Get_Insert)
-                TG.Include_Transaction(_Scope.Get_Insert)
-                TG.Include_Transaction(_Expertise.Get_Insert)
+                TG.Include_Transaction(_Discover.Get_Insert)
+                TG.Include_Transaction(_Design.Get_Insert)
+                TG.Include_Transaction(_Qualify.Get_Insert)
+                TG.Include_Transaction(_Ready.Get_Insert)
+                TG.Include_Transaction(_Launch.Get_Insert)
+                ' TG.Include_Transaction(_Expertise.Get_Insert)
 
                 Dim PT1 As New Objects.Transaction
-                PT1.SQL_String = "Insert Into clm_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
+                PT1.SQL_String = "Insert Into pss_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
                 PT1.Include_Parameter("@Project_ID", _ID)
-                PT1.Include_Parameter("@Task_ID", _MappingMatching.ID)
+                PT1.Include_Parameter("@Task_ID", _Discover.ID)
                 TG.Include_Transaction(PT1)
 
                 Dim PT2 As New Objects.Transaction
-                PT2.SQL_String = "Insert Into clm_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
+                PT2.SQL_String = "Insert Into pss_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
                 PT2.Include_Parameter("@Project_ID", _ID)
-                PT2.Include_Parameter("@Task_ID", _Transactional.ID)
+                PT2.Include_Parameter("@Task_ID", _Design.ID)
                 TG.Include_Transaction(PT2)
 
                 Dim PT3 As New Objects.Transaction
-                PT3.SQL_String = "Insert Into clm_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
+                PT3.SQL_String = "Insert Into pss_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
                 PT3.Include_Parameter("@Project_ID", _ID)
-                PT3.Include_Parameter("@Task_ID", _HyperCare.ID)
+                PT3.Include_Parameter("@Task_ID", _Qualify.ID)
                 TG.Include_Transaction(PT3)
 
                 Dim PT4 As New Objects.Transaction
-                PT4.SQL_String = "Insert Into clm_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
+                PT4.SQL_String = "Insert Into pss_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
                 PT4.Include_Parameter("@Project_ID", _ID)
-                PT4.Include_Parameter("@Task_ID", _Meeting.ID)
+                PT4.Include_Parameter("@Task_ID", _Ready.ID)
                 TG.Include_Transaction(PT4)
 
                 Dim PT5 As New Objects.Transaction
-                PT5.SQL_String = "Insert Into clm_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
+                PT5.SQL_String = "Insert Into pss_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
                 PT5.Include_Parameter("@Project_ID", _ID)
-                PT5.Include_Parameter("@Task_ID", _Scope.ID)
+                PT5.Include_Parameter("@Task_ID", _Launch.ID)
                 TG.Include_Transaction(PT5)
 
-                Dim PT6 As New Objects.Transaction
-                PT6.SQL_String = "Insert Into clm_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
-                PT6.Include_Parameter("@Project_ID", _ID)
-                PT6.Include_Parameter("@Task_ID", _Expertise.ID)
-                TG.Include_Transaction(PT6)
+                'Dim PT6 As New Objects.Transaction
+                'PT6.SQL_String = "Insert Into pss_Project_Task(Project_ID, Task_ID) Values(@Project_ID, @Task_ID)"
+                'PT6.Include_Parameter("@Project_ID", _ID)
+                'PT6.Include_Parameter("@Task_ID", _Expertise.ID)
+                'TG.Include_Transaction(PT6)
             End If
 
             Return TG
         End Function
         Public Overrides Function Get_Search_List() As Transaction
             Dim T As New Transaction
-            T.SQL_String = "Select ID as Code, [Name] as Value From [clm_Project]"
+            T.SQL_String = "Select ID as Code, [Name] as Value From [pss_Project]"
             Return T
         End Function
         Public Overrides Function Get_Select(Optional ByVal Code_ID As Object = Nothing) As Transaction
             Dim T As New Transaction
 
-            T.SQL_String = "Select * From [clm_Project]"
+            T.SQL_String = "Select * From [pss_Project]"
             If Not Code_ID Is Nothing Then
                 T.SQL_String = T.SQL_String & " Where [ID] = @ID"
                 T.Include_Parameter("@ID", Code_ID)
@@ -288,20 +222,18 @@
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
 
-            T.SQL_String = "Update clm_Project Set Name = @Name, GBS_PM = @GBS_PM, PSS_PM = @PSS_PM, Type_ID = @Type_ID Where (ID = @ID)"
+            T.SQL_String = "Update pss_Project Set Name = @Name, GBS_PM = @GBS_PM, PSS_PM = @PSS_PM, Type_ID = @Type_ID Where (ID = @ID)"
             T.Include_Parameter("@ID", _ID)
             T.Include_Parameter("@Name", _Name)
             T.Include_Parameter("@GBS_PM", _GBS_PM)
             T.Include_Parameter("@PSS_PM", _PSS_PM)
-            T.Include_Parameter("@Type_ID", _Type)
             TG.Include_Transaction(T)
 
-            TG.Include_Transaction(_MappingMatching.Get_Update)
-            TG.Include_Transaction(_Transactional.Get_Update)
-            TG.Include_Transaction(_HyperCare.Get_Update)
-            TG.Include_Transaction(_Meeting.Get_Update)
-            TG.Include_Transaction(_Scope.Get_Update)
-            TG.Include_Transaction(_Expertise.Get_Update)
+            TG.Include_Transaction(_Discover.Get_Update)
+            TG.Include_Transaction(_Design.Get_Update)
+            TG.Include_Transaction(_Qualify.Get_Update)
+            TG.Include_Transaction(_Ready.Get_Update)
+            TG.Include_Transaction(_Launch.Get_Update)
 
             Return TG
         End Function
@@ -314,36 +246,33 @@
                 _Name = Data(0)("Name").ToString
                 _PSS_PM = Data(0)("PSS_PM").ToString
                 _GBS_PM = Data(0)("GBS_PM").ToString
-                _Type = Data(0)("Type_ID")
                 _Documents.Clear()
 
                 'Load documents:
                 Dim Doc As DataTable
-                Doc = GetTable("Select ID From clm_Files Where Project_ID = " & _ID)
+                Doc = GetTable("Select ID From pss_Files Where Project_ID = " & _ID)
 
                 For Each R In Doc.Rows
-                    _Documents.Add(New CM_Project_Files(R("ID")))
+                    _Documents.Add(New PSS_Project_Files(R("ID")))
                 Next
 
                 Dim Tasks As New DataTable
 
-                Tasks = GetTable("Select * From clm_Project_Task Where Project_ID = " & Code_ID)
+                Tasks = GetTable("Select * From pss_Project_Task Where Project_ID = " & Code_ID)
                 If Tasks.Rows.Count > 0 Then
                     For Each R As DataRow In Tasks.Rows
-                        Dim Tk As New CM_Task(CInt(R("Task_ID")))
+                        Dim Tk As New PSS_Task(CInt(R("Task_ID")))
                         Select Case Tk.Task_Type
                             Case 1
-                                _MappingMatching = Tk
+                                _Discover = Tk
                             Case 2
-                                _Transactional = Tk
+                                _Design = Tk
                             Case 3
-                                _HyperCare = Tk
+                                _Qualify = Tk
                             Case 4
-                                _Meeting = Tk
+                                _Ready = Tk
                             Case 5
-                                _Scope = Tk
-                            Case 6
-                                _Expertise = Tk
+                                _Launch = Tk
                         End Select
 
                     Next
@@ -354,14 +283,14 @@
         End Function
 #End Region
     End Class
-    Public Class CM_Task
+    Public Class PSS_Task
         Inherits Base
 
 #Region "Variables"
         Private _Task_ID As Integer
         Private _Task_Type As New Objects.Collaboration_Module.Task_Type
         Private _Allocation As Double
-        Private _Resources As New List(Of CM_Resource)
+        Private _Resources As New List(Of PSS_Resource)
 #End Region
 #Region "Properties"
         Public Property ID() As Integer
@@ -385,11 +314,11 @@
                 Return _Task_Type.Description
             End Get
         End Property
-        Public Property Resources() As List(Of CM_Resource)
+        Public Property Resources() As List(Of PSS_Resource)
             Get
                 Return _Resources
             End Get
-            Set(ByVal value As List(Of CM_Resource))
+            Set(ByVal value As List(Of PSS_Resource))
                 _Resources = value
             End Set
         End Property
@@ -403,25 +332,21 @@
             Load(ID)
             Object_Status = Objects.Object_Status.Update
         End Sub
-
         Public Sub New(ByVal _Type As String)
             Clear()
             Object_Status = Objects.Object_Status.Insert
             Dim T As Integer = 0
-
             Select Case _Type
-                Case "MappingMatching"
+                Case "Discover"
                     _Task_Type.Load(1)
-                Case "Transactional"
+                Case "Design"
                     _Task_Type.Load(2)
-                Case "HyperCare"
+                Case "Qualify"
                     _Task_Type.Load(3)
-                Case "Meeting"
+                Case "Ready"
                     _Task_Type.Load(4)
-                Case "Scope"
+                Case "Launch"
                     _Task_Type.Load(5)
-                Case "Expertise"
-                    _Task_Type.Load(6)
             End Select
         End Sub
 
@@ -438,24 +363,23 @@
             Dim SP As New Objects.Stored_Procedure
             Dim TG As New Objects.Transaction_Group
 
-
             SP.Stored_Procedure_Name = "sp_Get_Next_Task_ID"
             SP.Include_Parameter("@ID", 0, ParameterDirection.Output)
             If SP.Execute() Then
                 Dim T As New Objects.Transaction
                 _Task_ID = SP.Get_Parameter_Value("@ID", Get_Param_From.Server)
 
-                T.SQL_String = "Insert Into clm_Task(ID, Task_Type_ID, Allocation) Values(@ID, @Task_Type, @Allocation)"
+                T.SQL_String = "Insert Into pss_Task(ID, Task_Type_ID, Allocation) Values(@ID, @Task_Type, @Allocation)"
                 T.Include_Parameter("@ID", _Task_ID)
                 T.Include_Parameter("@Task_Type", _Task_Type.ID)
                 T.Include_Parameter("@Allocation", _Allocation)
 
                 TG.Include_Transaction(T)
 
-                For Each i As CM_Resource In _Resources
+                For Each i As PSS_Resource In _Resources
                     TG.Include_Transaction(i.Get_Insert)
                     Dim T2 As New Objects.Transaction
-                    T2.SQL_String = "Insert Into clm_Task_Resource(ID_Task, IDResource) Values(@ID_Task, @IDResource)"
+                    T2.SQL_String = "Insert Into pss_Task_Resource(ID_Task, IDResource) Values(@ID_Task, @IDResource)"
                     T2.Include_Parameter("@ID_Task", _Task_ID)
                     T2.Include_Parameter("@IDResource", i.ID)
                     TG.Include_Transaction(T2)
@@ -469,7 +393,7 @@
         Public Overrides Function Get_Select(Optional ByVal Code_ID As Object = Nothing) As Transaction
             Dim T As New Transaction
 
-            T.SQL_String = "Select * From [clm_Task]"
+            T.SQL_String = "Select * From [pss_Task]"
             If Not Code_ID Is Nothing Then
                 T.SQL_String = T.SQL_String & " Where [ID] = @ID"
                 T.Include_Parameter("@ID", Code_ID)
@@ -480,13 +404,13 @@
         Public Overrides Function Get_Update() As Transaction_Group
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
-            T.SQL_String = "Update clm_Task Set Task_Type_ID = @Task_Type, Allocation = @Allocation Where (ID = @ID)"
+            T.SQL_String = "Update pss_Task Set Task_Type_ID = @Task_Type, Allocation = @Allocation Where (ID = @ID)"
             T.Include_Parameter("@ID", _Task_ID)
             T.Include_Parameter("@Task_Type", _Task_Type.ID)
             T.Include_Parameter("@Allocation", _Allocation)
             TG.Include_Transaction(T)
 
-            For Each i As CM_Resource In _Resources
+            For Each i As PSS_Resource In _Resources
                 Select Case i.Object_Status
                     Case Objects.Object_Status.Insert
 
@@ -494,27 +418,24 @@
 
                         If i.ID > 0 Then
                             Dim T2 As New Objects.Transaction
-                            T2.SQL_String = "Insert Into clm_Task_Resource(ID_Task, IDResource) Values(@ID_Task, @IDResource)"
+                            T2.SQL_String = "Insert Into pss_Task_Resource(ID_Task, IDResource) Values(@ID_Task, @IDResource)"
                             T2.Include_Parameter("@ID_Task", _Task_ID)
                             T2.Include_Parameter("@IDResource", i.ID)
                             TG.Include_Transaction(T2)
                         End If
-
-
 
                     Case Objects.Object_Status.Update
                         TG.Include_Transaction(i.Get_Update)
 
                     Case Objects.Object_Status.Delete
                         Dim T2 As New Objects.Transaction
-                        T2.SQL_String = "Delete From clm_Task_Resource Where ((ID_Task = @ID_Task) And (IDResource = @IDResource))"
+                        T2.SQL_String = "Delete From pss_Task_Resource Where ((ID_Task = @ID_Task) And (IDResource = @IDResource))"
                         T2.Include_Parameter("@ID_Task", _Task_ID)
                         T2.Include_Parameter("@IDResource", i.ID)
                         TG.Include_Transaction(T2)
 
                         TG.Include_Transaction(i.Get_Update)
                 End Select
-
 
             Next
             Return TG
@@ -529,12 +450,12 @@
 
                 'Load task resources:
                 Dim TR As New DataTable
-                TR = GetTable("Select * From clm_Task_Resource Where ID_Task = " & Code_ID)
+                TR = GetTable("Select * From pss_Task_Resource Where ID_Task = " & Code_ID)
 
                 If TR.Rows.Count > 0 Then
                     For Each r As DataRow In TR.Rows
 
-                        Dim RS As New CM_Resource(r("IDResource"))
+                        Dim RS As New PSS_Resource(r("IDResource"))
                         If RS.ID > 0 Then
                             _Resources.Add(RS)
                         End If
@@ -543,18 +464,18 @@
             End If
         End Function
         Public Sub Remove_Resource(ByVal Resource_ID As Integer)
-            For Each r As CM_Resource In _Resources
+            For Each r As PSS_Resource In _Resources
                 If r.ID = Resource_ID Then
                     Dim T1 As New Transaction
                     Dim T2 As New Transaction
                     Dim TG As New Transaction_Group
 
-                    T1.SQL_String = "Delete From clm_Task_Resource Where ((ID_Task = @ID_Task) And (IDResource = @IDResource))"
+                    T1.SQL_String = "Delete From pss_Task_Resource Where ((ID_Task = @ID_Task) And (IDResource = @IDResource))"
                     T1.Include_Parameter("@ID_Task", _Task_ID)
                     T1.Include_Parameter("@IDResource", r.ID)
                     TG.Include_Transaction(T1)
 
-                    T2.SQL_String = "Delete From clm_Resource Where (Resource_ID = @Resource_ID)"
+                    T2.SQL_String = "Delete From pss_Resource Where (Resource_ID = @Resource_ID)"
                     T2.Include_Parameter("@Resource_ID", r.ID)
                     TG.Include_Transaction(T2)
 
@@ -569,7 +490,7 @@
 #End Region
 
     End Class
-    Public Class CM_Resource
+    Public Class PSS_Resource
         Inherits Base
 #Region "Variables"
         Private _Resource_ID As Integer
@@ -685,7 +606,7 @@
                     T = New Transaction
                     _Resource_ID = SP.Get_Parameter_Value("@ID", Get_Param_From.Server)
 
-                    T.SQL_String = "Insert Into clm_Resource(Resource_ID,Resource_Type,Month,Hours,FTE,Event,Entry_Type,Owner) Values(@Resource_ID,@Resource_Type,@Month,@Hours,@FTE,@Event,@Entry_Type,@Owner)"
+                    T.SQL_String = "Insert Into pss_Resource(Resource_ID,Resource_Type,Month,Hours,FTE,Event,Entry_Type,Owner) Values(@Resource_ID,@Resource_Type,@Month,@Hours,@FTE,@Event,@Entry_Type,@Owner)"
 
                     T.Include_Parameter("@Resource_ID", _Resource_ID)
                     T.Include_Parameter("@Resource_Type", _Resource_Type.ID)
@@ -706,7 +627,7 @@
         Public Overrides Function Get_Select(Optional ByVal Code_ID As Object = Nothing) As Transaction
             Dim T As New Transaction
 
-            T.SQL_String = "Select * From [clm_Resource]"
+            T.SQL_String = "Select * From [pss_Resource]"
             If Not Code_ID Is Nothing Then
                 T.SQL_String = T.SQL_String & " Where [Resource_ID] = @ID"
                 T.Include_Parameter("@ID", Code_ID)
@@ -724,8 +645,8 @@
                     TG = Get_Delete()
                 Case Else
                     Dim T As New Objects.Transaction
-                  
-                    T.SQL_String = "Update clm_Resource Set Resource_Type = @Resource_Type, Month = @Month, Hours = @Hours, FTE = @FTE, Event = @Event, Entry_Type = @Entry_Type, Owner = @Owner Where (Resource_ID = @Resource_ID)"
+
+                    T.SQL_String = "Update pss_Resource Set Resource_Type = @Resource_Type, Month = @Month, Hours = @Hours, FTE = @FTE, Event = @Event, Entry_Type = @Entry_Type, Owner = @Owner Where (Resource_ID = @Resource_ID)"
                     T.Include_Parameter("@Resource_ID", _Resource_ID)
                     T.Include_Parameter("@Resource_Type", _Resource_Type.ID)
                     T.Include_Parameter("@Month", _Month)
@@ -797,20 +718,18 @@
             _ID = 0
             _Description = ""
         End Sub
-
         Public Overrides Function Get_Delete() As Transaction_Group
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
 
             T = New Transaction
-            T.SQL_String = "Delete clm_Task_Type Where ID = @ID"
+            T.SQL_String = "Delete pss_Task_Type Where ID = @ID"
 
             T.Include_Parameter("@ID", _ID)
             TG.Include_Transaction(T)
 
             Return TG
         End Function
-
         Public Overrides Function Get_Insert() As Transaction_Group
             Dim SP As New Objects.Stored_Procedure
             Dim TG As New Objects.Transaction_Group
@@ -823,7 +742,7 @@
                 _ID = SP.Get_Parameter_Value("@ID", Get_Param_From.Server)
 
                 T = New Transaction
-                T.SQL_String = "Insert Into clm_Task_Type(ID, Description) Values(@ID, @Description)"
+                T.SQL_String = "Insert Into pss_Task_Type(ID, Description) Values(@ID, @Description)"
 
                 T.Include_Parameter("@ID", _ID)
                 T.Include_Parameter("@Description", _Description)
@@ -832,29 +751,25 @@
 
             Return TG
         End Function
-
         Public Overrides Function Get_Search_List() As Transaction
             Dim T As New Transaction
-            T.SQL_String = "Select ID as Code, [Description] as Value From [clm_Task_Type]"
+            T.SQL_String = "Select ID as Code, [Description] as Value From [pss_Task_Type]"
             Return T
         End Function
-
         Public Overrides Function Get_Select(Optional ByVal Code_ID As Object = Nothing) As Transaction
             Dim T As New Transaction
-            T.SQL_String = "Select * From clm_Task_Type Where ID = @ID"
+            T.SQL_String = "Select * From pss_Task_Type Where ID = @ID"
 
             T.Include_Parameter("@ID", Code_ID)
 
             Return T
         End Function
-
-
         Public Overrides Function Get_Update() As Transaction_Group
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
 
             T = New Transaction
-            T.SQL_String = "Update clm_Task_Type set Description = @Description Where ID = @ID"
+            T.SQL_String = "Update pss_Task_Type set Description = @Description Where ID = @ID"
 
             T.Include_Parameter("@ID", _ID)
             T.Include_Parameter("@Description", _Description)
@@ -862,12 +777,10 @@
 
             Return TG
         End Function
-
         Public Overrides Function Load(Optional ByVal Code_ID As Object = Nothing) As Boolean
             If MyBase.Load(Code_ID) Then
                 _ID = Data.Rows(0)("ID")
                 _Description = Data.Rows(0)("Description")
-
                 Return True
             Else
                 Return False
@@ -910,7 +823,7 @@
             Dim T As New Objects.Transaction
 
             T = New Transaction
-            T.SQL_String = "Delete clm_Resource_Type Where ID = @ID"
+            T.SQL_String = "Delete pss_Resource_Type Where ID = @ID"
 
             T.Include_Parameter("@ID", _ID)
             TG.Include_Transaction(T)
@@ -928,7 +841,7 @@
                 Dim T As New Objects.Transaction
 
                 _ID = SP.Get_Parameter_Value("@ID", Get_Param_From.Server)
-                T.SQL_String = "Insert Into clm_Resource_Type(ID, Description) Values(@ID, @Description)"
+                T.SQL_String = "Insert Into pss_Resource_Type(ID, Description) Values(@ID, @Description)"
 
                 T.Include_Parameter("@ID", _ID)
                 T.Include_Parameter("@Description", _Description)
@@ -940,14 +853,14 @@
 
         Public Overrides Function Get_Search_List() As Transaction
             Dim T As New Transaction
-            T.SQL_String = "Select ID as Code, [Description] as Value From [clm_Resource_Type]"
+            T.SQL_String = "Select ID as Code, [Description] as Value From [pss_Resource_Type]"
             Return T
         End Function
 
         Public Overrides Function Get_Select(Optional ByVal Code_ID As Object = Nothing) As Transaction
             Dim T As New Transaction
 
-            T.SQL_String = "Select * From [clm_Resource_Type]"
+            T.SQL_String = "Select * From [pss_Resource_Type]"
             If Not Code_ID Is Nothing Then
                 T.SQL_String = T.SQL_String & " Where ID = @ID"
                 T.Include_Parameter("@ID", Code_ID)
@@ -961,7 +874,7 @@
             Dim T As New Objects.Transaction
 
             T = New Transaction
-            T.SQL_String = "Update clm_Resource_Type set Description = @Description Where ID = @ID"
+            T.SQL_String = "Update pss_Resource_Type set Description = @Description Where ID = @ID"
 
             T.Include_Parameter("@ID", _ID)
             T.Include_Parameter("@Description", _Description)
@@ -982,9 +895,9 @@
         End Function
 #End Region
     End Class
-    Public Class CM_Resource_Entry
+    Public Class PSS_Resource_Entry
         Inherits Objects.Base
-        'Month Name @SQLServer: CAST(DATENAME(dbo.clm_Resource.Month, dbo.clm_Resource.Month) AS varchar(10)) + ' ' + CAST(DATEPART(year, dbo.clm_Resource.Month) AS varchar(4))
+        'Month Name @SQLServer: CAST(DATENAME(dbo.pss_Resource.Month, dbo.pss_Resource.Month) AS varchar(10)) + ' ' + CAST(DATEPART(year, dbo.pss_Resource.Month) AS varchar(4))
 
 #Region "Variables"
         Private _Value As Double
@@ -1102,9 +1015,9 @@
         End Function
 #End Region
     End Class
-    Public Class CM_Entry
+    Public Class PSS_Entry
         Inherits Base
-        'Table: clm_Resource_Entry
+        'Table: pss_Resource_Entry
 #Region "Events"
         Public Event Refreshed()
 #End Region
@@ -1156,7 +1069,7 @@
             For Each R As Objects.Collaboration_Module.CM_Resource_Entry In _Resources
                 If R.Value > 0 Then
                     Dim T As New Objects.Transaction
-                    T.SQL_String = "Insert Into clm_Resource_Entry(Record_Date, Created_By, Resource_ID, Entry_Month, Entry_Value, Entry_FTE_Value) Values({Fn Now()}, @Created_By, @Resource_ID, @Entry_Month, @Entry_Value, @Entry_FTE_Value)"
+                    T.SQL_String = "Insert Into pss_Resource_Entry(Record_Date, Created_By, Resource_ID, Entry_Month, Entry_Value, Entry_FTE_Value) Values({Fn Now()}, @Created_By, @Resource_ID, @Entry_Month, @Entry_Value, @Entry_FTE_Value)"
                     T.Include_Parameter("@Created_By", _Saved_By.TNumber)
                     T.Include_Parameter("@Resource_ID", R.Resource_ID)
                     T.Include_Parameter("@Entry_Month", _Entry_Date)
@@ -1208,7 +1121,7 @@
 
 #End Region
     End Class
-    Public Class CM_Project_Files
+    Public Class PSS_Project_Files
 #Region "Variables"
         Private _File_ID As Integer
         Private _Project_ID As Integer
@@ -1270,9 +1183,9 @@
             Dim Table As New DataTable
 
             If Load_File Then
-                Table = DB.GetTable("Select * From clm_Files Where ID = " & File_ID)
+                Table = DB.GetTable("Select * From pss_Files Where ID = " & File_ID)
             Else
-                Table = DB.GetTable("Select ID, Project_ID, File_Name, Owner, Visibility, Upload_Date, Ext From clm_Files Where ID = " & File_ID)
+                Table = DB.GetTable("Select ID, Project_ID, File_Name, Owner, Visibility, Upload_Date, Ext From pss_Files Where ID = " & File_ID)
             End If
 
 
@@ -1317,7 +1230,7 @@
                     Dim DB As New Objects.Connection
                     Dim T As New Objects.Transaction
 
-                    T.SQL_String = "Insert Into clm_Files (Project_ID, File_Name, Owner, Visibility, Data, Upload_Date,Ext) Values(@Project_ID, @File_Name, @Owner, @Visibility, @Data, {fn Now()},@Ext)"
+                    T.SQL_String = "Insert Into pss_Files (Project_ID, File_Name, Owner, Visibility, Data, Upload_Date,Ext) Values(@Project_ID, @File_Name, @Owner, @Visibility, @Data, {fn Now()},@Ext)"
                     T.Include_Parameter("@Project_ID", _Project_ID)
                     T.Include_Parameter("@File_Name", _File_Name)
                     T.Include_Parameter("@Owner", pOwner)
@@ -1345,7 +1258,7 @@
             Dim DataFile As DataTable
             Dim cn As New Objects.Connection
 
-            DataFile = cn.GetTable("Select * From clm_Files Where ID = " & _File_ID)
+            DataFile = cn.GetTable("Select * From pss_Files Where ID = " & _File_ID)
 
             If DataFile.Rows.Count > 0 Then
                 _Data = DataFile(0)("Data")
@@ -1364,7 +1277,7 @@
             Try
                 Dim DB As New Objects.Connection
                 If MsgBox("Do you really want to delete this file?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Delete file") = MsgBoxResult.Yes Then
-                    If DB.Execute("Delete From clm_Files Where ID = " & _File_ID) Then
+                    If DB.Execute("Delete From pss_Files Where ID = " & _File_ID) Then
                         Res = True
                     End If
                 End If
@@ -1382,17 +1295,17 @@
     End Class
 
     Namespace Variants
-        Public Class clm_Variant
+        Public Class pss_Variant
 #Region "Variables"
-            Private _Projects As New List(Of clm_Var)
-            Private _Projects_type As New List(Of clm_Var)
-            Private _Tasks As New List(Of clm_Var)
-            Private _Owner As New List(Of clm_Var)
-            Private _Resource As New List(Of clm_Var)
+            Private _Projects As New List(Of pss_Var)
+            Private _Projects_type As New List(Of pss_Var)
+            Private _Tasks As New List(Of pss_Var)
+            Private _Owner As New List(Of pss_Var)
+            Private _Resource As New List(Of pss_Var)
 #End Region
 
 #Region "Properties"
-            Public ReadOnly Property Projects() As List(Of clm_Var)
+            Public ReadOnly Property Projects() As List(Of pss_Var)
                 Get
                     Return _Projects
                 End Get
@@ -1409,7 +1322,7 @@
                 End Get
             End Property
 
-            Public ReadOnly Property Project_Types() As List(Of clm_Var)
+            Public ReadOnly Property Project_Types() As List(Of pss_Var)
                 Get
                     Return _Projects_type
                 End Get
@@ -1418,7 +1331,7 @@
                 Get
 
                     Dim i As Integer = Count_Selected(_Projects_type)
-                   
+
                     If i > 0 Then
                         Return "[" & i & "] Project type(s) selected"
                     Else
@@ -1428,7 +1341,7 @@
                 End Get
             End Property
 
-            Public ReadOnly Property Task() As List(Of clm_Var)
+            Public ReadOnly Property Task() As List(Of pss_Var)
                 Get
                     Return _Tasks
                 End Get
@@ -1447,7 +1360,7 @@
                 End Get
             End Property
 
-            Public ReadOnly Property Owner() As List(Of clm_Var)
+            Public ReadOnly Property Owner() As List(Of pss_Var)
                 Get
                     Return _Owner
                 End Get
@@ -1465,7 +1378,7 @@
                 End Get
             End Property
 
-            Public ReadOnly Property Resource() As List(Of clm_Var)
+            Public ReadOnly Property Resource() As List(Of pss_Var)
                 Get
                     Return _Resource
                 End Get
@@ -1474,7 +1387,7 @@
                 Get
 
                     Dim i As Integer = Count_Selected(_Resource)
-                    
+
                     If i > 0 Then
                         Return "[" & i & "] resource(s) selected"
                     Else
@@ -1486,7 +1399,7 @@
 #End Region
 
 #Region "Methods"
-            Private Function Count_Selected(ByVal List As List(Of clm_Var)) As Integer
+            Private Function Count_Selected(ByVal List As List(Of pss_Var)) As Integer
                 Dim c As Integer = 0
 
                 For Each i In List
@@ -1498,7 +1411,7 @@
                 Return c
             End Function
 
-           
+
 
             Public Function Get_Filter() As String
                 Dim pFilter As String = ""
@@ -1582,7 +1495,7 @@
 #End Region
         End Class
 
-        Public Class clm_Var
+        Public Class pss_Var
 #Region "Variables"
             Private _Selected As Boolean
             Private _ID As Object

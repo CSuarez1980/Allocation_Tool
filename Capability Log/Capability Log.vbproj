@@ -229,6 +229,12 @@
     <Compile Include="Profile.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="pss_Forecast.Designer.vb">
+      <DependentUpon>pss_Forecast.vb</DependentUpon>
+    </Compile>
+    <Compile Include="pss_Forecast.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="clm_Report.resx">
@@ -304,6 +310,9 @@
       <DependentUpon>Profile.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="clm_Allocation.rdlc" />
+    <EmbeddedResource Include="pss_Forecast.resx">
+      <DependentUpon>pss_Forecast.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -394,6 +403,10 @@
     <None Include="Resources\bottom.png" />
     <None Include="Resources\agt_upgrade_misc.png" />
     <None Include="Resources\agt_uninstall-product.png" />
+    <None Include="Resources\excel8.png" />
+    <None Include="Resources\agt_add-to-autorun.png" />
+    <None Include="Resources\agt_login.png" />
+    <None Include="Resources\agt_softwareD.png" />
     <Content Include="ServerConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

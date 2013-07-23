@@ -25,13 +25,7 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.MenuStrip = New System.Windows.Forms.MenuStrip
         Me.nmuSystem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ProjectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ProjectMaintenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.TasksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.TaskInputToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ColaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ProjectCategoriesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ProjectStatusToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ValueStreamsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -42,26 +36,33 @@ Partial Class Main
         Me.CollaborationModuleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.TaskTypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ResourceTypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.CollaborationModuleToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.StatusStrip = New System.Windows.Forms.StatusStrip
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel
         Me.mnuExit = New System.Windows.Forms.ToolStripMenuItem
+        Me.CollaborationModuleToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.ProjectsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.MyTasksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PSSInitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PSSProjectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.OnGoingResourcesCalculationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PSSProjectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ProjectForecastToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ActualInputToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ReportToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
+        Me.ProjectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ProjectMaintenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.TasksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.TaskInputToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.nmuSystem, Me.ProjectsToolStripMenuItem, Me.ToolStripMenuItem1, Me.CollaborationModuleToolStripMenuItem1, Me.PSSProjectsToolStripMenuItem, Me.PSSInitToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.nmuSystem, Me.CollaborationModuleToolStripMenuItem1, Me.PSSProjectsToolStripMenuItem, Me.ProjectsToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(735, 24)
+        Me.MenuStrip.Size = New System.Drawing.Size(797, 24)
         Me.MenuStrip.TabIndex = 5
         Me.MenuStrip.Text = "MenuStrip"
         '
@@ -70,52 +71,14 @@ Partial Class Main
         Me.nmuSystem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuExit})
         Me.nmuSystem.Name = "nmuSystem"
         Me.nmuSystem.Size = New System.Drawing.Size(57, 20)
-        Me.nmuSystem.Text = "System"
-        '
-        'ProjectsToolStripMenuItem
-        '
-        Me.ProjectsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectMaintenanceToolStripMenuItem, Me.TasksToolStripMenuItem, Me.TaskInputToolStripMenuItem, Me.ColaToolStripMenuItem})
-        Me.ProjectsToolStripMenuItem.Name = "ProjectsToolStripMenuItem"
-        Me.ProjectsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
-        Me.ProjectsToolStripMenuItem.Text = "Projects"
-        '
-        'ProjectMaintenanceToolStripMenuItem
-        '
-        Me.ProjectMaintenanceToolStripMenuItem.Name = "ProjectMaintenanceToolStripMenuItem"
-        Me.ProjectMaintenanceToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.ProjectMaintenanceToolStripMenuItem.Text = "Project maintenance"
-        '
-        'TasksToolStripMenuItem
-        '
-        Me.TasksToolStripMenuItem.Name = "TasksToolStripMenuItem"
-        Me.TasksToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.TasksToolStripMenuItem.Text = "Tasks maintenance"
-        '
-        'TaskInputToolStripMenuItem
-        '
-        Me.TaskInputToolStripMenuItem.Name = "TaskInputToolStripMenuItem"
-        Me.TaskInputToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.TaskInputToolStripMenuItem.Text = "Task input"
-        '
-        'ColaToolStripMenuItem
-        '
-        Me.ColaToolStripMenuItem.Name = "ColaToolStripMenuItem"
-        Me.ColaToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.ColaToolStripMenuItem.Text = "Collaboration module"
+        Me.nmuSystem.Text = "&System"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsersToolStripMenuItem, Me.ProjectCategoriesToolStripMenuItem, Me.ProjectStatusToolStripMenuItem, Me.ValueStreamsToolStripMenuItem, Me.ServiceLineToolStripMenuItem, Me.SystemToolStripMenuItem, Me.CollaborationModuleToolStripMenuItem})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(88, 20)
-        Me.ToolStripMenuItem1.Text = "Mantenaince"
-        '
-        'UsersToolStripMenuItem
-        '
-        Me.UsersToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.agt_family
-        Me.UsersToolStripMenuItem.Name = "UsersToolStripMenuItem"
-        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
-        Me.UsersToolStripMenuItem.Text = "Users"
+        Me.ToolStripMenuItem1.Text = "&Mantenaince"
         '
         'ProjectCategoriesToolStripMenuItem
         '
@@ -170,28 +133,21 @@ Partial Class Main
         'TaskTypeToolStripMenuItem
         '
         Me.TaskTypeToolStripMenuItem.Name = "TaskTypeToolStripMenuItem"
-        Me.TaskTypeToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TaskTypeToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.TaskTypeToolStripMenuItem.Text = "Task type"
         '
         'ResourceTypeToolStripMenuItem
         '
         Me.ResourceTypeToolStripMenuItem.Name = "ResourceTypeToolStripMenuItem"
-        Me.ResourceTypeToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ResourceTypeToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.ResourceTypeToolStripMenuItem.Text = "Resource type"
-        '
-        'CollaborationModuleToolStripMenuItem1
-        '
-        Me.CollaborationModuleToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectsToolStripMenuItem1, Me.MyTasksToolStripMenuItem, Me.ReportToolStripMenuItem, Me.OnGoingResourcesCalculationToolStripMenuItem})
-        Me.CollaborationModuleToolStripMenuItem1.Name = "CollaborationModuleToolStripMenuItem1"
-        Me.CollaborationModuleToolStripMenuItem1.Size = New System.Drawing.Size(117, 20)
-        Me.CollaborationModuleToolStripMenuItem1.Text = "Corporate Projects"
         '
         'StatusStrip
         '
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel})
         Me.StatusStrip.Location = New System.Drawing.Point(0, 479)
         Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Size = New System.Drawing.Size(735, 22)
+        Me.StatusStrip.Size = New System.Drawing.Size(797, 22)
         Me.StatusStrip.TabIndex = 7
         Me.StatusStrip.Text = "StatusStrip"
         '
@@ -205,53 +161,108 @@ Partial Class Main
         '
         Me.mnuExit.Image = Global.Capability_Log.My.Resources.Resources._exit
         Me.mnuExit.Name = "mnuExit"
-        Me.mnuExit.Size = New System.Drawing.Size(92, 22)
-        Me.mnuExit.Text = "Exit"
+        Me.mnuExit.Size = New System.Drawing.Size(152, 22)
+        Me.mnuExit.Text = "&Exit"
+        '
+        'CollaborationModuleToolStripMenuItem1
+        '
+        Me.CollaborationModuleToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectsToolStripMenuItem1, Me.MyTasksToolStripMenuItem, Me.ReportToolStripMenuItem, Me.OnGoingResourcesCalculationToolStripMenuItem})
+        Me.CollaborationModuleToolStripMenuItem1.Image = Global.Capability_Log.My.Resources.Resources.agt_softwareD
+        Me.CollaborationModuleToolStripMenuItem1.Name = "CollaborationModuleToolStripMenuItem1"
+        Me.CollaborationModuleToolStripMenuItem1.Size = New System.Drawing.Size(133, 20)
+        Me.CollaborationModuleToolStripMenuItem1.Text = "&Corporate Projects"
         '
         'ProjectsToolStripMenuItem1
         '
         Me.ProjectsToolStripMenuItem1.Image = Global.Capability_Log.My.Resources.Resources.agt_internet
         Me.ProjectsToolStripMenuItem1.Name = "ProjectsToolStripMenuItem1"
-        Me.ProjectsToolStripMenuItem1.Size = New System.Drawing.Size(156, 22)
-        Me.ProjectsToolStripMenuItem1.Text = "Project forecast"
+        Me.ProjectsToolStripMenuItem1.Size = New System.Drawing.Size(238, 22)
+        Me.ProjectsToolStripMenuItem1.Text = "&Project forecast"
         '
         'MyTasksToolStripMenuItem
         '
         Me.MyTasksToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.edit
         Me.MyTasksToolStripMenuItem.Name = "MyTasksToolStripMenuItem"
-        Me.MyTasksToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.MyTasksToolStripMenuItem.Text = "Actuals input"
+        Me.MyTasksToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.MyTasksToolStripMenuItem.Text = "&Actuals input"
         '
         'ReportToolStripMenuItem
         '
         Me.ReportToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.playlist
         Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
-        Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.ReportToolStripMenuItem.Text = "Reports"
-        '
-        'PSSInitToolStripMenuItem
-        '
-        Me.PSSInitToolStripMenuItem.Name = "PSSInitToolStripMenuItem"
-        Me.PSSInitToolStripMenuItem.Size = New System.Drawing.Size(149, 20)
-        Me.PSSInitToolStripMenuItem.Text = "Continous Improvement"
-        '
-        'PSSProjectsToolStripMenuItem
-        '
-        Me.PSSProjectsToolStripMenuItem.Name = "PSSProjectsToolStripMenuItem"
-        Me.PSSProjectsToolStripMenuItem.Size = New System.Drawing.Size(83, 20)
-        Me.PSSProjectsToolStripMenuItem.Text = "PSS Projects"
+        Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.ReportToolStripMenuItem.Text = "&Reports"
         '
         'OnGoingResourcesCalculationToolStripMenuItem
         '
         Me.OnGoingResourcesCalculationToolStripMenuItem.Name = "OnGoingResourcesCalculationToolStripMenuItem"
         Me.OnGoingResourcesCalculationToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
-        Me.OnGoingResourcesCalculationToolStripMenuItem.Text = "On going resources calculation"
+        Me.OnGoingResourcesCalculationToolStripMenuItem.Text = "&On going resources calculation"
+        '
+        'PSSProjectsToolStripMenuItem
+        '
+        Me.PSSProjectsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectForecastToolStripMenuItem, Me.ActualInputToolStripMenuItem, Me.ReportToolStripMenuItem1})
+        Me.PSSProjectsToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.agt_login
+        Me.PSSProjectsToolStripMenuItem.Name = "PSSProjectsToolStripMenuItem"
+        Me.PSSProjectsToolStripMenuItem.Size = New System.Drawing.Size(99, 20)
+        Me.PSSProjectsToolStripMenuItem.Text = "&PSS Projects"
+        '
+        'ProjectForecastToolStripMenuItem
+        '
+        Me.ProjectForecastToolStripMenuItem.Name = "ProjectForecastToolStripMenuItem"
+        Me.ProjectForecastToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.ProjectForecastToolStripMenuItem.Text = "&Project forecast"
+        '
+        'ActualInputToolStripMenuItem
+        '
+        Me.ActualInputToolStripMenuItem.Name = "ActualInputToolStripMenuItem"
+        Me.ActualInputToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.ActualInputToolStripMenuItem.Text = "&Actual input"
+        '
+        'ReportToolStripMenuItem1
+        '
+        Me.ReportToolStripMenuItem1.Name = "ReportToolStripMenuItem1"
+        Me.ReportToolStripMenuItem1.Size = New System.Drawing.Size(156, 22)
+        Me.ReportToolStripMenuItem1.Text = "&Report"
+        '
+        'ProjectsToolStripMenuItem
+        '
+        Me.ProjectsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectMaintenanceToolStripMenuItem, Me.TasksToolStripMenuItem, Me.TaskInputToolStripMenuItem})
+        Me.ProjectsToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.agt_add_to_autorun
+        Me.ProjectsToolStripMenuItem.Name = "ProjectsToolStripMenuItem"
+        Me.ProjectsToolStripMenuItem.Size = New System.Drawing.Size(165, 20)
+        Me.ProjectsToolStripMenuItem.Text = "Continous &Improvement"
+        '
+        'ProjectMaintenanceToolStripMenuItem
+        '
+        Me.ProjectMaintenanceToolStripMenuItem.Name = "ProjectMaintenanceToolStripMenuItem"
+        Me.ProjectMaintenanceToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.ProjectMaintenanceToolStripMenuItem.Text = "&Project maintenance"
+        '
+        'TasksToolStripMenuItem
+        '
+        Me.TasksToolStripMenuItem.Name = "TasksToolStripMenuItem"
+        Me.TasksToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.TasksToolStripMenuItem.Text = "Tasks &maintenance"
+        '
+        'TaskInputToolStripMenuItem
+        '
+        Me.TaskInputToolStripMenuItem.Name = "TaskInputToolStripMenuItem"
+        Me.TaskInputToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.TaskInputToolStripMenuItem.Text = "&Task input"
+        '
+        'UsersToolStripMenuItem
+        '
+        Me.UsersToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.agt_family
+        Me.UsersToolStripMenuItem.Name = "UsersToolStripMenuItem"
+        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.UsersToolStripMenuItem.Text = "Users"
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(735, 501)
+        Me.ClientSize = New System.Drawing.Size(797, 501)
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
         Me.IsMdiContainer = True
@@ -285,7 +296,6 @@ Partial Class Main
     Friend WithEvents ProjectMaintenanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TasksToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TaskInputToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ColaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CollaborationModuleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TaskTypeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ResourceTypeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -293,8 +303,10 @@ Partial Class Main
     Friend WithEvents ProjectsToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MyTasksToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PSSInitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PSSProjectsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OnGoingResourcesCalculationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProjectForecastToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ActualInputToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ReportToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 
 End Class

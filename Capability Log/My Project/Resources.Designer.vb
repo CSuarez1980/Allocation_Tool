@@ -88,6 +88,13 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property agt_add_to_autorun() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("agt_add-to-autorun", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property agt_family() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("agt_family", resourceCulture)
@@ -98,6 +105,20 @@ Namespace My.Resources
         Friend ReadOnly Property agt_internet() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("agt_internet", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property agt_login() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("agt_login", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property agt_softwareD() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("agt_softwareD", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -161,6 +182,13 @@ Namespace My.Resources
         Friend ReadOnly Property edit_add() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("edit_add", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property excel8() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("excel8", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

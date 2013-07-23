@@ -60,40 +60,16 @@ Public Class Main
     Private Sub ReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReportToolStripMenuItem.Click
         Launch("clm_Report")
     End Sub
+    Private Sub ProjectForecastToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProjectForecastToolStripMenuItem.Click
+        Launch("pss_Forecast")
+    End Sub
 
 #End Region
 
+#Region "Form Methods"
     Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         goUser = New Objects.User
         goUser.Load(Environ("USERID"))
     End Sub
-
-    'Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-    '    Dim writer As New XmlTextWriter("product.xml", System.Text.Encoding.UTF8)
-    '    writer.WriteStartDocument(True)
-    '    writer.Formatting = Formatting.Indented
-    '    writer.Indentation = 2
-    '    writer.WriteStartElement("Table")
-    '    createNode(1, "Product 1", "1000", writer)
-    '    createNode(2, "Product 2", "2000", writer)
-    '    createNode(3, "Product 3", "3000", writer)
-    '    createNode(4, "Product 4", "4000", writer)
-    '    writer.WriteEndElement()
-    '    writer.WriteEndDocument()
-    '    writer.Close()
-    'End Sub
-
-    'Private Sub createNode(ByVal pID As String, ByVal pName As String, ByVal pPrice As String, ByVal writer As XmlTextWriter)
-    '    writer.WriteStartElement("Product")
-    '    writer.WriteStartElement("Product_id")
-    '    writer.WriteString(pID)
-    '    writer.WriteEndElement()
-    '    writer.WriteStartElement("Product_name")
-    '    writer.WriteString(pName)
-    '    writer.WriteEndElement()
-    '    writer.WriteStartElement("Product_price")
-    '    writer.WriteString(pPrice)
-    '    writer.WriteEndElement()
-    '    writer.WriteEndElement()
-    'End Sub
+#End Region
 End Class

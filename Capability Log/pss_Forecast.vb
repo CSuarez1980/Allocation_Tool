@@ -1,44 +1,31 @@
-﻿Public Class frmCollaborationModule
-    Private WithEvents _Project As New Objects.Collaboration_Module.CM_Project
+﻿Public Class pss_Forecast
+    Private WithEvents _Project As New Objects.PSS_Projects.PSS_Project
+    Dim BS1 As New BindingSource ''Discover
+    Dim BS2 As New BindingSource ''Design
+    Dim BS3 As New BindingSource ''Qualify
+    Dim BS4 As New BindingSource ''Ready
+    Dim BS5 As New BindingSource ''Launch
+    Dim BS6 As New BindingSource ''Documents
 
-    Dim BS1 As New BindingSource ''Mapping and matching
-    Dim BS2 As New BindingSource ''Transactional work
-    Dim BS3 As New BindingSource ''Hypercare
-    Dim BS4 As New BindingSource ''Metting
-    Dim BS5 As New BindingSource ''Scope / Data
-    Dim BS6 As New BindingSource ''Expertice
-    Dim BS7 As New BindingSource ''Documents
 
     Private Sub frmCollaborationModule_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim cn As New Objects.Connection
         Dim Data As New DataTable
 
-        Data = cn.GetTable("Select ID, Type_Description From clm_Project_Type")
-
-        If Data.Rows.Count > 0 Then
-            cboProject_Type.DataSource = Data
-            cboProject_Type.DisplayMember = "Type_Description"
-            cboProject_Type.ValueMember = "ID"
-        End If
-
         Me.Object = _Project
         txtProjectName.DataBindings.Add("Text", BS, "Name", True, DataSourceUpdateMode.OnPropertyChanged)
         txtGBSPM.DataBindings.Add("Text", BS, "GBS_PM", True, DataSourceUpdateMode.OnPropertyChanged)
         txtPSSPM.DataBindings.Add("Text", BS, "PSS_PM", True, DataSourceUpdateMode.OnPropertyChanged)
-        cboProject_Type.DataBindings.Add("SelectedValue", BS, "Type", True, DataSourceUpdateMode.OnPropertyChanged)
-
-        dtgMapingAndMatching.DataSource = BS1
-        dtgTransWork.DataSource = BS2
-        dtgHypercare.DataSource = BS3
-        dtgMeetings.DataSource = BS4
-        dtgScope.DataSource = BS5
-        dtgExpertice.DataSource = BS6
-        dtgFiles.DataSource = BS7
-
+     
+        dtgDiscover.DataSource = BS1
+        dtgDesign.DataSource = BS2
+        dtgQualify.DataSource = BS3
+        dtgReady.DataSource = BS4
+        dtgLaunch.DataSource = BS5
+        dtgDocuments.DataSource = BS6
 
         Refresh_Binding()
         Fix_DataGrids()
-
     End Sub
 
     Private Sub Fix_DataGrids()
@@ -46,7 +33,7 @@
         Dim NewColumn As New CalendarColumn()
 
         'Mapping and matching
-        With dtgMapingAndMatching
+        With dtgDiscover
             'Dim C As New CalendarColumn(CalendarFormat.Month_Year)
 
             NewColumn = New CalendarColumn(CalendarFormat.Month_Year)
@@ -61,7 +48,7 @@
         End With
 
         'Transactional work
-        With dtgTransWork
+        With dtgDesign
             NewColumn = New CalendarColumn(CalendarFormat.Month_Year)
             NewColumn.DataPropertyName = "Month"
 
@@ -85,7 +72,7 @@
             .Columns("cboEntryType").DisplayIndex = 5
         End With
 
-        With dtgHypercare
+        With dtgQualify
             NewColumn = New CalendarColumn(CalendarFormat.Month_Year)
             NewColumn.DataPropertyName = "Month"
             .Columns.Add(NewColumn)
@@ -95,7 +82,7 @@
             .Columns("MonthlyFTE").HeaderText = "Monthly FTE"
         End With
 
-        With dtgMeetings
+        With dtgReady
             NewColumn = New CalendarColumn(CalendarFormat.Month_Year)
             NewColumn.DataPropertyName = "Month"
             .Columns.Add(NewColumn)
@@ -105,7 +92,7 @@
             .Columns("MonthlyFTE").HeaderText = "Monthly FTE"
         End With
 
-        With dtgScope
+        With dtgLaunch
             NewColumn = New CalendarColumn(CalendarFormat.Month_Year)
             NewColumn.DataPropertyName = "Month"
             .Columns.Add(NewColumn)
@@ -115,22 +102,11 @@
             .Columns("MonthlyFTE").HeaderText = "Monthly FTE"
         End With
 
-        With dtgExpertice
-            NewColumn = New CalendarColumn(CalendarFormat.Month_Year)
-            NewColumn.DataPropertyName = "Month"
-            .Columns.Add(NewColumn)
-
-            .Columns("Resource_Type_ID").HeaderText = "ID"
-            .Columns("Res_Type_Description").HeaderText = "Resource Type"
-            .Columns("MonthlyFTE").HeaderText = "Monthly FTE"
-        End With
-
-        Fix_Column_Width(dtgMapingAndMatching)
-        Fix_Column_Width(dtgTransWork)
-        Fix_Column_Width(dtgHypercare)
-        Fix_Column_Width(dtgMeetings)
-        Fix_Column_Width(dtgScope)
-        Fix_Column_Width(dtgExpertice)
+        Fix_Column_Width(dtgDiscover)
+        Fix_Column_Width(dtgDesign)
+        Fix_Column_Width(dtgQualify)
+        Fix_Column_Width(dtgReady)
+        Fix_Column_Width(dtgLaunch)
 
         HideColumns()
     End Sub
@@ -154,41 +130,36 @@
         If Not Res Is Nothing Then
             Select Case tabPhases.SelectedIndex
                 Case 0
-                    If Not dtgMapingAndMatching.CurrentRow Is Nothing Then
-                        dtgMapingAndMatching.CurrentRow.Cells("Resource_Type_ID").Value = Res
+                    If Not dtgDiscover.CurrentRow Is Nothing Then
+                        dtgDiscover.CurrentRow.Cells("Resource_Type_ID").Value = Res
                     End If
                 Case 1
-                    If Not dtgTransWork.CurrentRow Is Nothing Then
-                        dtgTransWork.CurrentRow.Cells("Resource_Type_ID").Value = Res
+                    If Not dtgDesign.CurrentRow Is Nothing Then
+                        dtgDesign.CurrentRow.Cells("Resource_Type_ID").Value = Res
                     End If
                 Case 2
-                    If Not dtgHypercare.CurrentRow Is Nothing Then
-                        dtgHypercare.CurrentRow.Cells("Resource_Type_ID").Value = Res
+                    If Not dtgQualify.CurrentRow Is Nothing Then
+                        dtgQualify.CurrentRow.Cells("Resource_Type_ID").Value = Res
                     End If
                 Case 3
-                    If Not dtgMeetings.CurrentRow Is Nothing Then
-                        dtgMeetings.CurrentRow.Cells("Resource_Type_ID").Value = Res
+                    If Not dtgReady.CurrentRow Is Nothing Then
+                        dtgReady.CurrentRow.Cells("Resource_Type_ID").Value = Res
                     End If
                 Case 4
-                    If Not dtgScope.CurrentRow Is Nothing Then
-                        dtgScope.CurrentRow.Cells("Resource_Type_ID").Value = Res
-                    End If
-                Case 5
-                    If Not dtgExpertice.CurrentRow Is Nothing Then
-                        dtgExpertice.CurrentRow.Cells("Resource_Type_ID").Value = Res
+                    If Not dtgLaunch.CurrentRow Is Nothing Then
+                        dtgLaunch.CurrentRow.Cells("Resource_Type_ID").Value = Res
                     End If
             End Select
         End If
     End Sub
 
     Private Sub Refresh_Binding() Handles _Project.Loaded
-        BS1.DataSource = _Project.Mapping_Matching.Resources
-        BS2.DataSource = _Project.Transactional.Resources
-        BS3.DataSource = _Project.HyperCare.Resources
-        BS4.DataSource = _Project.Meeting.Resources
-        BS5.DataSource = _Project.Scope.Resources
-        BS6.DataSource = _Project.Expertise.Resources
-        BS7.DataSource = _Project.Documents
+        BS1.DataSource = _Project.Discover.Resources
+        BS2.DataSource = _Project.Design.Resources
+        BS3.DataSource = _Project.Qualify.Resources
+        BS4.DataSource = _Project.Ready.Resources
+        BS5.DataSource = _Project.Launch.Resources
+        BS6.DataSource = _Project.Documents
 
         BS.ResetBindings(False)
         BS1.ResetBindings(False)
@@ -197,7 +168,7 @@
         BS4.ResetBindings(False)
         BS5.ResetBindings(False)
         BS6.ResetBindings(False)
-        BS7.ResetBindings(False)
+
 
         HideColumns()
     End Sub
@@ -205,28 +176,24 @@
     Private Sub cmdDeleteResource_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDeleteResource.Click
         Select Case tabPhases.SelectedIndex
             Case 0
-                If Not dtgMapingAndMatching.CurrentRow Is Nothing Then
-                    _Project.Mapping_Matching.Remove_Resource(dtgMapingAndMatching.CurrentRow.Cells("ID").Value)
+                If Not dtgDiscover.CurrentRow Is Nothing Then
+                    _Project.Discover.Remove_Resource(dtgDiscover.CurrentRow.Cells("ID").Value)
                 End If
             Case 1
-                If Not dtgTransWork.CurrentRow Is Nothing Then
-                    _Project.Transactional.Remove_Resource(dtgTransWork.CurrentRow.Cells("ID").Value)
+                If Not dtgDesign.CurrentRow Is Nothing Then
+                    _Project.Design.Remove_Resource(dtgDesign.CurrentRow.Cells("ID").Value)
                 End If
             Case 2
-                If Not dtgHypercare.CurrentRow Is Nothing Then
-                    _Project.HyperCare.Remove_Resource(dtgHypercare.CurrentRow.Cells("ID").Value)
+                If Not dtgQualify.CurrentRow Is Nothing Then
+                    _Project.Qualify.Remove_Resource(dtgQualify.CurrentRow.Cells("ID").Value)
                 End If
             Case 3
-                If Not dtgMeetings.CurrentRow Is Nothing Then
-                    _Project.Meeting.Remove_Resource(dtgMeetings.CurrentRow.Cells("ID").Value)
+                If Not dtgReady.CurrentRow Is Nothing Then
+                    _Project.Ready.Remove_Resource(dtgReady.CurrentRow.Cells("ID").Value)
                 End If
             Case 4
-                If Not dtgScope.CurrentRow Is Nothing Then
-                    _Project.Scope.Remove_Resource(dtgScope.CurrentRow.Cells("ID").Value)
-                End If
-            Case 5
-                If Not dtgExpertice.CurrentRow Is Nothing Then
-                    _Project.Expertise.Remove_Resource(dtgExpertice.CurrentRow.Cells("ID").Value)
+                If Not dtgLaunch.CurrentRow Is Nothing Then
+                    _Project.Launch.Remove_Resource(dtgLaunch.CurrentRow.Cells("ID").Value)
                 End If
         End Select
 
@@ -234,7 +201,7 @@
     End Sub
 
     Private Sub HideColumns()
-        With dtgMapingAndMatching
+        With dtgDiscover
             .Columns("Month").Visible = False
             .Columns("Event").Visible = False
             .Columns("Entry_Type").Visible = False
@@ -242,40 +209,34 @@
         End With
 
         'Transactional work
-        With dtgTransWork
+        With dtgDesign
             .Columns("Month").Visible = False
             .Columns("Event").Visible = False
             .Columns("ID").Visible = False
             .Columns("Entry_Type").Visible = False
         End With
 
-        With dtgHypercare
+        With dtgQualify
             .Columns("Month").Visible = False
             .Columns("Event").Visible = False
             .Columns("ID").Visible = False
             .Columns("Entry_Type").Visible = False
         End With
 
-        With dtgMeetings
+        With dtgReady
             .Columns("Event").Visible = False
             .Columns("Month").Visible = False
             .Columns("ID").Visible = False
             .Columns("Entry_Type").Visible = False
         End With
 
-        With dtgScope
+        With dtgLaunch
             .Columns("Month").Visible = False
             .Columns("Event").Visible = False
             .Columns("ID").Visible = False
             .Columns("Entry_Type").Visible = False
         End With
 
-        With dtgExpertice
-            .Columns("Month").Visible = False
-            .Columns("Event").Visible = False
-            .Columns("ID").Visible = False
-            .Columns("Entry_Type").Visible = False
-        End With
     End Sub
 
     Private Sub New_Rec() Handles cmdNew.Click
@@ -286,27 +247,22 @@
         txtProjectName.ReadOnly = False
         txtGBSPM.ReadOnly = False
         txtPSSPM.ReadOnly = False
-        cboProject_Type.Enabled = True
-        dtgMapingAndMatching.ReadOnly = False
-        dtgTransWork.ReadOnly = False
-        dtgHypercare.ReadOnly = False
-        dtgMeetings.ReadOnly = False
-        dtgScope.ReadOnly = False
-        dtgExpertice.ReadOnly = False
-
+        dtgDiscover.ReadOnly = False
+        dtgDesign.ReadOnly = False
+        dtgQualify.ReadOnly = False
+        dtgReady.ReadOnly = False
+        dtgLaunch.ReadOnly = False
     End Sub
 
     Public Overrides Sub Lock_Gui()
         txtProjectName.ReadOnly = True
         txtGBSPM.ReadOnly = True
         txtPSSPM.ReadOnly = True
-        cboProject_Type.Enabled = False
-        dtgMapingAndMatching.ReadOnly = True
-        dtgTransWork.ReadOnly = True
-        dtgHypercare.ReadOnly = True
-        dtgMeetings.ReadOnly = True
-        dtgScope.ReadOnly = True
-        dtgExpertice.ReadOnly = True
+        dtgDiscover.ReadOnly = True
+        dtgDesign.ReadOnly = True
+        dtgQualify.ReadOnly = True
+        dtgReady.ReadOnly = True
+        dtgLaunch.ReadOnly = True
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -318,13 +274,12 @@
         Next
 
         My.Computer.FileSystem.WriteAllBytes(My.Computer.FileSystem.SpecialDirectories.Desktop & "\test.xlsx", File, True)
-
     End Sub
 
     Private Sub cmdUploadFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdUploadFile.Click
         fodFile.ShowDialog()
 
-        Dim F As New Objects.Collaboration_Module.CM_Project_Files()
+        Dim F As New Objects.PSS_Projects.PSS_Project_Files
         F.File_Name = fodFile.SafeFileName
         If F.Upload_File(fodFile.FileName, goUser.TNumber, _Project.ID) Then
 
@@ -336,7 +291,7 @@
     End Sub
 
     Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDownloadFile.Click
-        Dim F As New Objects.Collaboration_Module.CM_Project_Files(dtgFiles.CurrentRow.Cells("File_ID").Value)
+        Dim F As New Objects.Collaboration_Module.CM_Project_Files(dtgDocuments.CurrentRow.Cells("File_ID").Value)
         sfdFile.FileName = F.File_Name
         sfdFile.Filter = "Files (*." & F.Get_Default_Ext & ")|*." & F.Get_Default_Ext
         sfdFile.DefaultExt = F.Get_Default_Ext
@@ -350,9 +305,9 @@
         Refresh_Binding()
     End Sub
 
-  
+
     Private Sub cmdDeleteFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDeleteFile.Click
-        Dim File As New Objects.Collaboration_Module.CM_Project_Files(dtgFiles.CurrentRow.Cells("File_ID").Value)
+        Dim File As New Objects.PSS_Projects.PSS_Project_Files(dtgDocuments.CurrentRow.Cells("File_ID").Value)
         If File.Delete_File() Then
             MsgBox("File deleted.", MsgBoxStyle.Information)
 

@@ -1,14 +1,9 @@
 ﻿Public Class clm_Report
     Private _Variant As New Objects.Collaboration_Module.Variants.clm_Variant
 
-
     Private Sub clm_Report_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         AddHandler dtpStart.ValueChanged, AddressOf Refresh_Variant
         AddHandler dtpEnd.ValueChanged, AddressOf Refresh_Variant
-        'AddHandler txtProjects.TextChanged, AddressOf Refresh_Variant
-        'AddHandler txtTask.TextChanged, AddressOf Refresh_Variant
-        'AddHandler txtContact.TextChanged, AddressOf Refresh_Variant
-        'AddHandler txtResource.TextChanged, AddressOf Refresh_Variant
 
         BS.DataSource = _Variant
 
@@ -20,7 +15,6 @@
 
         Refresh_Report()
     End Sub
-
 
     Public Sub Refresh_Report()
         Dim DB As New Objects.Connection
@@ -77,11 +71,10 @@
                                       .ID = PI, _
                                       .Name = PN})
 
-
+            'Load variants:
             For Each I In Q
                 _Variant.Projects.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
             Next
-
 
             'Select project types based on date range
             Dim PT = (From P In Data _
@@ -89,8 +82,7 @@
                     Select New With { _
                                      .ID = PI, _
                                      .Name = PN})
-
-
+            'Load variants:
             For Each I In PT
                 _Variant.Project_Types.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
             Next
@@ -101,7 +93,7 @@
                     Select New With { _
                                      .ID = PI, _
                                      .Name = PN})
-
+            'Load variants:
             For Each I In TT
                 _Variant.Task.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
             Next
@@ -112,11 +104,10 @@
                    Select New With { _
                                     .ID = PI, _
                                     .Name = PN})
-
+            'Load variants:
             For Each I In CT
                 _Variant.Owner.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
             Next
-
 
             'Select resources based on date range
             Dim RT = (From P In Data _
@@ -124,17 +115,14 @@
                   Select New With { _
                                    .ID = PI, _
                                    .Name = PN})
-
+            'Load variants:
             For Each I In RT
                 _Variant.Resource.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
             Next
-
         Else
             'MsgBox("No data found.")
             Me.ShowMessage("No data could be selected", MsgType.Warning)
         End If
-
-
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
@@ -153,18 +141,20 @@
     End Sub
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         Dim frm As New clm_Search
-
         frm.Set_Object(_Variant.Owner)
         frm.ShowDialog()
         BS.ResetBindings(False)
     End Sub
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         Dim frm As New clm_Search
-
         frm.Set_Object(_Variant.Resource)
         frm.ShowDialog()
         BS.ResetBindings(False)
     End Sub
 
-  
+    Private Sub cmdExport2Excel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdExport2Excel.Click
+        Dim XL As New Objects.MSExcel
+        XL.ExportToExcel(Me.CapabilityLogDataSet.vw_CM_Raw_Data)
+
+    End Sub
 End Class
