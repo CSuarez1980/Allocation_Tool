@@ -6,6 +6,7 @@
     Private _Name As String
     Private _Profile As New List(Of Objects.Profile)
     Private _Profile_Table As DataTable
+    Private _Has_Access As Boolean = False
 #End Region
 #Region "Properties"
     Public Property TNumber() As String
@@ -34,10 +35,18 @@
             Return _Profile_Table
         End Get
     End Property
+    Public ReadOnly Property Has_Access() As Boolean
+        Get
+            Return _Has_Access
+        End Get
+    End Property
 #End Region
 #Region "Methods"
     Public Sub New()
         Clear()
+    End Sub
+    Public Sub New(ByVal TNumber As String)
+        Load(TNumber)
     End Sub
     Public Overrides Sub Clear()
         _Name = ""
@@ -140,6 +149,7 @@
             _TNumber = Data(0)("TNumber").ToString
             _Name = Data(0)("Name").ToString
             Get_User_Profiles()
+            _Has_Access = True
         End If
     End Function
 

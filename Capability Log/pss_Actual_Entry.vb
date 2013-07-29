@@ -1,6 +1,8 @@
 ﻿Imports Objects.Functions
-Public Class frmCMEntry
-    Private WithEvents _Resources As New Objects.Collaboration_Module.CM_Entry(goUser.TNumber, Now.Date)
+
+Public Class pss_Actual_Entry
+
+    Private WithEvents _Resources As New Objects.PSS_Projects.PSS_Entry(goUser.TNumber, Now.Date)
 
     Private Sub frmCMEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         _Resources.Saved_By = goUser.TNumber

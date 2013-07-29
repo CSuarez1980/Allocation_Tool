@@ -55,7 +55,7 @@ Public Class Main
         Launch("frmCollaborationModule")
     End Sub
     Private Sub MyTasksToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyTasksToolStripMenuItem.Click
-        Launch("frmCMEntry")
+        Launch("clm_Actual_Entry")
     End Sub
     Private Sub ReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReportToolStripMenuItem.Click
         Launch("clm_Report")
@@ -63,13 +63,19 @@ Public Class Main
     Private Sub ProjectForecastToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProjectForecastToolStripMenuItem.Click
         Launch("pss_Forecast")
     End Sub
-
+    Private Sub ActualInputToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ActualInputToolStripMenuItem.Click
+        Launch("pss_Actual_Entry")
+    End Sub
 #End Region
 
 #Region "Form Methods"
     Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        goUser = New Objects.User
-        goUser.Load(Environ("USERID"))
+        If Not goUser.Has_Access Then
+            MsgBox("You do not have access to this tool. Please request access to the aplication owner.")
+            End
+        End If
     End Sub
 #End Region
+
+
 End Class

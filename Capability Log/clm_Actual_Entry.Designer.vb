@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmCMEntry
+Partial Class clm_Actual_Entry
     Inherits Capability_Log.frmBase
 
     'Form overrides dispose to clean up the component list.
@@ -22,10 +22,10 @@ Partial Class frmCMEntry
         Me.grpResources = New System.Windows.Forms.GroupBox
         Me.dtgResources = New System.Windows.Forms.DataGridView
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.cmdSave = New System.Windows.Forms.ToolStripButton
         Me.grpTaskDate = New System.Windows.Forms.GroupBox
         Me.dtpMonth = New System.Windows.Forms.DateTimePicker
         Me.Label1 = New System.Windows.Forms.Label
+        Me.cmdSave = New System.Windows.Forms.ToolStripButton
         Me.grpResources.SuspendLayout()
         CType(Me.dtgResources, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
@@ -68,16 +68,6 @@ Partial Class frmCMEntry
         Me.ToolStrip1.TabIndex = 6
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'cmdSave
-        '
-        Me.cmdSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdSave.Image = Global.Capability_Log.My.Resources.Resources.Save
-        Me.cmdSave.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdSave.Name = "cmdSave"
-        Me.cmdSave.Size = New System.Drawing.Size(28, 28)
-        Me.cmdSave.Text = "ToolStripButton1"
-        Me.cmdSave.ToolTipText = "Save"
-        '
         'grpTaskDate
         '
         Me.grpTaskDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -109,7 +99,17 @@ Partial Class frmCMEntry
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Month"
         '
-        'frmCMEntry
+        'cmdSave
+        '
+        Me.cmdSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdSave.Image = Global.Capability_Log.My.Resources.Resources.Save
+        Me.cmdSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(28, 28)
+        Me.cmdSave.Text = "ToolStripButton1"
+        Me.cmdSave.ToolTipText = "Save"
+        '
+        'clm_Actual_Entry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(811, 365)
@@ -117,8 +117,8 @@ Partial Class frmCMEntry
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.grpResources)
         Me.Message = ""
-        Me.Name = "frmCMEntry"
-        Me.Text = "My tasks"
+        Me.Name = "clm_Actual_Entry"
+        Me.Text = "Corporate Projects - Actuals Entry"
         Me.Controls.SetChildIndex(Me.grpResources, 0)
         Me.Controls.SetChildIndex(Me.ToolStrip1, 0)
         Me.Controls.SetChildIndex(Me.grpTaskDate, 0)

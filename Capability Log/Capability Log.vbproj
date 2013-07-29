@@ -117,10 +117,10 @@
     <Compile Include="frmBase.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCMEntry.Designer.vb">
-      <DependentUpon>frmCMEntry.vb</DependentUpon>
+    <Compile Include="clm_Actual_Entry.Designer.vb">
+      <DependentUpon>clm_Actual_Entry.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCMEntry.vb">
+    <Compile Include="clm_Actual_Entry.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCollaborationModule.Designer.vb">
@@ -229,6 +229,12 @@
     <Compile Include="Profile.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="pss_Actual_Entry.Designer.vb">
+      <DependentUpon>pss_Actual_Entry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="pss_Actual_Entry.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="pss_Forecast.Designer.vb">
       <DependentUpon>pss_Forecast.vb</DependentUpon>
     </Compile>
@@ -255,8 +261,8 @@
     <EmbeddedResource Include="frmBase.resx">
       <DependentUpon>frmBase.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCMEntry.resx">
-      <DependentUpon>frmCMEntry.vb</DependentUpon>
+    <EmbeddedResource Include="clm_Actual_Entry.resx">
+      <DependentUpon>clm_Actual_Entry.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCollaborationModule.resx">
       <DependentUpon>frmCollaborationModule.vb</DependentUpon>
@@ -310,6 +316,9 @@
       <DependentUpon>Profile.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="clm_Allocation.rdlc" />
+    <EmbeddedResource Include="pss_Actual_Entry.resx">
+      <DependentUpon>pss_Actual_Entry.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pss_Forecast.resx">
       <DependentUpon>pss_Forecast.vb</DependentUpon>
     </EmbeddedResource>

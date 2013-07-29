@@ -9,15 +9,12 @@
         Private _Name As String
         Private _GBS_PM As String
         Private _PSS_PM As String
-        'Private _Type As Integer
-
+        Private _Status As Integer
         Private _Discover As New PSS_Task("Discover")
         Private _Design As New PSS_Task("Design")
         Private _Qualify As New PSS_Task("Qualify")
         Private _Ready As New PSS_Task("Ready")
         Private _Launch As New PSS_Task("Launch")
-        'Private _Expertise As New PSS_Task("Expertise")
-
         Private _Documents As New List(Of PSS_Project_Files)
 #End Region
 #Region "Properties"
@@ -45,6 +42,14 @@
                 _PSS_PM = value
             End Set
         End Property
+        Public Shadows Property Status() As Integer
+            Get
+                Return _Status
+            End Get
+            Set(ByVal value As Integer)
+                _Status = value
+            End Set
+        End Property
         Public Property Name() As String
             Get
                 Return _Name
@@ -53,15 +58,6 @@
                 _Name = value
             End Set
         End Property
-        'Public Property Type() As Integer
-        '    Get
-        '        Return _Type
-        '    End Get
-        '    Set(ByVal value As Integer)
-        '        _Type = value
-        '    End Set
-        'End Property
-
         Public Property Discover() As PSS_Task
             Get
                 Return _Discover
@@ -102,15 +98,6 @@
                 _Launch = value
             End Set
         End Property
-        'Public Property Expertise() As PSS_Task
-        '    Get
-        '        Return _Expertise
-        '    End Get
-        '    Set(ByVal value As PSS_Task)
-        '        _Expertise = value
-        '    End Set
-        'End Property
-
         Public ReadOnly Property Documents() As List(Of PSS_Project_Files)
             Get
                 Return _Documents
@@ -148,12 +135,11 @@
             If SP.Execute() Then
                 _ID = SP.Get_Parameter_Value("@ID", Get_Param_From.Server)
 
-                T.SQL_String = "Insert Into pss_Project(ID, Name, GBS_PM, PSS_PM, Type_ID) Values(@ID, @Name, @GBS_PM, @PSS_PM, @Type_ID)"
+                T.SQL_String = "Insert Into pss_Project(ID, Name, GBS_PM, PSS_PM) Values(@ID, @Name, @GBS_PM, @PSS_PM)"
                 T.Include_Parameter("@ID", _ID)
                 T.Include_Parameter("@Name", _Name)
                 T.Include_Parameter("@GBS_PM", _GBS_PM)
                 T.Include_Parameter("@PSS_PM", _PSS_PM)
-                'T.Include_Parameter("@Type_ID", _Type)
                 TG.Include_Transaction(T)
 
                 TG.Include_Transaction(_Discover.Get_Insert)
@@ -237,7 +223,6 @@
 
             Return TG
         End Function
-
         Public Overrides Function Load(Optional ByVal Code_ID As Object = Nothing) As Boolean
             MyBase.Load(Code_ID)
 
@@ -285,7 +270,6 @@
     End Class
     Public Class PSS_Task
         Inherits Base
-
 #Region "Variables"
         Private _Task_ID As Integer
         Private _Task_Type As New Objects.Collaboration_Module.Task_Type
@@ -817,7 +801,6 @@
             _ID = 0
             _Description = ""
         End Sub
-
         Public Overrides Function Get_Delete() As Transaction_Group
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
@@ -830,7 +813,6 @@
 
             Return TG
         End Function
-
         Public Overrides Function Get_Insert() As Transaction_Group
             Dim SP As New Objects.Stored_Procedure
             Dim TG As New Objects.Transaction_Group
@@ -850,13 +832,11 @@
 
             Return TG
         End Function
-
         Public Overrides Function Get_Search_List() As Transaction
             Dim T As New Transaction
             T.SQL_String = "Select ID as Code, [Description] as Value From [pss_Resource_Type]"
             Return T
         End Function
-
         Public Overrides Function Get_Select(Optional ByVal Code_ID As Object = Nothing) As Transaction
             Dim T As New Transaction
 
@@ -868,7 +848,6 @@
 
             Return T
         End Function
-
         Public Overrides Function Get_Update() As Transaction_Group
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
@@ -882,7 +861,6 @@
 
             Return TG
         End Function
-
         Public Overrides Function Load(Optional ByVal Code_ID As Object = Nothing) As Boolean
             If MyBase.Load(Code_ID) Then
                 _ID = Data.Rows(0)("ID")
@@ -898,7 +876,6 @@
     Public Class PSS_Resource_Entry
         Inherits Objects.Base
         'Month Name @SQLServer: CAST(DATENAME(dbo.pss_Resource.Month, dbo.pss_Resource.Month) AS varchar(10)) + ' ' + CAST(DATEPART(year, dbo.pss_Resource.Month) AS varchar(4))
-
 #Region "Variables"
         Private _Value As Double
         Private _Project_ID As Integer
@@ -910,7 +887,6 @@
         Private _Owner As New Objects.User
         Private _Input_Type As String
         Private _FTE_Value As Double
-
 #End Region
 #Region "Properties"
         Protected Friend ReadOnly Property Project_ID() As Integer
@@ -1102,7 +1078,7 @@
             Date.TryParse(Month.Year & "/" & Month.Month & "/" & "01", StartDate)
             Date.TryParse(Month.Year & "/" & Month.Month & "/" & Date.DaysInMonth(Month.Year, Month.Month), EndDate)
 
-            T.SQL_String = ("Select * From vw_CM_Open_Task Where ((Owner = @Owner) And (Month between @Start and @End))")
+            T.SQL_String = ("Select * From vw_PSS_Open_Task Where ((Owner = @Owner) And (Month between @Start and @End))")
             T.Include_Parameter("@Owner", IIf(TNumber <> "", TNumber, _Saved_By.TNumber))
             T.Include_Parameter("@Start", StartDate)
             T.Include_Parameter("@End", EndDate)
@@ -1118,7 +1094,6 @@
             End If
             RaiseEvent Refreshed()
         End Sub
-
 #End Region
     End Class
     Public Class PSS_Project_Files
@@ -1188,7 +1163,6 @@
                 Table = DB.GetTable("Select ID, Project_ID, File_Name, Owner, Visibility, Upload_Date, Ext From pss_Files Where ID = " & File_ID)
             End If
 
-
             If Table.Rows.Count > 0 Then
                 _File_ID = Table.Rows(0)("ID")
                 _Project_ID = Table.Rows(0)("Project_ID")
@@ -1202,9 +1176,7 @@
 
                 _Upload_Date = Table.Rows(0)("Upload_Date")
                 _Ext = Table.Rows(0)("Ext")
-
             End If
-
         End Sub
 
         Public Function Upload_File(ByVal Path As String, ByVal pOwner As String, ByVal Pid As Integer, Optional ByVal pVisibility As Integer = 0) As Boolean
@@ -1220,7 +1192,7 @@
                     Dim S As String = ""
                     _Data = My.Computer.FileSystem.ReadAllBytes(Path)
 
-                    'Optional: in the future for block file to others
+                    'Optional: in the future for block file to others users
                     _Visibility = pVisibility
 
                     _Project_ID = Pid
@@ -1246,11 +1218,9 @@
                     MsgBox(ex.Message)
                     Success = False
                 End Try
-
             Else
                 MsgBox("File not found.", MsgBoxStyle.Information)
             End If
-
             Return Success
         End Function
         Public Function Download_File(ByVal Path As String) As Boolean
@@ -1259,7 +1229,6 @@
             Dim cn As New Objects.Connection
 
             DataFile = cn.GetTable("Select * From pss_Files Where ID = " & _File_ID)
-
             If DataFile.Rows.Count > 0 Then
                 _Data = DataFile(0)("Data")
                 If _Data.Length > 0 Then
@@ -1268,7 +1237,6 @@
                     MsgBox("File can't be created, data not found.", MsgBoxStyle.Exclamation)
                 End If
             End If
-
             Return Status
         End Function
         Public Function Delete_File() As Boolean
@@ -1303,7 +1271,6 @@
             Private _Owner As New List(Of pss_Var)
             Private _Resource As New List(Of pss_Var)
 #End Region
-
 #Region "Properties"
             Public ReadOnly Property Projects() As List(Of pss_Var)
                 Get
@@ -1397,7 +1364,6 @@
                 End Get
             End Property
 #End Region
-
 #Region "Methods"
             Private Function Count_Selected(ByVal List As List(Of pss_Var)) As Integer
                 Dim c As Integer = 0
@@ -1410,9 +1376,6 @@
 
                 Return c
             End Function
-
-
-
             Public Function Get_Filter() As String
                 Dim pFilter As String = ""
 
@@ -1501,7 +1464,6 @@
             Private _ID As Object
             Private _Name As String
 #End Region
-
 #Region "Properties"
             Public Property Selected() As Boolean
                 Get
@@ -1529,7 +1491,6 @@
             End Property
 
 #End Region
-
 #Region "Methods"
             Public Sub New()
 
@@ -1540,7 +1501,6 @@
                 _Name = Description
             End Sub
 #End Region
-
         End Class
     End Namespace
 End Namespace

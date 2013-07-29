@@ -126,7 +126,7 @@
             <Visible>true</Visible>
           </Axis>
         </CategoryAxis>
-        <NoRows>No data found to be shown</NoRows>
+        <NoRows>No data found to be shown. Please select a diffrent time frame and refresh the report.</NoRows>
         <ZIndex>1</ZIndex>
         <DataSetName>CapabilityLogDataSet_vw_CM_Raw_Data</DataSetName>
         <PlotArea>
@@ -200,7 +200,7 @@
           </Axis>
         </ValueAxis>
         <Type>Line</Type>
-        <Width>11.125in</Width>
+        <Width>11.75in</Width>
         <CategoryGroupings>
           <CategoryGrouping>
             <DynamicCategories>
@@ -289,7 +289,7 @@
         <Value>Allocation Report</Value>
       </Textbox>
     </ReportItems>
-    <Height>7.625in</Height>
+    <Height>5.25in</Height>
   </Body>
   <Language>en-US</Language>
   <TopMargin>1in</TopMargin>

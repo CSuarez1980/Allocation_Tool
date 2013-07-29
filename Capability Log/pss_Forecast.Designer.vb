@@ -93,6 +93,8 @@ Partial Class pss_Forecast
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
         Me.cmdShowResources = New System.Windows.Forms.ToolStripButton
         Me.cmdDeleteResource = New System.Windows.Forms.ToolStripButton
+        Me.cboStatus = New System.Windows.Forms.ComboBox
+        Me.Label20 = New System.Windows.Forms.Label
         Me.GroupBox7.SuspendLayout()
         Me.tabPhases.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -120,6 +122,8 @@ Partial Class pss_Forecast
         '
         Me.GroupBox7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox7.Controls.Add(Me.cboStatus)
+        Me.GroupBox7.Controls.Add(Me.Label20)
         Me.GroupBox7.Controls.Add(Me.txtPSSPM)
         Me.GroupBox7.Controls.Add(Me.Label23)
         Me.GroupBox7.Controls.Add(Me.txtGBSPM)
@@ -178,7 +182,7 @@ Partial Class pss_Forecast
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(16, 23)
+        Me.Label21.Location = New System.Drawing.Point(16, 24)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(71, 13)
         Me.Label21.TabIndex = 0
@@ -834,6 +838,27 @@ Partial Class pss_Forecast
         Me.cmdDeleteResource.Text = "ToolStripButton1"
         Me.cmdDeleteResource.ToolTipText = "Delete resource"
         '
+        'cboStatus
+        '
+        Me.cboStatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboStatus.Enabled = False
+        Me.cboStatus.FormattingEnabled = True
+        Me.cboStatus.Location = New System.Drawing.Point(553, 20)
+        Me.cboStatus.Name = "cboStatus"
+        Me.cboStatus.Size = New System.Drawing.Size(180, 21)
+        Me.cboStatus.TabIndex = 11
+        '
+        'Label20
+        '
+        Me.Label20.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(506, 24)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(37, 13)
+        Me.Label20.TabIndex = 10
+        Me.Label20.Text = "Status"
+        '
         'pss_Forecast
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -936,5 +961,7 @@ Partial Class pss_Forecast
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents cmdShowResources As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdDeleteResource As System.Windows.Forms.ToolStripButton
+    Friend WithEvents cboStatus As System.Windows.Forms.ComboBox
+    Friend WithEvents Label20 As System.Windows.Forms.Label
 
 End Class

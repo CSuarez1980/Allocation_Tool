@@ -1,4 +1,4 @@
 ﻿Module Globals
-    Public goUser As Objects.User
+    Public goUser As New Objects.User(Environ("USERID"))
 End Module
 

@@ -13,19 +13,22 @@
         Dim cn As New Objects.Connection
         Dim Data As New DataTable
 
-        Data = cn.GetTable("Select ID, Type_Description From clm_Project_Type")
+        'Load cboProject_Type:
+        cboProject_Type.DataSource = cn.GetTable("Select ID, Type_Description From clm_Project_Type")
+        cboProject_Type.DisplayMember = "Type_Description"
+        cboProject_Type.ValueMember = "ID"
 
-        If Data.Rows.Count > 0 Then
-            cboProject_Type.DataSource = Data
-            cboProject_Type.DisplayMember = "Type_Description"
-            cboProject_Type.ValueMember = "ID"
-        End If
+        'Load cboStatus 
+        cboStatus.DataSource = cn.GetTable("Select ID, Description From Status")
+        cboStatus.DisplayMember = "Description"
+        cboStatus.ValueMember = "ID"
 
         Me.Object = _Project
         txtProjectName.DataBindings.Add("Text", BS, "Name", True, DataSourceUpdateMode.OnPropertyChanged)
         txtGBSPM.DataBindings.Add("Text", BS, "GBS_PM", True, DataSourceUpdateMode.OnPropertyChanged)
         txtPSSPM.DataBindings.Add("Text", BS, "PSS_PM", True, DataSourceUpdateMode.OnPropertyChanged)
         cboProject_Type.DataBindings.Add("SelectedValue", BS, "Type", True, DataSourceUpdateMode.OnPropertyChanged)
+        cboStatus.DataBindings.Add("SelectedValue", BS, "Status", True, DataSourceUpdateMode.OnPropertyChanged)
 
         dtgMapingAndMatching.DataSource = BS1
         dtgTransWork.DataSource = BS2
@@ -35,12 +38,9 @@
         dtgExpertice.DataSource = BS6
         dtgFiles.DataSource = BS7
 
-
         Refresh_Binding()
         Fix_DataGrids()
-
     End Sub
-
     Private Sub Fix_DataGrids()
         'Dim NewColumn As New MonthColumn
         Dim NewColumn As New CalendarColumn()
@@ -134,7 +134,6 @@
 
         HideColumns()
     End Sub
-
     Private Sub Fix_Column_Width(ByRef Grid As DataGridView)
         With Grid
             .Columns("Resource_Type_ID").Width = 40
@@ -145,7 +144,6 @@
             .Columns("Hours").Width = 50
         End With
     End Sub
-
     Private Sub cmdShowResources_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdShowResources.Click
         Dim SF As New frmSearch
         Dim Res As Object
@@ -180,7 +178,6 @@
             End Select
         End If
     End Sub
-
     Private Sub Refresh_Binding() Handles _Project.Loaded
         BS1.DataSource = _Project.Mapping_Matching.Resources
         BS2.DataSource = _Project.Transactional.Resources
@@ -201,7 +198,6 @@
 
         HideColumns()
     End Sub
-
     Private Sub cmdDeleteResource_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDeleteResource.Click
         Select Case tabPhases.SelectedIndex
             Case 0
@@ -232,7 +228,6 @@
 
         Refresh_Binding()
     End Sub
-
     Private Sub HideColumns()
         With dtgMapingAndMatching
             .Columns("Month").Visible = False
@@ -277,30 +272,28 @@
             .Columns("Entry_Type").Visible = False
         End With
     End Sub
-
     Private Sub New_Rec() Handles cmdNew.Click
         Refresh_Binding()
     End Sub
-
     Public Overrides Sub Unlock_GUI(Optional ByVal Unlock_Type As Unlock_Type = Unlock_Type.Create_Record)
         txtProjectName.ReadOnly = False
         txtGBSPM.ReadOnly = False
         txtPSSPM.ReadOnly = False
         cboProject_Type.Enabled = True
+        cboStatus.Enabled = True
         dtgMapingAndMatching.ReadOnly = False
         dtgTransWork.ReadOnly = False
         dtgHypercare.ReadOnly = False
         dtgMeetings.ReadOnly = False
         dtgScope.ReadOnly = False
         dtgExpertice.ReadOnly = False
-
     End Sub
-
     Public Overrides Sub Lock_Gui()
         txtProjectName.ReadOnly = True
         txtGBSPM.ReadOnly = True
         txtPSSPM.ReadOnly = True
         cboProject_Type.Enabled = False
+        cboStatus.Enabled = False
         dtgMapingAndMatching.ReadOnly = True
         dtgTransWork.ReadOnly = True
         dtgHypercare.ReadOnly = True
@@ -308,19 +301,6 @@
         dtgScope.ReadOnly = True
         dtgExpertice.ReadOnly = True
     End Sub
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim File As Byte() = My.Computer.FileSystem.ReadAllBytes(My.Application.Info.DirectoryPath & "\Add new materials to OA.xlsx")
-        Dim S As String = ""
-
-        For Each B In File
-            S = S & B & ","
-        Next
-
-        My.Computer.FileSystem.WriteAllBytes(My.Computer.FileSystem.SpecialDirectories.Desktop & "\test.xlsx", File, True)
-
-    End Sub
-
     Private Sub cmdUploadFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdUploadFile.Click
         fodFile.ShowDialog()
 
@@ -332,43 +312,32 @@
             _Project.Documents.Add(F)
             Refresh_Binding()
         End If
-
     End Sub
-
     Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDownloadFile.Click
         Dim F As New Objects.Collaboration_Module.CM_Project_Files(dtgFiles.CurrentRow.Cells("File_ID").Value)
         sfdFile.FileName = F.File_Name
         sfdFile.Filter = "Files (*." & F.Get_Default_Ext & ")|*." & F.Get_Default_Ext
         sfdFile.DefaultExt = F.Get_Default_Ext
-
         If sfdFile.ShowDialog() = Windows.Forms.DialogResult.OK Then
             If F.Download_File(sfdFile.FileName & "." & F.Get_Default_Ext) Then
                 ShowMessage("File: " & sfdFile.FileName & " downloaded.", MsgType.Information)
             End If
         End If
-
         Refresh_Binding()
     End Sub
-
-  
     Private Sub cmdDeleteFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDeleteFile.Click
         Dim File As New Objects.Collaboration_Module.CM_Project_Files(dtgFiles.CurrentRow.Cells("File_ID").Value)
         If File.Delete_File() Then
             MsgBox("File deleted.", MsgBoxStyle.Information)
-
             For Each D In _Project.Documents
                 If (D.File_ID = File.File_ID) Then
                     _Project.Documents.Remove(D)
                     Exit For
                 End If
-
-
                 _Project.Documents.Remove(File)
             Next
             Me.ShowMessage("File removed from this project.", MsgType.Information)
         End If
-
         Refresh_Binding()
-
     End Sub
 End Class

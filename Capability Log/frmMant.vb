@@ -139,7 +139,6 @@ Public Class frmMant
         End If
     End Sub
 
-
     Public Overridable Sub Unlock_GUI(Optional ByVal Unlock_Type As Unlock_Type = Unlock_Type.Create_Record)
 
     End Sub

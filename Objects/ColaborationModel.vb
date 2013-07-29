@@ -17,6 +17,7 @@
         Contractor = 6
         Development_Resource = 7
     End Enum
+
     Public Class CM_Project
         Inherits Base
 #Region "Events"
@@ -28,6 +29,7 @@
         Private _GBS_PM As String
         Private _PSS_PM As String
         Private _Type As Integer
+        Private _Status As Integer
 
         Private _MappingMatching As New CM_Task("MappingMatching")
         Private _Transactional As New CM_Task("Transactional")
@@ -77,6 +79,14 @@
             End Get
             Set(ByVal value As Integer)
                 _Type = value
+            End Set
+        End Property
+        Public Shadows Property Status() As Integer
+            Get
+                Return _Status
+            End Get
+            Set(ByVal value As Integer)
+                _Status = value
             End Set
         End Property
         'Public Property MM_List() As List(Of MC_Task_Resource)
@@ -193,6 +203,7 @@
             _PSS_PM = ""
             _GBS_PM = ""
             _Type = 0
+            _Status = 0
 
             _MappingMatching = New CM_Task("MappingMatching")
             _Transactional = New CM_Task("Transactional")
@@ -214,12 +225,13 @@
             If SP.Execute() Then
                 _ID = SP.Get_Parameter_Value("@ID", Get_Param_From.Server)
 
-                T.SQL_String = "Insert Into clm_Project(ID, Name, GBS_PM, PSS_PM, Type_ID) Values(@ID, @Name, @GBS_PM, @PSS_PM, @Type_ID)"
+                T.SQL_String = "Insert Into clm_Project(ID, Name, GBS_PM, PSS_PM, Type_ID, Status) Values(@ID, @Name, @GBS_PM, @PSS_PM, @Type_ID, @Status)"
                 T.Include_Parameter("@ID", _ID)
                 T.Include_Parameter("@Name", _Name)
                 T.Include_Parameter("@GBS_PM", _GBS_PM)
                 T.Include_Parameter("@PSS_PM", _PSS_PM)
                 T.Include_Parameter("@Type_ID", _Type)
+                T.Include_Parameter("@Status", _Status)
                 TG.Include_Transaction(T)
 
                 TG.Include_Transaction(_MappingMatching.Get_Insert)
@@ -288,12 +300,14 @@
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
 
-            T.SQL_String = "Update clm_Project Set Name = @Name, GBS_PM = @GBS_PM, PSS_PM = @PSS_PM, Type_ID = @Type_ID Where (ID = @ID)"
+            T.SQL_String = "Update clm_Project Set Name = @Name, GBS_PM = @GBS_PM, PSS_PM = @PSS_PM, Type_ID = @Type_ID, Status = @Status Where (ID = @ID)"
             T.Include_Parameter("@ID", _ID)
             T.Include_Parameter("@Name", _Name)
             T.Include_Parameter("@GBS_PM", _GBS_PM)
             T.Include_Parameter("@PSS_PM", _PSS_PM)
             T.Include_Parameter("@Type_ID", _Type)
+            T.Include_Parameter("@Status", _Status)
+
             TG.Include_Transaction(T)
 
             TG.Include_Transaction(_MappingMatching.Get_Update)
@@ -305,7 +319,6 @@
 
             Return TG
         End Function
-
         Public Overrides Function Load(Optional ByVal Code_ID As Object = Nothing) As Boolean
             MyBase.Load(Code_ID)
 
@@ -315,6 +328,8 @@
                 _PSS_PM = Data(0)("PSS_PM").ToString
                 _GBS_PM = Data(0)("GBS_PM").ToString
                 _Type = Data(0)("Type_ID")
+                _Status = Data(0)("Status")
+
                 _Documents.Clear()
 
                 'Load documents:
