@@ -123,10 +123,10 @@
     <Compile Include="clm_Actual_Entry.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCollaborationModule.Designer.vb">
-      <DependentUpon>frmCollaborationModule.vb</DependentUpon>
+    <Compile Include="clm_Forecast.Designer.vb">
+      <DependentUpon>clm_Forecast.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCollaborationModule.vb">
+    <Compile Include="clm_Forecast.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMant.Designer.vb">
@@ -241,6 +241,12 @@
     <Compile Include="pss_Forecast.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="pss_Report.Designer.vb">
+      <DependentUpon>pss_Report.vb</DependentUpon>
+    </Compile>
+    <Compile Include="pss_Report.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="clm_Report.resx">
@@ -264,8 +270,8 @@
     <EmbeddedResource Include="clm_Actual_Entry.resx">
       <DependentUpon>clm_Actual_Entry.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCollaborationModule.resx">
-      <DependentUpon>frmCollaborationModule.vb</DependentUpon>
+    <EmbeddedResource Include="clm_Forecast.resx">
+      <DependentUpon>clm_Forecast.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMant.resx">
       <DependentUpon>frmMant.vb</DependentUpon>
@@ -321,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pss_Forecast.resx">
       <DependentUpon>pss_Forecast.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pss_Report.resx">
+      <DependentUpon>pss_Report.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -416,6 +425,7 @@
     <None Include="Resources\agt_add-to-autorun.png" />
     <None Include="Resources\agt_login.png" />
     <None Include="Resources\agt_softwareD.png" />
+    <None Include="Resources\advancedsettings.png" />
     <Content Include="ServerConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

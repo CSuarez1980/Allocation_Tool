@@ -9,13 +9,11 @@
 
     Private Sub frmCollaborationModule_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim cn As New Objects.Connection
-
         Me.Object = _Project
         txtProjectName.DataBindings.Add("Text", BS, "Name", True, DataSourceUpdateMode.OnPropertyChanged)
         txtGBSPM.DataBindings.Add("Text", BS, "GBS_PM", True, DataSourceUpdateMode.OnPropertyChanged)
         txtPSSPM.DataBindings.Add("Text", BS, "PSS_PM", True, DataSourceUpdateMode.OnPropertyChanged)
 
-        'Load cboStatus 
         cboStatus.DataSource = cn.GetTable("Select ID, Description From Status")
         cboStatus.DisplayMember = "Description"
         cboStatus.ValueMember = "ID"
@@ -46,24 +44,10 @@
             NewColumn = New CalendarColumn(CalendarFormat.Month_Year)
             NewColumn.DataPropertyName = "Month"
 
-            Dim EventColumn As New EventsColumn
-            EventColumn.DataPropertyName = "Event"
-
-            Dim EntryTypeColumn As New EntryTypeColumn
-            EntryTypeColumn.DataPropertyName = "Entry_Type"
-
             .Columns.Add(NewColumn)
-            .Columns.Add(EventColumn)
-            .Columns.Add(EntryTypeColumn)
-
             .Columns("Resource_Type_ID").HeaderText = "ID"
             .Columns("Res_Type_Description").HeaderText = "Resource Type"
             .Columns("MonthlyFTE").HeaderText = "Monthly FTE"
-            .Columns("Hours").HeaderText = "Value"
-
-            .Columns("cboEvent").DisplayIndex = 3
-            .Columns("dtpMonth").DisplayIndex = 4
-            .Columns("cboEntryType").DisplayIndex = 5
         End With
 
         With dtgQualify
@@ -238,6 +222,20 @@
         dtgReady.ReadOnly = False
         dtgLaunch.ReadOnly = False
         cboStatus.Enabled = True
+
+        txtDesignAllocation.ReadOnly = False
+        txtDesignHours.ReadOnly = False
+        txtDiscoveryAllocation.ReadOnly = False
+        txtDiscoveryHours.ReadOnly = False
+        txtLaunchAllocation.ReadOnly = False
+        txtLaunchHours.ReadOnly = False
+        txtQualifyAllocation.ReadOnly = False
+        txtQualifyHours.ReadOnly = False
+        txtReadyAllocation.ReadOnly = False
+        txtReadyHours.ReadOnly = False
+
+        cmdShowResources.Enabled = True
+        cmdDeleteResource.Enabled = True
     End Sub
     Public Overrides Sub Lock_Gui()
         txtProjectName.ReadOnly = True
@@ -249,6 +247,20 @@
         dtgReady.ReadOnly = True
         dtgLaunch.ReadOnly = True
         cboStatus.Enabled = False
+
+        txtDesignAllocation.ReadOnly = True
+        txtDesignHours.ReadOnly = True
+        txtDiscoveryAllocation.ReadOnly = True
+        txtDiscoveryHours.ReadOnly = True
+        txtLaunchAllocation.ReadOnly = True
+        txtLaunchHours.ReadOnly = True
+        txtQualifyAllocation.ReadOnly = True
+        txtQualifyHours.ReadOnly = True
+        txtReadyAllocation.ReadOnly = True
+        txtReadyHours.ReadOnly = True
+
+        cmdShowResources.Enabled = False
+        cmdDeleteResource.Enabled = False
     End Sub
     Private Sub cmdUploadFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdUploadFile.Click
         fodFile.ShowDialog()

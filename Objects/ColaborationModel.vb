@@ -1071,7 +1071,15 @@
 #End Region
 #Region "Methods"
         Public Overrides Sub Clear()
-
+            _Value = 0
+            _Project_ID = 0
+            _Project_Name = ""
+            _Task_ID = 0
+            _Task_Type = ""
+            _Resource_ID = 0
+            _Month = Now.Date
+            _Input_Type = ""
+            _FTE_Value = 0
         End Sub
         Public Overrides Function Get_Delete() As Transaction_Group
 
@@ -1512,9 +1520,6 @@
 
                 Return c
             End Function
-
-           
-
             Public Function Get_Filter() As String
                 Dim pFilter As String = ""
 
@@ -1637,9 +1642,11 @@
 
             End Sub
             Public Sub New(ByVal ID As Object, ByVal Description As String)
-                _Selected = True
-                _ID = ID
-                _Name = Description
+                If Not ID Is Nothing AndAlso Not Description Is Nothing Then
+                    _Selected = True
+                    _ID = ID
+                    _Name = Description
+                End If
             End Sub
 #End Region
 

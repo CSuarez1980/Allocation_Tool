@@ -1,5 +1,5 @@
-﻿Public Class clm_Report
-    Private _Variant As New Objects.Collaboration_Module.Variants.clm_Variant
+﻿Public Class pss_Report
+    Private _Variant As New Objects.PSS_Projects.Variants.pss_Variant
 
     Private Sub clm_Report_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         AddHandler dtpStart.ValueChanged, AddressOf Refresh_Variant
@@ -18,12 +18,13 @@
 
     Public Sub Refresh_Report()
         rtpReport.Focus()
+
         Dim DB As New Objects.Connection
         Dim cmd As New SqlClient.SqlCommand
         Dim AD As New System.Data.SqlClient.SqlDataAdapter
         Dim Str As String = ""
 
-        Str = "Select * From vw_CM_Raw_Data Where ([Date] Between '" & (dtpStart.Value).ToShortDateString & "' and '" & (dtpEnd.Value).ToShortDateString & "')" & _Variant.Get_Filter
+        Str = "Select * From vw_PSS_Raw_Data Where ([Date] Between '" & (dtpStart.Value).ToShortDateString & "' and '" & (dtpEnd.Value).ToShortDateString & "')" & _Variant.Get_Filter
 
         cmd.CommandText = Str
         cmd.CommandType = CommandType.Text
@@ -49,11 +50,12 @@
     End Sub
 
     Public Sub Refresh_Variant()
+
         Dim Data As New DataTable
         Dim DB As New Objects.Connection
         Dim T As New Objects.Transaction
 
-        T.Set_SQLString("Select * From vw_CM_Raw_Data Where [Date] between @Start and @End")
+        T.Set_SQLString("Select * From vw_PSS_Raw_Data Where [Date] between @Start and @End")
         T.Include_Parameter("@Start", dtpStart.Value)
         T.Include_Parameter("@End", dtpEnd.Value)
         Data = DB.GetTable(T)
@@ -74,19 +76,19 @@
 
             'Load variants:
             For Each I In Q
-                _Variant.Projects.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
+                _Variant.Projects.Add(New Objects.PSS_Projects.Variants.pss_Var(I.ID, I.Name))
             Next
 
-            'Select project types based on date range
-            Dim PT = (From P In Data _
-                    Group P By PI = P("Project_Type_ID"), PN = P("Type_Description") Into Group _
-                    Select New With { _
-                                     .ID = PI, _
-                                     .Name = PN})
-            'Load variants:
-            For Each I In PT
-                _Variant.Project_Types.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
-            Next
+            ''Select project types based on date range: Not needed for PSS Projects
+            'Dim PT = (From P In Data _
+            '        Group P By PI = P("Project_Type_ID"), PN = P("Type_Description") Into Group _
+            '        Select New With { _
+            '                         .ID = PI, _
+            '                         .Name = PN})
+            ''Load(variants)
+            'For Each I In PT
+            '    _Variant.Project_Types.Add(New Objects.PSS_Projects.Variants.pss_Var(I.ID, I.Name))
+            'Next
 
             'Select tasks based on date range
             Dim TT = (From P In Data _
@@ -96,7 +98,7 @@
                                      .Name = PN})
             'Load variants:
             For Each I In TT
-                _Variant.Task.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
+                _Variant.Task.Add(New Objects.PSS_Projects.Variants.pss_Var(I.ID, I.Name))
             Next
 
             'Select contacts based on date range
@@ -107,7 +109,7 @@
                                     .Name = PN})
             'Load variants:
             For Each I In CT
-                _Variant.Owner.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
+                _Variant.Owner.Add(New Objects.PSS_Projects.Variants.pss_Var(I.ID, I.Name))
             Next
 
             'Select resources based on date range
@@ -118,7 +120,7 @@
                                    .Name = PN})
             'Load variants:
             For Each I In RT
-                _Variant.Resource.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
+                _Variant.Resource.Add(New Objects.PSS_Projects.Variants.pss_Var(I.ID, I.Name))
             Next
         Else
             'MsgBox("No data found.")

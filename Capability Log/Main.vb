@@ -52,7 +52,7 @@ Public Class Main
         Launch("clm_Resource_Type")
     End Sub
     Private Sub ProjectsToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProjectsToolStripMenuItem1.Click
-        Launch("frmCollaborationModule")
+        Launch("clm_Forecast")
     End Sub
     Private Sub MyTasksToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyTasksToolStripMenuItem.Click
         Launch("clm_Actual_Entry")
@@ -65,6 +65,9 @@ Public Class Main
     End Sub
     Private Sub ActualInputToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ActualInputToolStripMenuItem.Click
         Launch("pss_Actual_Entry")
+    End Sub
+    Private Sub ReportToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReportToolStripMenuItem1.Click
+        Launch("pss_Report")
     End Sub
 #End Region
 

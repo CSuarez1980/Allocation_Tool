@@ -38,6 +38,8 @@ Partial Class pss_Forecast
         Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Me.GroupBox7 = New System.Windows.Forms.GroupBox
+        Me.cboStatus = New System.Windows.Forms.ComboBox
+        Me.Label20 = New System.Windows.Forms.Label
         Me.txtPSSPM = New System.Windows.Forms.TextBox
         Me.Label23 = New System.Windows.Forms.Label
         Me.txtGBSPM = New System.Windows.Forms.TextBox
@@ -46,37 +48,37 @@ Partial Class pss_Forecast
         Me.Label21 = New System.Windows.Forms.Label
         Me.tabPhases = New System.Windows.Forms.TabControl
         Me.TabPage1 = New System.Windows.Forms.TabPage
-        Me.TextBox2 = New System.Windows.Forms.TextBox
+        Me.txtDiscoveryAllocation = New System.Windows.Forms.TextBox
         Me.Label4 = New System.Windows.Forms.Label
-        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.txtDiscoveryHours = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.dtgDiscover = New System.Windows.Forms.DataGridView
         Me.TabPage2 = New System.Windows.Forms.TabPage
-        Me.TextBox4 = New System.Windows.Forms.TextBox
+        Me.txtDesignHours = New System.Windows.Forms.TextBox
         Me.Label1 = New System.Windows.Forms.Label
-        Me.TextBox3 = New System.Windows.Forms.TextBox
+        Me.txtDesignAllocation = New System.Windows.Forms.TextBox
         Me.Label5 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.dtgDesign = New System.Windows.Forms.DataGridView
         Me.TabPage3 = New System.Windows.Forms.TabPage
-        Me.TextBox5 = New System.Windows.Forms.TextBox
+        Me.txtQualifyAllocation = New System.Windows.Forms.TextBox
         Me.Label8 = New System.Windows.Forms.Label
-        Me.TextBox6 = New System.Windows.Forms.TextBox
+        Me.txtQualifyHours = New System.Windows.Forms.TextBox
         Me.Label9 = New System.Windows.Forms.Label
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
         Me.dtgQualify = New System.Windows.Forms.DataGridView
         Me.TabPage4 = New System.Windows.Forms.TabPage
-        Me.TextBox7 = New System.Windows.Forms.TextBox
+        Me.txtReadyAllocation = New System.Windows.Forms.TextBox
         Me.Label11 = New System.Windows.Forms.Label
-        Me.TextBox8 = New System.Windows.Forms.TextBox
+        Me.txtReadyHours = New System.Windows.Forms.TextBox
         Me.Label12 = New System.Windows.Forms.Label
         Me.GroupBox4 = New System.Windows.Forms.GroupBox
         Me.dtgReady = New System.Windows.Forms.DataGridView
         Me.TabPage5 = New System.Windows.Forms.TabPage
-        Me.TextBox9 = New System.Windows.Forms.TextBox
+        Me.txtLaunchAllocation = New System.Windows.Forms.TextBox
         Me.Label14 = New System.Windows.Forms.Label
-        Me.TextBox10 = New System.Windows.Forms.TextBox
+        Me.txtLaunchHours = New System.Windows.Forms.TextBox
         Me.Label15 = New System.Windows.Forms.Label
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
         Me.dtgLaunch = New System.Windows.Forms.DataGridView
@@ -93,8 +95,6 @@ Partial Class pss_Forecast
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
         Me.cmdShowResources = New System.Windows.Forms.ToolStripButton
         Me.cmdDeleteResource = New System.Windows.Forms.ToolStripButton
-        Me.cboStatus = New System.Windows.Forms.ComboBox
-        Me.Label20 = New System.Windows.Forms.Label
         Me.GroupBox7.SuspendLayout()
         Me.tabPhases.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -132,10 +132,31 @@ Partial Class pss_Forecast
         Me.GroupBox7.Controls.Add(Me.Label21)
         Me.GroupBox7.Location = New System.Drawing.Point(4, 28)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(740, 97)
+        Me.GroupBox7.Size = New System.Drawing.Size(844, 97)
         Me.GroupBox7.TabIndex = 5
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Project"
+        '
+        'cboStatus
+        '
+        Me.cboStatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboStatus.Enabled = False
+        Me.cboStatus.FormattingEnabled = True
+        Me.cboStatus.Location = New System.Drawing.Point(657, 20)
+        Me.cboStatus.Name = "cboStatus"
+        Me.cboStatus.Size = New System.Drawing.Size(180, 21)
+        Me.cboStatus.TabIndex = 11
+        '
+        'Label20
+        '
+        Me.Label20.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(610, 24)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(37, 13)
+        Me.Label20.TabIndex = 10
+        Me.Label20.Text = "Status"
         '
         'txtPSSPM
         '
@@ -202,57 +223,57 @@ Partial Class pss_Forecast
         Me.tabPhases.Location = New System.Drawing.Point(4, 131)
         Me.tabPhases.Name = "tabPhases"
         Me.tabPhases.SelectedIndex = 0
-        Me.tabPhases.Size = New System.Drawing.Size(740, 308)
+        Me.tabPhases.Size = New System.Drawing.Size(844, 308)
         Me.tabPhases.TabIndex = 6
         '
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage1.Controls.Add(Me.TextBox2)
+        Me.TabPage1.Controls.Add(Me.txtDiscoveryAllocation)
         Me.TabPage1.Controls.Add(Me.Label4)
-        Me.TabPage1.Controls.Add(Me.TextBox1)
+        Me.TabPage1.Controls.Add(Me.txtDiscoveryHours)
         Me.TabPage1.Controls.Add(Me.Label3)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(732, 282)
+        Me.TabPage1.Size = New System.Drawing.Size(836, 282)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Discover"
         '
-        'TextBox2
+        'txtDiscoveryAllocation
         '
-        Me.TextBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox2.Location = New System.Drawing.Point(668, 38)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox2.TabIndex = 14
+        Me.txtDiscoveryAllocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtDiscoveryAllocation.Location = New System.Drawing.Point(772, 38)
+        Me.txtDiscoveryAllocation.Name = "txtDiscoveryAllocation"
+        Me.txtDiscoveryAllocation.ReadOnly = True
+        Me.txtDiscoveryAllocation.Size = New System.Drawing.Size(61, 20)
+        Me.txtDiscoveryAllocation.TabIndex = 14
         '
         'Label4
         '
         Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(606, 42)
+        Me.Label4.Location = New System.Drawing.Point(710, 42)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(53, 13)
         Me.Label4.TabIndex = 13
         Me.Label4.Text = "Allocation"
         '
-        'TextBox1
+        'txtDiscoveryHours
         '
-        Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Location = New System.Drawing.Point(668, 9)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox1.TabIndex = 12
+        Me.txtDiscoveryHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtDiscoveryHours.Location = New System.Drawing.Point(772, 9)
+        Me.txtDiscoveryHours.Name = "txtDiscoveryHours"
+        Me.txtDiscoveryHours.ReadOnly = True
+        Me.txtDiscoveryHours.Size = New System.Drawing.Size(61, 20)
+        Me.txtDiscoveryHours.TabIndex = 12
         '
         'Label3
         '
         Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(579, 13)
+        Me.Label3.Location = New System.Drawing.Point(683, 13)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(83, 13)
         Me.Label3.TabIndex = 11
@@ -266,13 +287,14 @@ Partial Class pss_Forecast
         Me.GroupBox1.Controls.Add(Me.dtgDiscover)
         Me.GroupBox1.Location = New System.Drawing.Point(9, 66)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(721, 210)
+        Me.GroupBox1.Size = New System.Drawing.Size(825, 210)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Resources"
         '
         'dtgDiscover
         '
+        Me.dtgDiscover.AllowUserToDeleteRows = False
         Me.dtgDiscover.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -304,55 +326,57 @@ Partial Class pss_Forecast
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgDiscover.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.dtgDiscover.Size = New System.Drawing.Size(708, 185)
+        Me.dtgDiscover.Size = New System.Drawing.Size(812, 185)
         Me.dtgDiscover.TabIndex = 7
         '
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage2.Controls.Add(Me.TextBox4)
+        Me.TabPage2.Controls.Add(Me.txtDesignHours)
         Me.TabPage2.Controls.Add(Me.Label1)
-        Me.TabPage2.Controls.Add(Me.TextBox3)
+        Me.TabPage2.Controls.Add(Me.txtDesignAllocation)
         Me.TabPage2.Controls.Add(Me.Label5)
         Me.TabPage2.Controls.Add(Me.GroupBox2)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(732, 282)
+        Me.TabPage2.Size = New System.Drawing.Size(836, 282)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Design"
         '
-        'TextBox4
+        'txtDesignHours
         '
-        Me.TextBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox4.Location = New System.Drawing.Point(668, 9)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox4.TabIndex = 24
+        Me.txtDesignHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtDesignHours.Location = New System.Drawing.Point(772, 9)
+        Me.txtDesignHours.Name = "txtDesignHours"
+        Me.txtDesignHours.ReadOnly = True
+        Me.txtDesignHours.Size = New System.Drawing.Size(61, 20)
+        Me.txtDesignHours.TabIndex = 24
         '
         'Label1
         '
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(579, 13)
+        Me.Label1.Location = New System.Drawing.Point(683, 13)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(83, 13)
         Me.Label1.TabIndex = 23
         Me.Label1.Text = "Hours commited"
         '
-        'TextBox3
+        'txtDesignAllocation
         '
-        Me.TextBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox3.Location = New System.Drawing.Point(668, 38)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox3.TabIndex = 22
+        Me.txtDesignAllocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtDesignAllocation.Location = New System.Drawing.Point(772, 38)
+        Me.txtDesignAllocation.Name = "txtDesignAllocation"
+        Me.txtDesignAllocation.ReadOnly = True
+        Me.txtDesignAllocation.Size = New System.Drawing.Size(61, 20)
+        Me.txtDesignAllocation.TabIndex = 22
         '
         'Label5
         '
         Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(606, 42)
+        Me.Label5.Location = New System.Drawing.Point(710, 42)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(53, 13)
         Me.Label5.TabIndex = 21
@@ -366,13 +390,14 @@ Partial Class pss_Forecast
         Me.GroupBox2.Controls.Add(Me.dtgDesign)
         Me.GroupBox2.Location = New System.Drawing.Point(9, 66)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(721, 248)
+        Me.GroupBox2.Size = New System.Drawing.Size(825, 210)
         Me.GroupBox2.TabIndex = 18
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Resources"
         '
         'dtgDesign
         '
+        Me.dtgDesign.AllowUserToDeleteRows = False
         Me.dtgDesign.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -404,54 +429,56 @@ Partial Class pss_Forecast
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgDesign.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
-        Me.dtgDesign.Size = New System.Drawing.Size(708, 222)
+        Me.dtgDesign.Size = New System.Drawing.Size(812, 185)
         Me.dtgDesign.TabIndex = 7
         '
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage3.Controls.Add(Me.TextBox5)
+        Me.TabPage3.Controls.Add(Me.txtQualifyAllocation)
         Me.TabPage3.Controls.Add(Me.Label8)
-        Me.TabPage3.Controls.Add(Me.TextBox6)
+        Me.TabPage3.Controls.Add(Me.txtQualifyHours)
         Me.TabPage3.Controls.Add(Me.Label9)
         Me.TabPage3.Controls.Add(Me.GroupBox3)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(732, 282)
+        Me.TabPage3.Size = New System.Drawing.Size(836, 282)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Qualify"
         '
-        'TextBox5
+        'txtQualifyAllocation
         '
-        Me.TextBox5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox5.Location = New System.Drawing.Point(668, 38)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox5.TabIndex = 22
+        Me.txtQualifyAllocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtQualifyAllocation.Location = New System.Drawing.Point(772, 38)
+        Me.txtQualifyAllocation.Name = "txtQualifyAllocation"
+        Me.txtQualifyAllocation.ReadOnly = True
+        Me.txtQualifyAllocation.Size = New System.Drawing.Size(61, 20)
+        Me.txtQualifyAllocation.TabIndex = 22
         '
         'Label8
         '
         Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(606, 42)
+        Me.Label8.Location = New System.Drawing.Point(710, 42)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(53, 13)
         Me.Label8.TabIndex = 21
         Me.Label8.Text = "Allocation"
         '
-        'TextBox6
+        'txtQualifyHours
         '
-        Me.TextBox6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox6.Location = New System.Drawing.Point(668, 9)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox6.TabIndex = 20
+        Me.txtQualifyHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtQualifyHours.Location = New System.Drawing.Point(772, 9)
+        Me.txtQualifyHours.Name = "txtQualifyHours"
+        Me.txtQualifyHours.ReadOnly = True
+        Me.txtQualifyHours.Size = New System.Drawing.Size(61, 20)
+        Me.txtQualifyHours.TabIndex = 20
         '
         'Label9
         '
         Me.Label9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(579, 13)
+        Me.Label9.Location = New System.Drawing.Point(683, 13)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(83, 13)
         Me.Label9.TabIndex = 19
@@ -465,13 +492,14 @@ Partial Class pss_Forecast
         Me.GroupBox3.Controls.Add(Me.dtgQualify)
         Me.GroupBox3.Location = New System.Drawing.Point(9, 66)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(720, 248)
+        Me.GroupBox3.Size = New System.Drawing.Size(825, 210)
         Me.GroupBox3.TabIndex = 18
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Resources"
         '
         'dtgQualify
         '
+        Me.dtgQualify.AllowUserToDeleteRows = False
         Me.dtgQualify.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -503,54 +531,56 @@ Partial Class pss_Forecast
         DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgQualify.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
-        Me.dtgQualify.Size = New System.Drawing.Size(708, 222)
+        Me.dtgQualify.Size = New System.Drawing.Size(812, 185)
         Me.dtgQualify.TabIndex = 7
         '
         'TabPage4
         '
         Me.TabPage4.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage4.Controls.Add(Me.TextBox7)
+        Me.TabPage4.Controls.Add(Me.txtReadyAllocation)
         Me.TabPage4.Controls.Add(Me.Label11)
-        Me.TabPage4.Controls.Add(Me.TextBox8)
+        Me.TabPage4.Controls.Add(Me.txtReadyHours)
         Me.TabPage4.Controls.Add(Me.Label12)
         Me.TabPage4.Controls.Add(Me.GroupBox4)
         Me.TabPage4.Location = New System.Drawing.Point(4, 22)
         Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Size = New System.Drawing.Size(732, 282)
+        Me.TabPage4.Size = New System.Drawing.Size(836, 282)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Ready"
         '
-        'TextBox7
+        'txtReadyAllocation
         '
-        Me.TextBox7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox7.Location = New System.Drawing.Point(668, 38)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox7.TabIndex = 26
+        Me.txtReadyAllocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtReadyAllocation.Location = New System.Drawing.Point(772, 38)
+        Me.txtReadyAllocation.Name = "txtReadyAllocation"
+        Me.txtReadyAllocation.ReadOnly = True
+        Me.txtReadyAllocation.Size = New System.Drawing.Size(61, 20)
+        Me.txtReadyAllocation.TabIndex = 26
         '
         'Label11
         '
         Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(606, 42)
+        Me.Label11.Location = New System.Drawing.Point(710, 42)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(53, 13)
         Me.Label11.TabIndex = 25
         Me.Label11.Text = "Allocation"
         '
-        'TextBox8
+        'txtReadyHours
         '
-        Me.TextBox8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox8.Location = New System.Drawing.Point(668, 9)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox8.TabIndex = 24
+        Me.txtReadyHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtReadyHours.Location = New System.Drawing.Point(772, 9)
+        Me.txtReadyHours.Name = "txtReadyHours"
+        Me.txtReadyHours.ReadOnly = True
+        Me.txtReadyHours.Size = New System.Drawing.Size(61, 20)
+        Me.txtReadyHours.TabIndex = 24
         '
         'Label12
         '
         Me.Label12.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(579, 13)
+        Me.Label12.Location = New System.Drawing.Point(683, 13)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(83, 13)
         Me.Label12.TabIndex = 23
@@ -564,13 +594,14 @@ Partial Class pss_Forecast
         Me.GroupBox4.Controls.Add(Me.dtgReady)
         Me.GroupBox4.Location = New System.Drawing.Point(9, 66)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(720, 248)
+        Me.GroupBox4.Size = New System.Drawing.Size(825, 210)
         Me.GroupBox4.TabIndex = 18
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Resources"
         '
         'dtgReady
         '
+        Me.dtgReady.AllowUserToDeleteRows = False
         Me.dtgReady.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -602,54 +633,56 @@ Partial Class pss_Forecast
         DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgReady.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
-        Me.dtgReady.Size = New System.Drawing.Size(708, 222)
+        Me.dtgReady.Size = New System.Drawing.Size(812, 185)
         Me.dtgReady.TabIndex = 7
         '
         'TabPage5
         '
         Me.TabPage5.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage5.Controls.Add(Me.TextBox9)
+        Me.TabPage5.Controls.Add(Me.txtLaunchAllocation)
         Me.TabPage5.Controls.Add(Me.Label14)
-        Me.TabPage5.Controls.Add(Me.TextBox10)
+        Me.TabPage5.Controls.Add(Me.txtLaunchHours)
         Me.TabPage5.Controls.Add(Me.Label15)
         Me.TabPage5.Controls.Add(Me.GroupBox5)
         Me.TabPage5.Location = New System.Drawing.Point(4, 22)
         Me.TabPage5.Name = "TabPage5"
-        Me.TabPage5.Size = New System.Drawing.Size(732, 282)
+        Me.TabPage5.Size = New System.Drawing.Size(836, 282)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Launch"
         '
-        'TextBox9
+        'txtLaunchAllocation
         '
-        Me.TextBox9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox9.Location = New System.Drawing.Point(668, 38)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox9.TabIndex = 22
+        Me.txtLaunchAllocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtLaunchAllocation.Location = New System.Drawing.Point(772, 38)
+        Me.txtLaunchAllocation.Name = "txtLaunchAllocation"
+        Me.txtLaunchAllocation.ReadOnly = True
+        Me.txtLaunchAllocation.Size = New System.Drawing.Size(61, 20)
+        Me.txtLaunchAllocation.TabIndex = 22
         '
         'Label14
         '
         Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(606, 42)
+        Me.Label14.Location = New System.Drawing.Point(710, 42)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(53, 13)
         Me.Label14.TabIndex = 21
         Me.Label14.Text = "Allocation"
         '
-        'TextBox10
+        'txtLaunchHours
         '
-        Me.TextBox10.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox10.Location = New System.Drawing.Point(668, 9)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox10.TabIndex = 20
+        Me.txtLaunchHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtLaunchHours.Location = New System.Drawing.Point(772, 9)
+        Me.txtLaunchHours.Name = "txtLaunchHours"
+        Me.txtLaunchHours.ReadOnly = True
+        Me.txtLaunchHours.Size = New System.Drawing.Size(61, 20)
+        Me.txtLaunchHours.TabIndex = 20
         '
         'Label15
         '
         Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(579, 13)
+        Me.Label15.Location = New System.Drawing.Point(683, 13)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(83, 13)
         Me.Label15.TabIndex = 19
@@ -663,13 +696,14 @@ Partial Class pss_Forecast
         Me.GroupBox5.Controls.Add(Me.dtgLaunch)
         Me.GroupBox5.Location = New System.Drawing.Point(9, 66)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(720, 248)
+        Me.GroupBox5.Size = New System.Drawing.Size(825, 210)
         Me.GroupBox5.TabIndex = 18
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Resources"
         '
         'dtgLaunch
         '
+        Me.dtgLaunch.AllowUserToDeleteRows = False
         Me.dtgLaunch.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -701,7 +735,7 @@ Partial Class pss_Forecast
         DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgLaunch.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
-        Me.dtgLaunch.Size = New System.Drawing.Size(708, 222)
+        Me.dtgLaunch.Size = New System.Drawing.Size(812, 185)
         Me.dtgLaunch.TabIndex = 7
         '
         'TapFiles
@@ -711,7 +745,7 @@ Partial Class pss_Forecast
         Me.TapFiles.Location = New System.Drawing.Point(4, 22)
         Me.TapFiles.Name = "TapFiles"
         Me.TapFiles.Padding = New System.Windows.Forms.Padding(3)
-        Me.TapFiles.Size = New System.Drawing.Size(732, 282)
+        Me.TapFiles.Size = New System.Drawing.Size(836, 282)
         Me.TapFiles.TabIndex = 6
         Me.TapFiles.Text = "Documents"
         Me.TapFiles.UseVisualStyleBackColor = True
@@ -751,7 +785,7 @@ Partial Class pss_Forecast
         DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgDocuments.RowHeadersDefaultCellStyle = DataGridViewCellStyle18
         Me.dtgDocuments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dtgDocuments.Size = New System.Drawing.Size(723, 282)
+        Me.dtgDocuments.Size = New System.Drawing.Size(826, 244)
         Me.dtgDocuments.TabIndex = 1
         '
         'tlbFiles
@@ -760,7 +794,7 @@ Partial Class pss_Forecast
         Me.tlbFiles.Location = New System.Drawing.Point(3, 3)
         Me.tlbFiles.Name = "tlbFiles"
         Me.tlbFiles.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.tlbFiles.Size = New System.Drawing.Size(726, 25)
+        Me.tlbFiles.Size = New System.Drawing.Size(830, 25)
         Me.tlbFiles.TabIndex = 0
         Me.tlbFiles.Text = "ToolStrip2"
         '
@@ -814,13 +848,14 @@ Partial Class pss_Forecast
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdShowResources, Me.cmdDeleteResource})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 441)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(750, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(854, 25)
         Me.ToolStrip1.TabIndex = 16
         Me.ToolStrip1.Text = "ToolStrip1"
         '
         'cmdShowResources
         '
         Me.cmdShowResources.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdShowResources.Enabled = False
         Me.cmdShowResources.Image = Global.Capability_Log.My.Resources.Resources.agt_family
         Me.cmdShowResources.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdShowResources.Name = "cmdShowResources"
@@ -831,6 +866,7 @@ Partial Class pss_Forecast
         'cmdDeleteResource
         '
         Me.cmdDeleteResource.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdDeleteResource.Enabled = False
         Me.cmdDeleteResource.Image = Global.Capability_Log.My.Resources.Resources.delete_user
         Me.cmdDeleteResource.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdDeleteResource.Name = "cmdDeleteResource"
@@ -838,31 +874,10 @@ Partial Class pss_Forecast
         Me.cmdDeleteResource.Text = "ToolStripButton1"
         Me.cmdDeleteResource.ToolTipText = "Delete resource"
         '
-        'cboStatus
-        '
-        Me.cboStatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboStatus.Enabled = False
-        Me.cboStatus.FormattingEnabled = True
-        Me.cboStatus.Location = New System.Drawing.Point(553, 20)
-        Me.cboStatus.Name = "cboStatus"
-        Me.cboStatus.Size = New System.Drawing.Size(180, 21)
-        Me.cboStatus.TabIndex = 11
-        '
-        'Label20
-        '
-        Me.Label20.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(506, 24)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(37, 13)
-        Me.Label20.TabIndex = 10
-        Me.Label20.Text = "Status"
-        '
         'pss_Forecast
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(750, 488)
+        Me.ClientSize = New System.Drawing.Size(854, 488)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.tabPhases)
         Me.Controls.Add(Me.GroupBox7)
@@ -914,35 +929,35 @@ Partial Class pss_Forecast
     Friend WithEvents Label21 As System.Windows.Forms.Label
     Friend WithEvents tabPhases As System.Windows.Forms.TabControl
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtDiscoveryAllocation As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtDiscoveryHours As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents dtgDiscover As System.Windows.Forms.DataGridView
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents txtDesignAllocation As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents dtgDesign As System.Windows.Forms.DataGridView
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents txtQualifyAllocation As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents txtQualifyHours As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents dtgQualify As System.Windows.Forms.DataGridView
     Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+    Friend WithEvents txtReadyAllocation As System.Windows.Forms.TextBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
+    Friend WithEvents txtReadyHours As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents dtgReady As System.Windows.Forms.DataGridView
     Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
-    Friend WithEvents TextBox9 As System.Windows.Forms.TextBox
+    Friend WithEvents txtLaunchAllocation As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents TextBox10 As System.Windows.Forms.TextBox
+    Friend WithEvents txtLaunchHours As System.Windows.Forms.TextBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
     Friend WithEvents dtgLaunch As System.Windows.Forms.DataGridView
@@ -954,7 +969,7 @@ Partial Class pss_Forecast
     Friend WithEvents cmdDownloadFile As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdDeleteFile As System.Windows.Forms.ToolStripButton
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents txtDesignHours As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents sfdFile As System.Windows.Forms.SaveFileDialog
     Friend WithEvents fodFile As System.Windows.Forms.OpenFileDialog

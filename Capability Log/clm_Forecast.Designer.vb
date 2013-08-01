@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmCollaborationModule
+Partial Class clm_Forecast
     Inherits Capability_Log.frmMant
 
     'Form overrides dispose to clean up the component list.
@@ -42,9 +42,9 @@ Partial Class frmCollaborationModule
         Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Me.tabPhases = New System.Windows.Forms.TabControl
         Me.TabPage1 = New System.Windows.Forms.TabPage
-        Me.TextBox2 = New System.Windows.Forms.TextBox
+        Me.txtMMAllocation = New System.Windows.Forms.TextBox
         Me.Label4 = New System.Windows.Forms.Label
-        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.txtMMHours = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.dtgMapingAndMatching = New System.Windows.Forms.DataGridView
@@ -53,7 +53,7 @@ Partial Class frmCollaborationModule
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.TabPage2 = New System.Windows.Forms.TabPage
-        Me.TextBox3 = New System.Windows.Forms.TextBox
+        Me.txtTWAllocation = New System.Windows.Forms.TextBox
         Me.Label5 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.dtgTransWork = New System.Windows.Forms.DataGridView
@@ -61,9 +61,9 @@ Partial Class frmCollaborationModule
         Me.DateTimePicker4 = New System.Windows.Forms.DateTimePicker
         Me.Label7 = New System.Windows.Forms.Label
         Me.TabPage3 = New System.Windows.Forms.TabPage
-        Me.TextBox5 = New System.Windows.Forms.TextBox
+        Me.txtHCAllocation = New System.Windows.Forms.TextBox
         Me.Label8 = New System.Windows.Forms.Label
-        Me.TextBox6 = New System.Windows.Forms.TextBox
+        Me.txtHCHours = New System.Windows.Forms.TextBox
         Me.Label9 = New System.Windows.Forms.Label
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
         Me.dtgHypercare = New System.Windows.Forms.DataGridView
@@ -71,9 +71,9 @@ Partial Class frmCollaborationModule
         Me.DateTimePicker6 = New System.Windows.Forms.DateTimePicker
         Me.Label10 = New System.Windows.Forms.Label
         Me.TabPage4 = New System.Windows.Forms.TabPage
-        Me.TextBox7 = New System.Windows.Forms.TextBox
+        Me.txtMTAllocation = New System.Windows.Forms.TextBox
         Me.Label11 = New System.Windows.Forms.Label
-        Me.TextBox8 = New System.Windows.Forms.TextBox
+        Me.txtMTHours = New System.Windows.Forms.TextBox
         Me.Label12 = New System.Windows.Forms.Label
         Me.GroupBox4 = New System.Windows.Forms.GroupBox
         Me.dtgMeetings = New System.Windows.Forms.DataGridView
@@ -81,9 +81,9 @@ Partial Class frmCollaborationModule
         Me.DateTimePicker8 = New System.Windows.Forms.DateTimePicker
         Me.Label13 = New System.Windows.Forms.Label
         Me.TabPage5 = New System.Windows.Forms.TabPage
-        Me.TextBox9 = New System.Windows.Forms.TextBox
+        Me.txtSDAllocation = New System.Windows.Forms.TextBox
         Me.Label14 = New System.Windows.Forms.Label
-        Me.TextBox10 = New System.Windows.Forms.TextBox
+        Me.txtSDHours = New System.Windows.Forms.TextBox
         Me.Label15 = New System.Windows.Forms.Label
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
         Me.dtgScope = New System.Windows.Forms.DataGridView
@@ -91,9 +91,9 @@ Partial Class frmCollaborationModule
         Me.DateTimePicker10 = New System.Windows.Forms.DateTimePicker
         Me.Label16 = New System.Windows.Forms.Label
         Me.TabPage6 = New System.Windows.Forms.TabPage
-        Me.TextBox11 = New System.Windows.Forms.TextBox
+        Me.txtXPAllocation = New System.Windows.Forms.TextBox
         Me.Label17 = New System.Windows.Forms.Label
-        Me.TextBox12 = New System.Windows.Forms.TextBox
+        Me.txtXPHours = New System.Windows.Forms.TextBox
         Me.Label18 = New System.Windows.Forms.Label
         Me.GroupBox6 = New System.Windows.Forms.GroupBox
         Me.dtgExpertice = New System.Windows.Forms.DataGridView
@@ -109,6 +109,8 @@ Partial Class frmCollaborationModule
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
         Me.cmdDeleteFile = New System.Windows.Forms.ToolStripButton
         Me.GroupBox7 = New System.Windows.Forms.GroupBox
+        Me.cboStatus = New System.Windows.Forms.ComboBox
+        Me.Label20 = New System.Windows.Forms.Label
         Me.cboProject_Type = New System.Windows.Forms.ComboBox
         Me.Label6 = New System.Windows.Forms.Label
         Me.txtPSSPM = New System.Windows.Forms.TextBox
@@ -122,8 +124,6 @@ Partial Class frmCollaborationModule
         Me.cmdDeleteResource = New System.Windows.Forms.ToolStripButton
         Me.fodFile = New System.Windows.Forms.OpenFileDialog
         Me.sfdFile = New System.Windows.Forms.SaveFileDialog
-        Me.cboStatus = New System.Windows.Forms.ComboBox
-        Me.Label20 = New System.Windows.Forms.Label
         Me.tabPhases.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -165,15 +165,15 @@ Partial Class frmCollaborationModule
         Me.tabPhases.Location = New System.Drawing.Point(6, 132)
         Me.tabPhases.Name = "tabPhases"
         Me.tabPhases.SelectedIndex = 0
-        Me.tabPhases.Size = New System.Drawing.Size(751, 294)
+        Me.tabPhases.Size = New System.Drawing.Size(794, 294)
         Me.tabPhases.TabIndex = 3
         '
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage1.Controls.Add(Me.TextBox2)
+        Me.TabPage1.Controls.Add(Me.txtMMAllocation)
         Me.TabPage1.Controls.Add(Me.Label4)
-        Me.TabPage1.Controls.Add(Me.TextBox1)
+        Me.TabPage1.Controls.Add(Me.txtMMHours)
         Me.TabPage1.Controls.Add(Me.Label3)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.DateTimePicker2)
@@ -183,43 +183,43 @@ Partial Class frmCollaborationModule
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(743, 268)
+        Me.TabPage1.Size = New System.Drawing.Size(786, 268)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Mapping and matching"
         '
-        'TextBox2
+        'txtMMAllocation
         '
-        Me.TextBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox2.Location = New System.Drawing.Point(679, 38)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox2.TabIndex = 14
+        Me.txtMMAllocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtMMAllocation.Location = New System.Drawing.Point(722, 38)
+        Me.txtMMAllocation.Name = "txtMMAllocation"
+        Me.txtMMAllocation.ReadOnly = True
+        Me.txtMMAllocation.Size = New System.Drawing.Size(61, 20)
+        Me.txtMMAllocation.TabIndex = 14
         '
         'Label4
         '
         Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(617, 42)
+        Me.Label4.Location = New System.Drawing.Point(660, 42)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(53, 13)
         Me.Label4.TabIndex = 13
         Me.Label4.Text = "Allocation"
         '
-        'TextBox1
+        'txtMMHours
         '
-        Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Location = New System.Drawing.Point(679, 9)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox1.TabIndex = 12
+        Me.txtMMHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtMMHours.Location = New System.Drawing.Point(722, 9)
+        Me.txtMMHours.Name = "txtMMHours"
+        Me.txtMMHours.ReadOnly = True
+        Me.txtMMHours.Size = New System.Drawing.Size(61, 20)
+        Me.txtMMHours.TabIndex = 12
         '
         'Label3
         '
         Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(590, 13)
+        Me.Label3.Location = New System.Drawing.Point(630, 13)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(83, 13)
         Me.Label3.TabIndex = 11
@@ -233,13 +233,14 @@ Partial Class frmCollaborationModule
         Me.GroupBox1.Controls.Add(Me.dtgMapingAndMatching)
         Me.GroupBox1.Location = New System.Drawing.Point(9, 66)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(732, 196)
+        Me.GroupBox1.Size = New System.Drawing.Size(775, 196)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Resources"
         '
         'dtgMapingAndMatching
         '
+        Me.dtgMapingAndMatching.AllowUserToDeleteRows = False
         Me.dtgMapingAndMatching.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -271,7 +272,7 @@ Partial Class frmCollaborationModule
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgMapingAndMatching.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.dtgMapingAndMatching.Size = New System.Drawing.Size(719, 170)
+        Me.dtgMapingAndMatching.Size = New System.Drawing.Size(762, 170)
         Me.dtgMapingAndMatching.TabIndex = 7
         '
         'DateTimePicker2
@@ -315,7 +316,7 @@ Partial Class frmCollaborationModule
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage2.Controls.Add(Me.TextBox3)
+        Me.TabPage2.Controls.Add(Me.txtTWAllocation)
         Me.TabPage2.Controls.Add(Me.Label5)
         Me.TabPage2.Controls.Add(Me.GroupBox2)
         Me.TabPage2.Controls.Add(Me.DateTimePicker3)
@@ -324,23 +325,24 @@ Partial Class frmCollaborationModule
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(732, 268)
+        Me.TabPage2.Size = New System.Drawing.Size(786, 268)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Transactional work"
         '
-        'TextBox3
+        'txtTWAllocation
         '
-        Me.TextBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox3.Location = New System.Drawing.Point(668, 38)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox3.TabIndex = 22
+        Me.txtTWAllocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtTWAllocation.Location = New System.Drawing.Point(722, 38)
+        Me.txtTWAllocation.Name = "txtTWAllocation"
+        Me.txtTWAllocation.ReadOnly = True
+        Me.txtTWAllocation.Size = New System.Drawing.Size(61, 20)
+        Me.txtTWAllocation.TabIndex = 22
         '
         'Label5
         '
         Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(606, 42)
+        Me.Label5.Location = New System.Drawing.Point(660, 42)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(53, 13)
         Me.Label5.TabIndex = 21
@@ -354,13 +356,14 @@ Partial Class frmCollaborationModule
         Me.GroupBox2.Controls.Add(Me.dtgTransWork)
         Me.GroupBox2.Location = New System.Drawing.Point(9, 66)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(721, 196)
+        Me.GroupBox2.Size = New System.Drawing.Size(774, 197)
         Me.GroupBox2.TabIndex = 18
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Resources"
         '
         'dtgTransWork
         '
+        Me.dtgTransWork.AllowUserToDeleteRows = False
         Me.dtgTransWork.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -392,7 +395,7 @@ Partial Class frmCollaborationModule
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgTransWork.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
-        Me.dtgTransWork.Size = New System.Drawing.Size(708, 170)
+        Me.dtgTransWork.Size = New System.Drawing.Size(762, 171)
         Me.dtgTransWork.TabIndex = 7
         '
         'DateTimePicker3
@@ -426,9 +429,9 @@ Partial Class frmCollaborationModule
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage3.Controls.Add(Me.TextBox5)
+        Me.TabPage3.Controls.Add(Me.txtHCAllocation)
         Me.TabPage3.Controls.Add(Me.Label8)
-        Me.TabPage3.Controls.Add(Me.TextBox6)
+        Me.TabPage3.Controls.Add(Me.txtHCHours)
         Me.TabPage3.Controls.Add(Me.Label9)
         Me.TabPage3.Controls.Add(Me.GroupBox3)
         Me.TabPage3.Controls.Add(Me.DateTimePicker5)
@@ -436,41 +439,43 @@ Partial Class frmCollaborationModule
         Me.TabPage3.Controls.Add(Me.Label10)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(732, 268)
+        Me.TabPage3.Size = New System.Drawing.Size(786, 268)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Hypercare"
         '
-        'TextBox5
+        'txtHCAllocation
         '
-        Me.TextBox5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox5.Location = New System.Drawing.Point(668, 38)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox5.TabIndex = 22
+        Me.txtHCAllocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtHCAllocation.Location = New System.Drawing.Point(722, 38)
+        Me.txtHCAllocation.Name = "txtHCAllocation"
+        Me.txtHCAllocation.ReadOnly = True
+        Me.txtHCAllocation.Size = New System.Drawing.Size(61, 20)
+        Me.txtHCAllocation.TabIndex = 22
         '
         'Label8
         '
         Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(606, 42)
+        Me.Label8.Location = New System.Drawing.Point(660, 42)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(53, 13)
         Me.Label8.TabIndex = 21
         Me.Label8.Text = "Allocation"
         '
-        'TextBox6
+        'txtHCHours
         '
-        Me.TextBox6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox6.Location = New System.Drawing.Point(668, 9)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox6.TabIndex = 20
+        Me.txtHCHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtHCHours.Location = New System.Drawing.Point(722, 9)
+        Me.txtHCHours.Name = "txtHCHours"
+        Me.txtHCHours.ReadOnly = True
+        Me.txtHCHours.Size = New System.Drawing.Size(61, 20)
+        Me.txtHCHours.TabIndex = 20
         '
         'Label9
         '
         Me.Label9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(579, 13)
+        Me.Label9.Location = New System.Drawing.Point(630, 13)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(83, 13)
         Me.Label9.TabIndex = 19
@@ -484,13 +489,14 @@ Partial Class frmCollaborationModule
         Me.GroupBox3.Controls.Add(Me.dtgHypercare)
         Me.GroupBox3.Location = New System.Drawing.Point(9, 66)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(720, 196)
+        Me.GroupBox3.Size = New System.Drawing.Size(774, 196)
         Me.GroupBox3.TabIndex = 18
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Resources"
         '
         'dtgHypercare
         '
+        Me.dtgHypercare.AllowUserToDeleteRows = False
         Me.dtgHypercare.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -522,7 +528,7 @@ Partial Class frmCollaborationModule
         DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgHypercare.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
-        Me.dtgHypercare.Size = New System.Drawing.Size(708, 170)
+        Me.dtgHypercare.Size = New System.Drawing.Size(762, 170)
         Me.dtgHypercare.TabIndex = 7
         '
         'DateTimePicker5
@@ -556,9 +562,9 @@ Partial Class frmCollaborationModule
         'TabPage4
         '
         Me.TabPage4.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage4.Controls.Add(Me.TextBox7)
+        Me.TabPage4.Controls.Add(Me.txtMTAllocation)
         Me.TabPage4.Controls.Add(Me.Label11)
-        Me.TabPage4.Controls.Add(Me.TextBox8)
+        Me.TabPage4.Controls.Add(Me.txtMTHours)
         Me.TabPage4.Controls.Add(Me.Label12)
         Me.TabPage4.Controls.Add(Me.GroupBox4)
         Me.TabPage4.Controls.Add(Me.DateTimePicker7)
@@ -566,41 +572,43 @@ Partial Class frmCollaborationModule
         Me.TabPage4.Controls.Add(Me.Label13)
         Me.TabPage4.Location = New System.Drawing.Point(4, 22)
         Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Size = New System.Drawing.Size(732, 268)
+        Me.TabPage4.Size = New System.Drawing.Size(786, 268)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Meetings"
         '
-        'TextBox7
+        'txtMTAllocation
         '
-        Me.TextBox7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox7.Location = New System.Drawing.Point(668, 38)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox7.TabIndex = 26
+        Me.txtMTAllocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtMTAllocation.Location = New System.Drawing.Point(722, 38)
+        Me.txtMTAllocation.Name = "txtMTAllocation"
+        Me.txtMTAllocation.ReadOnly = True
+        Me.txtMTAllocation.Size = New System.Drawing.Size(61, 20)
+        Me.txtMTAllocation.TabIndex = 26
         '
         'Label11
         '
         Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(606, 42)
+        Me.Label11.Location = New System.Drawing.Point(660, 42)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(53, 13)
         Me.Label11.TabIndex = 25
         Me.Label11.Text = "Allocation"
         '
-        'TextBox8
+        'txtMTHours
         '
-        Me.TextBox8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox8.Location = New System.Drawing.Point(668, 9)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox8.TabIndex = 24
+        Me.txtMTHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtMTHours.Location = New System.Drawing.Point(722, 9)
+        Me.txtMTHours.Name = "txtMTHours"
+        Me.txtMTHours.ReadOnly = True
+        Me.txtMTHours.Size = New System.Drawing.Size(61, 20)
+        Me.txtMTHours.TabIndex = 24
         '
         'Label12
         '
         Me.Label12.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(579, 13)
+        Me.Label12.Location = New System.Drawing.Point(630, 13)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(83, 13)
         Me.Label12.TabIndex = 23
@@ -614,13 +622,14 @@ Partial Class frmCollaborationModule
         Me.GroupBox4.Controls.Add(Me.dtgMeetings)
         Me.GroupBox4.Location = New System.Drawing.Point(9, 66)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(720, 196)
+        Me.GroupBox4.Size = New System.Drawing.Size(774, 196)
         Me.GroupBox4.TabIndex = 18
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Resources"
         '
         'dtgMeetings
         '
+        Me.dtgMeetings.AllowUserToDeleteRows = False
         Me.dtgMeetings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -652,7 +661,7 @@ Partial Class frmCollaborationModule
         DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgMeetings.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
-        Me.dtgMeetings.Size = New System.Drawing.Size(708, 170)
+        Me.dtgMeetings.Size = New System.Drawing.Size(762, 170)
         Me.dtgMeetings.TabIndex = 7
         '
         'DateTimePicker7
@@ -686,9 +695,9 @@ Partial Class frmCollaborationModule
         'TabPage5
         '
         Me.TabPage5.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage5.Controls.Add(Me.TextBox9)
+        Me.TabPage5.Controls.Add(Me.txtSDAllocation)
         Me.TabPage5.Controls.Add(Me.Label14)
-        Me.TabPage5.Controls.Add(Me.TextBox10)
+        Me.TabPage5.Controls.Add(Me.txtSDHours)
         Me.TabPage5.Controls.Add(Me.Label15)
         Me.TabPage5.Controls.Add(Me.GroupBox5)
         Me.TabPage5.Controls.Add(Me.DateTimePicker9)
@@ -696,41 +705,43 @@ Partial Class frmCollaborationModule
         Me.TabPage5.Controls.Add(Me.Label16)
         Me.TabPage5.Location = New System.Drawing.Point(4, 22)
         Me.TabPage5.Name = "TabPage5"
-        Me.TabPage5.Size = New System.Drawing.Size(732, 268)
+        Me.TabPage5.Size = New System.Drawing.Size(786, 268)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Scope / Data"
         '
-        'TextBox9
+        'txtSDAllocation
         '
-        Me.TextBox9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox9.Location = New System.Drawing.Point(668, 38)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox9.TabIndex = 22
+        Me.txtSDAllocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtSDAllocation.Location = New System.Drawing.Point(722, 38)
+        Me.txtSDAllocation.Name = "txtSDAllocation"
+        Me.txtSDAllocation.ReadOnly = True
+        Me.txtSDAllocation.Size = New System.Drawing.Size(61, 20)
+        Me.txtSDAllocation.TabIndex = 22
         '
         'Label14
         '
         Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(606, 42)
+        Me.Label14.Location = New System.Drawing.Point(660, 42)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(53, 13)
         Me.Label14.TabIndex = 21
         Me.Label14.Text = "Allocation"
         '
-        'TextBox10
+        'txtSDHours
         '
-        Me.TextBox10.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox10.Location = New System.Drawing.Point(668, 9)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox10.TabIndex = 20
+        Me.txtSDHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtSDHours.Location = New System.Drawing.Point(722, 9)
+        Me.txtSDHours.Name = "txtSDHours"
+        Me.txtSDHours.ReadOnly = True
+        Me.txtSDHours.Size = New System.Drawing.Size(61, 20)
+        Me.txtSDHours.TabIndex = 20
         '
         'Label15
         '
         Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(579, 13)
+        Me.Label15.Location = New System.Drawing.Point(630, 13)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(83, 13)
         Me.Label15.TabIndex = 19
@@ -744,13 +755,14 @@ Partial Class frmCollaborationModule
         Me.GroupBox5.Controls.Add(Me.dtgScope)
         Me.GroupBox5.Location = New System.Drawing.Point(9, 66)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(720, 196)
+        Me.GroupBox5.Size = New System.Drawing.Size(774, 196)
         Me.GroupBox5.TabIndex = 18
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Resources"
         '
         'dtgScope
         '
+        Me.dtgScope.AllowUserToDeleteRows = False
         Me.dtgScope.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -782,7 +794,7 @@ Partial Class frmCollaborationModule
         DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgScope.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
-        Me.dtgScope.Size = New System.Drawing.Size(708, 170)
+        Me.dtgScope.Size = New System.Drawing.Size(762, 170)
         Me.dtgScope.TabIndex = 7
         '
         'DateTimePicker9
@@ -816,9 +828,9 @@ Partial Class frmCollaborationModule
         'TabPage6
         '
         Me.TabPage6.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TabPage6.Controls.Add(Me.TextBox11)
+        Me.TabPage6.Controls.Add(Me.txtXPAllocation)
         Me.TabPage6.Controls.Add(Me.Label17)
-        Me.TabPage6.Controls.Add(Me.TextBox12)
+        Me.TabPage6.Controls.Add(Me.txtXPHours)
         Me.TabPage6.Controls.Add(Me.Label18)
         Me.TabPage6.Controls.Add(Me.GroupBox6)
         Me.TabPage6.Controls.Add(Me.DateTimePicker11)
@@ -826,41 +838,43 @@ Partial Class frmCollaborationModule
         Me.TabPage6.Controls.Add(Me.Label19)
         Me.TabPage6.Location = New System.Drawing.Point(4, 22)
         Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Size = New System.Drawing.Size(732, 268)
+        Me.TabPage6.Size = New System.Drawing.Size(786, 268)
         Me.TabPage6.TabIndex = 5
         Me.TabPage6.Text = "Expertise"
         '
-        'TextBox11
+        'txtXPAllocation
         '
-        Me.TextBox11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox11.Location = New System.Drawing.Point(668, 38)
-        Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox11.TabIndex = 22
+        Me.txtXPAllocation.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtXPAllocation.Location = New System.Drawing.Point(722, 38)
+        Me.txtXPAllocation.Name = "txtXPAllocation"
+        Me.txtXPAllocation.ReadOnly = True
+        Me.txtXPAllocation.Size = New System.Drawing.Size(61, 20)
+        Me.txtXPAllocation.TabIndex = 22
         '
         'Label17
         '
         Me.Label17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(606, 42)
+        Me.Label17.Location = New System.Drawing.Point(660, 42)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(53, 13)
         Me.Label17.TabIndex = 21
         Me.Label17.Text = "Allocation"
         '
-        'TextBox12
+        'txtXPHours
         '
-        Me.TextBox12.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox12.Location = New System.Drawing.Point(668, 9)
-        Me.TextBox12.Name = "TextBox12"
-        Me.TextBox12.Size = New System.Drawing.Size(61, 20)
-        Me.TextBox12.TabIndex = 20
+        Me.txtXPHours.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtXPHours.Location = New System.Drawing.Point(722, 9)
+        Me.txtXPHours.Name = "txtXPHours"
+        Me.txtXPHours.ReadOnly = True
+        Me.txtXPHours.Size = New System.Drawing.Size(61, 20)
+        Me.txtXPHours.TabIndex = 20
         '
         'Label18
         '
         Me.Label18.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(579, 13)
+        Me.Label18.Location = New System.Drawing.Point(630, 13)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(83, 13)
         Me.Label18.TabIndex = 19
@@ -874,13 +888,14 @@ Partial Class frmCollaborationModule
         Me.GroupBox6.Controls.Add(Me.dtgExpertice)
         Me.GroupBox6.Location = New System.Drawing.Point(9, 66)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(720, 196)
+        Me.GroupBox6.Size = New System.Drawing.Size(774, 196)
         Me.GroupBox6.TabIndex = 18
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Resources"
         '
         'dtgExpertice
         '
+        Me.dtgExpertice.AllowUserToDeleteRows = False
         Me.dtgExpertice.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -912,7 +927,7 @@ Partial Class frmCollaborationModule
         DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgExpertice.RowHeadersDefaultCellStyle = DataGridViewCellStyle18
-        Me.dtgExpertice.Size = New System.Drawing.Size(708, 170)
+        Me.dtgExpertice.Size = New System.Drawing.Size(762, 170)
         Me.dtgExpertice.TabIndex = 7
         '
         'DateTimePicker11
@@ -950,7 +965,7 @@ Partial Class frmCollaborationModule
         Me.TapFiles.Location = New System.Drawing.Point(4, 22)
         Me.TapFiles.Name = "TapFiles"
         Me.TapFiles.Padding = New System.Windows.Forms.Padding(3)
-        Me.TapFiles.Size = New System.Drawing.Size(732, 268)
+        Me.TapFiles.Size = New System.Drawing.Size(786, 268)
         Me.TapFiles.TabIndex = 6
         Me.TapFiles.Text = "Documents"
         Me.TapFiles.UseVisualStyleBackColor = True
@@ -979,7 +994,7 @@ Partial Class frmCollaborationModule
         DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dtgFiles.DefaultCellStyle = DataGridViewCellStyle20
-        Me.dtgFiles.Location = New System.Drawing.Point(4, 32)
+        Me.dtgFiles.Location = New System.Drawing.Point(7, 32)
         Me.dtgFiles.Name = "dtgFiles"
         DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control
@@ -990,7 +1005,7 @@ Partial Class frmCollaborationModule
         DataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dtgFiles.RowHeadersDefaultCellStyle = DataGridViewCellStyle21
         Me.dtgFiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dtgFiles.Size = New System.Drawing.Size(723, 230)
+        Me.dtgFiles.Size = New System.Drawing.Size(773, 230)
         Me.dtgFiles.TabIndex = 1
         '
         'tlbFiles
@@ -999,7 +1014,7 @@ Partial Class frmCollaborationModule
         Me.tlbFiles.Location = New System.Drawing.Point(3, 3)
         Me.tlbFiles.Name = "tlbFiles"
         Me.tlbFiles.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.tlbFiles.Size = New System.Drawing.Size(726, 25)
+        Me.tlbFiles.Size = New System.Drawing.Size(780, 25)
         Me.tlbFiles.TabIndex = 0
         Me.tlbFiles.Text = "ToolStrip2"
         '
@@ -1059,10 +1074,31 @@ Partial Class frmCollaborationModule
         Me.GroupBox7.Controls.Add(Me.Label21)
         Me.GroupBox7.Location = New System.Drawing.Point(6, 29)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(751, 97)
+        Me.GroupBox7.Size = New System.Drawing.Size(794, 97)
         Me.GroupBox7.TabIndex = 4
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Project"
+        '
+        'cboStatus
+        '
+        Me.cboStatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboStatus.Enabled = False
+        Me.cboStatus.FormattingEnabled = True
+        Me.cboStatus.Location = New System.Drawing.Point(608, 42)
+        Me.cboStatus.Name = "cboStatus"
+        Me.cboStatus.Size = New System.Drawing.Size(180, 21)
+        Me.cboStatus.TabIndex = 9
+        '
+        'Label20
+        '
+        Me.Label20.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(535, 47)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(37, 13)
+        Me.Label20.TabIndex = 8
+        Me.Label20.Text = "Status"
         '
         'cboProject_Type
         '
@@ -1070,7 +1106,7 @@ Partial Class frmCollaborationModule
         Me.cboProject_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboProject_Type.Enabled = False
         Me.cboProject_Type.FormattingEnabled = True
-        Me.cboProject_Type.Location = New System.Drawing.Point(562, 15)
+        Me.cboProject_Type.Location = New System.Drawing.Point(608, 15)
         Me.cboProject_Type.Name = "cboProject_Type"
         Me.cboProject_Type.Size = New System.Drawing.Size(180, 21)
         Me.cboProject_Type.TabIndex = 7
@@ -1079,7 +1115,7 @@ Partial Class frmCollaborationModule
         '
         Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(489, 20)
+        Me.Label6.Location = New System.Drawing.Point(535, 20)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(67, 13)
         Me.Label6.TabIndex = 6
@@ -1142,13 +1178,14 @@ Partial Class frmCollaborationModule
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdShowResources, Me.cmdDeleteResource})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 431)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(762, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(805, 25)
         Me.ToolStrip1.TabIndex = 5
         Me.ToolStrip1.Text = "ToolStrip1"
         '
         'cmdShowResources
         '
         Me.cmdShowResources.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdShowResources.Enabled = False
         Me.cmdShowResources.Image = Global.Capability_Log.My.Resources.Resources.agt_family
         Me.cmdShowResources.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdShowResources.Name = "cmdShowResources"
@@ -1159,6 +1196,7 @@ Partial Class frmCollaborationModule
         'cmdDeleteResource
         '
         Me.cmdDeleteResource.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdDeleteResource.Enabled = False
         Me.cmdDeleteResource.Image = Global.Capability_Log.My.Resources.Resources.delete_user
         Me.cmdDeleteResource.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdDeleteResource.Name = "cmdDeleteResource"
@@ -1170,35 +1208,14 @@ Partial Class frmCollaborationModule
         '
         Me.fodFile.FileName = "OpenFileDialog1"
         '
-        'cboStatus
-        '
-        Me.cboStatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboStatus.Enabled = False
-        Me.cboStatus.FormattingEnabled = True
-        Me.cboStatus.Location = New System.Drawing.Point(562, 42)
-        Me.cboStatus.Name = "cboStatus"
-        Me.cboStatus.Size = New System.Drawing.Size(180, 21)
-        Me.cboStatus.TabIndex = 9
-        '
-        'Label20
-        '
-        Me.Label20.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(489, 47)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(37, 13)
-        Me.Label20.TabIndex = 8
-        Me.Label20.Text = "Status"
-        '
-        'frmCollaborationModule
+        'clm_Forecast
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(762, 478)
+        Me.ClientSize = New System.Drawing.Size(805, 478)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.GroupBox7)
         Me.Controls.Add(Me.tabPhases)
-        Me.Name = "frmCollaborationModule"
+        Me.Name = "clm_Forecast"
         Me.Text = "Corporate Projects Forecast"
         Me.Controls.SetChildIndex(Me.tabPhases, 0)
         Me.Controls.SetChildIndex(Me.GroupBox7, 0)
@@ -1255,19 +1272,19 @@ Partial Class frmCollaborationModule
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents dtgMapingAndMatching As System.Windows.Forms.DataGridView
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtMMAllocation As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents txtMMHours As System.Windows.Forms.TextBox
+    Friend WithEvents txtTWAllocation As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents dtgTransWork As System.Windows.Forms.DataGridView
     Friend WithEvents DateTimePicker3 As System.Windows.Forms.DateTimePicker
     Friend WithEvents DateTimePicker4 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents txtHCAllocation As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents txtHCHours As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents dtgHypercare As System.Windows.Forms.DataGridView
@@ -1279,18 +1296,18 @@ Partial Class frmCollaborationModule
     Friend WithEvents DateTimePicker7 As System.Windows.Forms.DateTimePicker
     Friend WithEvents DateTimePicker8 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents TextBox9 As System.Windows.Forms.TextBox
+    Friend WithEvents txtSDAllocation As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents TextBox10 As System.Windows.Forms.TextBox
+    Friend WithEvents txtSDHours As System.Windows.Forms.TextBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
     Friend WithEvents dtgScope As System.Windows.Forms.DataGridView
     Friend WithEvents DateTimePicker9 As System.Windows.Forms.DateTimePicker
     Friend WithEvents DateTimePicker10 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents TextBox11 As System.Windows.Forms.TextBox
+    Friend WithEvents txtXPAllocation As System.Windows.Forms.TextBox
     Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents TextBox12 As System.Windows.Forms.TextBox
+    Friend WithEvents txtXPHours As System.Windows.Forms.TextBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
     Friend WithEvents dtgExpertice As System.Windows.Forms.DataGridView
@@ -1304,9 +1321,9 @@ Partial Class frmCollaborationModule
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents txtGBSPM As System.Windows.Forms.TextBox
     Friend WithEvents Label22 As System.Windows.Forms.Label
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+    Friend WithEvents txtMTAllocation As System.Windows.Forms.TextBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
+    Friend WithEvents txtMTHours As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents cmdShowResources As System.Windows.Forms.ToolStripButton

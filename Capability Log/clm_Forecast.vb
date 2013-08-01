@@ -1,4 +1,4 @@
-﻿Public Class frmCollaborationModule
+﻿Public Class clm_Forecast
     Private WithEvents _Project As New Objects.Collaboration_Module.CM_Project
 
     Dim BS1 As New BindingSource ''Mapping and matching
@@ -287,6 +287,9 @@
         dtgMeetings.ReadOnly = False
         dtgScope.ReadOnly = False
         dtgExpertice.ReadOnly = False
+        cmdShowResources.Enabled = True
+        cmdDeleteResource.Enabled = True
+
     End Sub
     Public Overrides Sub Lock_Gui()
         txtProjectName.ReadOnly = True
@@ -300,6 +303,8 @@
         dtgMeetings.ReadOnly = True
         dtgScope.ReadOnly = True
         dtgExpertice.ReadOnly = True
+        cmdShowResources.Enabled = False
+        cmdDeleteResource.Enabled = False
     End Sub
     Private Sub cmdUploadFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdUploadFile.Click
         fodFile.ShowDialog()

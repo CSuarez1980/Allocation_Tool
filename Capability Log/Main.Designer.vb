@@ -170,8 +170,9 @@ Partial Class Main
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsersToolStripMenuItem, Me.ProjectCategoriesToolStripMenuItem, Me.ProjectStatusToolStripMenuItem, Me.ValueStreamsToolStripMenuItem, Me.ServiceLineToolStripMenuItem, Me.SystemToolStripMenuItem, Me.CollaborationModuleToolStripMenuItem})
+        Me.ToolStripMenuItem1.Image = Global.Capability_Log.My.Resources.Resources.advancedsettings
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(88, 20)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(104, 20)
         Me.ToolStripMenuItem1.Text = "&Mantenaince"
         '
         'UsersToolStripMenuItem

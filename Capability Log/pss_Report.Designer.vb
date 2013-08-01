@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class clm_Report
+Partial Class pss_Report
     Inherits Capability_Log.frmBase
 
     'Form overrides dispose to clean up the component list.
@@ -20,17 +20,23 @@ Partial Class clm_Report
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource
+        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource
         Me.vw_CM_Raw_DataBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CapabilityLogDataSet = New Capability_Log.CapabilityLogDataSet
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.tlbReport = New System.Windows.Forms.ToolStrip
+        Me.cmdExport2Excel = New System.Windows.Forms.ToolStripButton
+        Me.Button5 = New System.Windows.Forms.Button
         Me.txtTask = New System.Windows.Forms.TextBox
         Me.Label7 = New System.Windows.Forms.Label
+        Me.Button4 = New System.Windows.Forms.Button
         Me.txtResource = New System.Windows.Forms.TextBox
+        Me.Button3 = New System.Windows.Forms.Button
         Me.txtContact = New System.Windows.Forms.TextBox
+        Me.Button2 = New System.Windows.Forms.Button
         Me.txtProjectType = New System.Windows.Forms.TextBox
         Me.txtProjects = New System.Windows.Forms.TextBox
+        Me.Button1 = New System.Windows.Forms.Button
         Me.Label6 = New System.Windows.Forms.Label
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
@@ -41,12 +47,6 @@ Partial Class clm_Report
         Me.Label1 = New System.Windows.Forms.Label
         Me.rtpReport = New Microsoft.Reporting.WinForms.ReportViewer
         Me.vw_CM_Raw_DataTableAdapter = New Capability_Log.CapabilityLogDataSetTableAdapters.vw_CM_Raw_DataTableAdapter
-        Me.cmdExport2Excel = New System.Windows.Forms.ToolStripButton
-        Me.Button5 = New System.Windows.Forms.Button
-        Me.Button4 = New System.Windows.Forms.Button
-        Me.Button3 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.Button1 = New System.Windows.Forms.Button
         CType(Me.vw_CM_Raw_DataBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CapabilityLogDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -92,7 +92,7 @@ Partial Class clm_Report
         Me.GroupBox2.Location = New System.Drawing.Point(7, 8)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(884, 595)
-        Me.GroupBox2.TabIndex = 5
+        Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Report parameters"
         '
@@ -106,31 +106,68 @@ Partial Class clm_Report
         Me.tlbReport.TabIndex = 30
         Me.tlbReport.Text = "ToolStrip1"
         '
+        'cmdExport2Excel
+        '
+        Me.cmdExport2Excel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdExport2Excel.Image = Global.Capability_Log.My.Resources.Resources.excel8
+        Me.cmdExport2Excel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdExport2Excel.Name = "cmdExport2Excel"
+        Me.cmdExport2Excel.Size = New System.Drawing.Size(23, 22)
+        Me.cmdExport2Excel.Text = "ToolStripButton1"
+        Me.cmdExport2Excel.ToolTipText = "Export raw data to Excel"
+        '
+        'Button5
+        '
+        Me.Button5.Image = Global.Capability_Log.My.Resources.Resources.down
+        Me.Button5.Location = New System.Drawing.Point(323, 84)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(23, 23)
+        Me.Button5.TabIndex = 29
+        Me.Button5.UseVisualStyleBackColor = True
+        '
         'txtTask
         '
-        Me.txtTask.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtTask.Location = New System.Drawing.Point(620, 30)
+        Me.txtTask.Location = New System.Drawing.Point(92, 85)
         Me.txtTask.Name = "txtTask"
         Me.txtTask.Size = New System.Drawing.Size(226, 20)
         Me.txtTask.TabIndex = 28
         '
         'Label7
         '
-        Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(545, 34)
+        Me.Label7.Location = New System.Drawing.Point(17, 89)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(74, 13)
         Me.Label7.TabIndex = 27
         Me.Label7.Text = "Project stages"
         '
+        'Button4
+        '
+        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button4.Image = Global.Capability_Log.My.Resources.Resources.down
+        Me.Button4.Location = New System.Drawing.Point(851, 29)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(23, 23)
+        Me.Button4.TabIndex = 26
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'txtResource
         '
         Me.txtResource.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtResource.Location = New System.Drawing.Point(620, 82)
+        Me.txtResource.Location = New System.Drawing.Point(620, 30)
         Me.txtResource.Name = "txtResource"
         Me.txtResource.Size = New System.Drawing.Size(226, 20)
         Me.txtResource.TabIndex = 25
+        '
+        'Button3
+        '
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button3.Image = Global.Capability_Log.My.Resources.Resources.down
+        Me.Button3.Location = New System.Drawing.Point(851, 56)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(23, 23)
+        Me.Button3.TabIndex = 24
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'txtContact
         '
@@ -140,12 +177,23 @@ Partial Class clm_Report
         Me.txtContact.Size = New System.Drawing.Size(226, 20)
         Me.txtContact.TabIndex = 23
         '
+        'Button2
+        '
+        Me.Button2.Image = Global.Capability_Log.My.Resources.Resources.down
+        Me.Button2.Location = New System.Drawing.Point(851, 81)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(23, 23)
+        Me.Button2.TabIndex = 22
+        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.Visible = False
+        '
         'txtProjectType
         '
-        Me.txtProjectType.Location = New System.Drawing.Point(92, 82)
+        Me.txtProjectType.Location = New System.Drawing.Point(620, 82)
         Me.txtProjectType.Name = "txtProjectType"
         Me.txtProjectType.Size = New System.Drawing.Size(226, 20)
         Me.txtProjectType.TabIndex = 21
+        Me.txtProjectType.Visible = False
         '
         'txtProjects
         '
@@ -154,11 +202,20 @@ Partial Class clm_Report
         Me.txtProjects.Size = New System.Drawing.Size(226, 20)
         Me.txtProjects.TabIndex = 20
         '
+        'Button1
+        '
+        Me.Button1.Image = Global.Capability_Log.My.Resources.Resources.down
+        Me.Button1.Location = New System.Drawing.Point(323, 56)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(23, 23)
+        Me.Button1.TabIndex = 19
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Label6
         '
         Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(545, 86)
+        Me.Label6.Location = New System.Drawing.Point(545, 34)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(53, 13)
         Me.Label6.TabIndex = 18
@@ -186,11 +243,12 @@ Partial Class clm_Report
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(16, 86)
+        Me.Label3.Location = New System.Drawing.Point(544, 86)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(63, 13)
         Me.Label3.TabIndex = 12
         Me.Label3.Text = "Project type"
+        Me.Label3.Visible = False
         '
         'dtpEnd
         '
@@ -231,9 +289,9 @@ Partial Class clm_Report
         Me.rtpReport.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        ReportDataSource2.Name = "CapabilityLogDataSet_vw_CM_Raw_Data"
-        ReportDataSource2.Value = Me.vw_CM_Raw_DataBindingSource
-        Me.rtpReport.LocalReport.DataSources.Add(ReportDataSource2)
+        ReportDataSource1.Name = "CapabilityLogDataSet_vw_CM_Raw_Data"
+        ReportDataSource1.Value = Me.vw_CM_Raw_DataBindingSource
+        Me.rtpReport.LocalReport.DataSources.Add(ReportDataSource1)
         Me.rtpReport.LocalReport.ReportEmbeddedResource = "Capability_Log.clm_Allocation.rdlc"
         Me.rtpReport.Location = New System.Drawing.Point(7, 110)
         Me.rtpReport.Name = "rtpReport"
@@ -244,72 +302,14 @@ Partial Class clm_Report
         '
         Me.vw_CM_Raw_DataTableAdapter.ClearBeforeFill = True
         '
-        'cmdExport2Excel
-        '
-        Me.cmdExport2Excel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdExport2Excel.Image = Global.Capability_Log.My.Resources.Resources.excel8
-        Me.cmdExport2Excel.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdExport2Excel.Name = "cmdExport2Excel"
-        Me.cmdExport2Excel.Size = New System.Drawing.Size(23, 22)
-        Me.cmdExport2Excel.Text = "ToolStripButton1"
-        Me.cmdExport2Excel.ToolTipText = "Export raw data to Excel"
-        '
-        'Button5
-        '
-        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button5.Image = Global.Capability_Log.My.Resources.Resources.down
-        Me.Button5.Location = New System.Drawing.Point(851, 29)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(23, 23)
-        Me.Button5.TabIndex = 29
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button4.Image = Global.Capability_Log.My.Resources.Resources.down
-        Me.Button4.Location = New System.Drawing.Point(851, 81)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(23, 23)
-        Me.Button4.TabIndex = 26
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button3.Image = Global.Capability_Log.My.Resources.Resources.down
-        Me.Button3.Location = New System.Drawing.Point(851, 56)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(23, 23)
-        Me.Button3.TabIndex = 24
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Image = Global.Capability_Log.My.Resources.Resources.down
-        Me.Button2.Location = New System.Drawing.Point(323, 81)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(23, 23)
-        Me.Button2.TabIndex = 22
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Image = Global.Capability_Log.My.Resources.Resources.down
-        Me.Button1.Location = New System.Drawing.Point(323, 56)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(23, 23)
-        Me.Button1.TabIndex = 19
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'clm_Report
+        'pss_Report
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(899, 628)
         Me.Controls.Add(Me.GroupBox2)
         Me.Message = ""
-        Me.Name = "clm_Report"
-        Me.Text = "Corporate Project Allocation Report"
+        Me.Name = "pss_Report"
+        Me.Text = "PSS Projects Allocation Report"
         Me.Controls.SetChildIndex(Me.GroupBox2, 0)
         CType(Me.vw_CM_Raw_DataBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CapabilityLogDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -322,30 +322,30 @@ Partial Class clm_Report
 
     End Sub
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents tlbReport As System.Windows.Forms.ToolStrip
+    Friend WithEvents cmdExport2Excel As System.Windows.Forms.ToolStripButton
+    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents txtTask As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents txtResource As System.Windows.Forms.TextBox
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents txtContact As System.Windows.Forms.TextBox
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents txtProjectType As System.Windows.Forms.TextBox
+    Friend WithEvents txtProjects As System.Windows.Forms.TextBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents dtpEnd As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents dtpStart As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents rtpReport As Microsoft.Reporting.WinForms.ReportViewer
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents vw_CM_Raw_DataBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents CapabilityLogDataSet As Capability_Log.CapabilityLogDataSet
     Friend WithEvents vw_CM_Raw_DataTableAdapter As Capability_Log.CapabilityLogDataSetTableAdapters.vw_CM_Raw_DataTableAdapter
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents txtProjects As System.Windows.Forms.TextBox
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents txtProjectType As System.Windows.Forms.TextBox
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents txtResource As System.Windows.Forms.TextBox
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents txtContact As System.Windows.Forms.TextBox
-    Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents txtTask As System.Windows.Forms.TextBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents tlbReport As System.Windows.Forms.ToolStrip
-    Friend WithEvents cmdExport2Excel As System.Windows.Forms.ToolStripButton
 
 End Class

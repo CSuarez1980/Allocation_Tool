@@ -74,6 +74,13 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property advancedsettings() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("advancedsettings", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property agt_action_fail() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("agt_action_fail", resourceCulture)

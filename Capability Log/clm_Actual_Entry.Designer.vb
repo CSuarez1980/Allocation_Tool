@@ -22,10 +22,10 @@ Partial Class clm_Actual_Entry
         Me.grpResources = New System.Windows.Forms.GroupBox
         Me.dtgResources = New System.Windows.Forms.DataGridView
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
+        Me.cmdSave = New System.Windows.Forms.ToolStripButton
         Me.grpTaskDate = New System.Windows.Forms.GroupBox
         Me.dtpMonth = New System.Windows.Forms.DateTimePicker
         Me.Label1 = New System.Windows.Forms.Label
-        Me.cmdSave = New System.Windows.Forms.ToolStripButton
         Me.grpResources.SuspendLayout()
         CType(Me.dtgResources, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
@@ -68,6 +68,16 @@ Partial Class clm_Actual_Entry
         Me.ToolStrip1.TabIndex = 6
         Me.ToolStrip1.Text = "ToolStrip1"
         '
+        'cmdSave
+        '
+        Me.cmdSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdSave.Image = Global.Capability_Log.My.Resources.Resources.Save
+        Me.cmdSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(28, 28)
+        Me.cmdSave.Text = "ToolStripButton1"
+        Me.cmdSave.ToolTipText = "Save"
+        '
         'grpTaskDate
         '
         Me.grpTaskDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -98,16 +108,6 @@ Partial Class clm_Actual_Entry
         Me.Label1.Size = New System.Drawing.Size(37, 13)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Month"
-        '
-        'cmdSave
-        '
-        Me.cmdSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdSave.Image = Global.Capability_Log.My.Resources.Resources.Save
-        Me.cmdSave.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdSave.Name = "cmdSave"
-        Me.cmdSave.Size = New System.Drawing.Size(28, 28)
-        Me.cmdSave.Text = "ToolStripButton1"
-        Me.cmdSave.ToolTipText = "Save"
         '
         'clm_Actual_Entry
         '

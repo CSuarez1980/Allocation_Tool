@@ -1,5 +1,5 @@
 ﻿Public Class clm_Search
-    Public Sub Set_Object(ByRef SearchList As List(Of Objects.Collaboration_Module.Variants.clm_Var))
+    Public Sub Set_Object(ByRef SearchList As Object)
         BS.Clear()
         BS.DataSource = SearchList
     End Sub

@@ -208,7 +208,7 @@
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
 
-            T.SQL_String = "Update pss_Project Set Name = @Name, GBS_PM = @GBS_PM, PSS_PM = @PSS_PM, Type_ID = @Type_ID Where (ID = @ID)"
+            T.SQL_String = "Update pss_Project Set Name = @Name, GBS_PM = @GBS_PM, PSS_PM = @PSS_PM Where (ID = @ID)"
             T.Include_Parameter("@ID", _ID)
             T.Include_Parameter("@Name", _Name)
             T.Include_Parameter("@GBS_PM", _GBS_PM)
@@ -272,7 +272,7 @@
         Inherits Base
 #Region "Variables"
         Private _Task_ID As Integer
-        Private _Task_Type As New Objects.Collaboration_Module.Task_Type
+        Private _Task_Type As New Objects.PSS_Projects.Task_Type
         Private _Allocation As Double
         Private _Resources As New List(Of PSS_Resource)
 #End Region
@@ -336,7 +336,7 @@
 
         Public Overrides Sub Clear()
             _Task_ID = 0
-            _Task_Type = New Objects.Collaboration_Module.Task_Type
+            _Task_Type = New Objects.PSS_Projects.Task_Type
             _Allocation = 0
             _Resources.Clear()
         End Sub
@@ -478,7 +478,7 @@
         Inherits Base
 #Region "Variables"
         Private _Resource_ID As Integer
-        Private _Resource_Type As New Objects.Collaboration_Module.Resource_Type
+        Private _Resource_Type As New Objects.PSS_Projects.Resource_Type
         Private _Month As Date = Now.Date
         Private _Hours As Double
         Private _FTE As Double
@@ -567,7 +567,7 @@
 #Region "Methods"
         Public Overrides Sub Clear()
             _Resource_ID = 0
-            _Resource_Type = New Objects.Collaboration_Module.Resource_Type
+            _Resource_Type = New Objects.PSS_Projects.Resource_Type
             _Month = Now.Date
             _Hours = 0
             _FTE = 0
@@ -881,7 +881,7 @@
         Private _Project_ID As Integer
         Private _Project_Name As String
         Private _Task_ID As Integer
-        Private _Task_Type As String
+        Private _Stage As String
         Private _Resource_ID As Integer
         Private _Month As Date
         Private _Owner As New Objects.User
@@ -904,9 +904,9 @@
                 Return _Task_ID
             End Get
         End Property
-        Public ReadOnly Property Task_Type() As String
+        Public ReadOnly Property Stage() As String
             Get
-                Return _Task_Type
+                Return _Stage
             End Get
         End Property
         Protected Friend ReadOnly Property Resource_ID() As Integer
@@ -945,7 +945,15 @@
 #End Region
 #Region "Methods"
         Public Overrides Sub Clear()
-
+            _Value = 0
+            _Project_ID = 0
+            _Project_Name = ""
+            _Task_ID = 0
+            _Stage = ""
+            _Resource_ID = 0
+            _Month = Now.Date
+            _Input_Type = ""
+            _FTE_Value = 0
         End Sub
         Public Overrides Function Get_Delete() As Transaction_Group
 
@@ -959,8 +967,7 @@
         Public Overrides Function Get_Select(Optional ByVal Code_ID As Object = Nothing) As Transaction
             Dim T As New Transaction
 
-
-            T.SQL_String = "Select * From [vw_CM_Open_Task]"
+            T.SQL_String = "Select * From [vw_PSS_Open_Task]"
             If Not Code_ID Is Nothing Then
                 T.SQL_String = T.SQL_String & " Where [Resource ID] = @ID"
                 T.Include_Parameter("@ID", Code_ID)
@@ -979,7 +986,7 @@
                 _Project_ID = Data.Rows(0)("Project ID")
                 _Project_Name = Data.Rows(0)("Project Name")
                 _Task_ID = Data.Rows(0)("Task ID")
-                _Task_Type = Data.Rows(0)("Task Type")
+                _Stage = Data.Rows(0)("Task Type")
                 _Resource_ID = Data.Rows(0)("Resource ID")
                 _Month = Data.Rows(0)("Month")
                 _Owner.Load(Data.Rows(0)("Owner"))
@@ -990,6 +997,10 @@
             End If
         End Function
 #End Region
+
+        Public Sub New()
+
+        End Sub
     End Class
     Public Class PSS_Entry
         Inherits Base
@@ -999,7 +1010,7 @@
 #End Region
 #Region "Variables"
         Private _Saved_By As New Objects.User
-        Private _Resources As New List(Of Objects.Collaboration_Module.CM_Resource_Entry)
+        Private _Resources As New List(Of Objects.PSS_Projects.PSS_Resource_Entry)
         Private _Entry_Date As Date
 #End Region
 #Region "Properties"
@@ -1011,11 +1022,11 @@
                 _Saved_By.Load(value)
             End Set
         End Property
-        Public Property Resources() As List(Of Objects.Collaboration_Module.CM_Resource_Entry)
+        Public Property Resources() As List(Of Objects.PSS_Projects.PSS_Resource_Entry)
             Get
                 Return _Resources
             End Get
-            Set(ByVal value As List(Of Objects.Collaboration_Module.CM_Resource_Entry))
+            Set(ByVal value As List(Of Objects.PSS_Projects.PSS_Resource_Entry))
                 _Resources = value
             End Set
         End Property
@@ -1042,7 +1053,7 @@
         Public Overrides Function Get_Insert() As Transaction_Group
             Dim TG As New Objects.Transaction_Group
 
-            For Each R As Objects.Collaboration_Module.CM_Resource_Entry In _Resources
+            For Each R As Objects.PSS_Projects.PSS_Resource_Entry In _Resources
                 If R.Value > 0 Then
                     Dim T As New Objects.Transaction
                     T.SQL_String = "Insert Into pss_Resource_Entry(Record_Date, Created_By, Resource_ID, Entry_Month, Entry_Value, Entry_FTE_Value) Values({Fn Now()}, @Created_By, @Resource_ID, @Entry_Month, @Entry_Value, @Entry_FTE_Value)"
@@ -1087,7 +1098,7 @@
 
             If Data.Rows.Count > 0 Then
                 For Each R As DataRow In Data.Rows
-                    Dim RS As New Objects.Collaboration_Module.CM_Resource_Entry
+                    Dim RS As New Objects.PSS_Projects.PSS_Resource_Entry
                     RS.Load(R("Resource ID"))
                     _Resources.Add(RS)
                 Next
@@ -1315,13 +1326,12 @@
             End Property
             Public ReadOnly Property Task_Value() As String
                 Get
-
                     Dim i As Integer = Count_Selected(_Tasks)
 
                     If i > 0 Then
-                        Return "[" & i & "] task(s) selected"
+                        Return "[" & i & "] Stage(s) selected"
                     Else
-                        Return "Show all task"
+                        Return "Show all stages"
                     End If
 
                 End Get
@@ -1496,9 +1506,11 @@
 
             End Sub
             Public Sub New(ByVal ID As Object, ByVal Description As String)
-                _Selected = True
-                _ID = ID
-                _Name = Description
+                If Not ID Is Nothing AndAlso Not Description Is Nothing Then
+                    _Selected = True
+                    _ID = ID
+                    _Name = Description
+                End If
             End Sub
 #End Region
         End Class
