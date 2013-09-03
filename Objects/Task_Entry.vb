@@ -18,6 +18,7 @@ Public Class Task_Entry
     Private _Hours As Double
     Private _Hours_Average As Double
     Private _FTE As Double
+    Private _Task_Completed As Boolean
 #End Region
 #Region "Properties"
     Public Property Entry_ID() As Integer
@@ -89,7 +90,14 @@ Public Class Task_Entry
             Return Math.Round(_FTE, 2)
         End Get
     End Property
-
+    Public Property Task_Completed() As Boolean
+        Get
+            Return _Task_Completed
+        End Get
+        Set(ByVal value As Boolean)
+            _Task_Completed = value
+        End Set
+    End Property
 #End Region
 #Region "Methods"
     Public Overrides Sub Clear()
@@ -116,7 +124,7 @@ Public Class Task_Entry
         Dim T As New Transaction
         Dim TG As New Transaction_Group
 
-        T.SQL_String = "Insert Into [Task_Entry] (TaskID, Entry_Date, Created_By, Entry_Type, Hours, FTE, Hours_AVG) Values(@TaskID, @Entry_Date, @Created_By, @Entry_Type, @Hours, @FTE, @Hours_AVG)"
+        T.SQL_String = "Insert Into [Task_Entry] (TaskID, Entry_Date, Created_By, Entry_Type, Hours, FTE, Hours_AVG, Task_Completed) Values(@TaskID, @Entry_Date, @Created_By, @Entry_Type, @Hours, @FTE, @Hours_AVG, @Task_Completed)"
         T.Include_Parameter("@TaskID", _Task.ID)
         T.Include_Parameter("@Entry_Date", _Entry_Date)
         T.Include_Parameter("@Created_By", _Created_By)
@@ -124,8 +132,17 @@ Public Class Task_Entry
         T.Include_Parameter("@Hours", _Hours)
         T.Include_Parameter("@FTE", _FTE)
         T.Include_Parameter("@Hours_AVG", _Hours_Average)
+        T.Include_Parameter("@Task_Completed", _Task_Completed)
 
         TG.Include_Transaction(T)
+
+        If _Task_Completed Then
+            T = New Transaction
+            T.SQL_String = ("Update Task Set Comp_Ind = @Comp_Ind, Comp_By = @Comp_Ind, Comp_Date = {fn now()} Where ID = @ID")
+            T.Include_Parameter("@ID", _Task.ID)
+            T.Include_Parameter("@Comp_Ind", Environ("USERID"))
+            TG.Include_Transaction(T)
+        End If
 
         Return TG
     End Function
@@ -159,8 +176,15 @@ Public Class Task_Entry
         T.Include_Parameter("@Hours", _Hours)
         T.Include_Parameter("@FTE", _FTE)
         T.Include_Parameter("@Hours_AVG", _Hours_Average)
-
         TG.Include_Transaction(T)
+
+        If _Task_Completed Then
+            T = New Transaction
+            T.SQL_String = ("Update Task Set Comp_Ind = @Comp_Ind, Comp_By = @Comp_Ind, Comp_Date = {fn now()} Where ID = @ID")
+            T.Include_Parameter("@ID", _Task.ID)
+            T.Include_Parameter("@Comp_Ind", Environ("USERID"))
+            TG.Include_Transaction(T)
+        End If
         Return TG
     End Function
     Public Overrides Function Load(Optional ByVal Code_ID As Object = Nothing) As Boolean

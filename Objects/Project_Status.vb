@@ -4,7 +4,6 @@
     Private _ID As String
     Private _Description As String
 #End Region
-
 #Region "Properties"
     Public Property ID() As String
         Get
@@ -14,7 +13,6 @@
             _ID = value
         End Set
     End Property
-
     Public Property Description() As String
         Get
             Return _Description
@@ -24,12 +22,10 @@
         End Set
     End Property
 #End Region
-
 #Region "Methods"
     Public Sub New()
 
     End Sub
-
     Public Sub New(ByVal pIDFRM As String)
         If Load(pIDFRM) Then
             _ID = Data.Rows(0)("ID")
@@ -45,9 +41,13 @@
         Dim T As New Transaction
         Dim TG As New Transaction_Group
 
-        T.SQL_String = "Delete From [Project_Status] Where ID = @ID"
-        T.Include_Parameter("@ID", _ID)
-        TG.Include_Transaction(T)
+        If _ID <> 4 Then ' 4 = Closed: Do not delete this code, it is taken for filtering
+            T.SQL_String = "Delete From [Project_Status] Where ID = @ID"
+            T.Include_Parameter("@ID", _ID)
+            TG.Include_Transaction(T)
+        Else
+            MsgBox("Status <Closed> must not be deleted.", MsgBoxStyle.Exclamation)
+        End If
 
         Return TG
     End Function
@@ -82,9 +82,13 @@
         Dim T As New Transaction
         Dim TG As New Transaction_Group
 
-        T.SQL_String = "Update [Project_Status] Set Description = @Description Where ID = @ID"
-        T.Include_Parameter("@ID", _ID)
-        T.Include_Parameter("@Description", _Description)
+        If _ID <> 4 Then ' 4 = Closed: Do not delete this code, it is taken for filtering
+            T.SQL_String = "Update [Project_Status] Set Description = @Description Where ID = @ID"
+            T.Include_Parameter("@ID", _ID)
+            T.Include_Parameter("@Description", _Description)
+        Else
+            MsgBox("Status <Closed> must not be modified.", MsgBoxStyle.Exclamation)
+        End If
 
         TG.Include_Transaction(T)
     End Function

@@ -5,7 +5,6 @@ Imports System.Text
 Imports iXL = Microsoft.Office.Interop.Excel
 
 Public Class MSExcel
-
     Public Function ExportToExcel(ByVal pTable As System.Data.DataTable) As Boolean
         Dim xlApp As Excel.Application
         Dim xlBook As Excel.Workbook
@@ -33,7 +32,6 @@ Public Class MSExcel
             Return False
         End Try
     End Function
-
     Public Function ExportToExcel(ByVal pTable As System.Data.DataTable, ByVal pFilePath As String) As Boolean
         Dim xlApp As Excel.Application
         Dim xlBook As Excel.Workbook
@@ -70,7 +68,6 @@ Public Class MSExcel
             rs = Nothing
         End Try
     End Function
-
     Public Shared Sub DataTableToRange(ByVal anchorCell As Excel.Range, _
     ByVal tableToCopy As System.Data.DataTable, _
     Optional ByVal tableHeader As String = "")
@@ -98,7 +95,6 @@ Public Class MSExcel
         anchorCell.Offset(1, 0).CopyFromRecordset(ConvertToRecordset(tableToCopy))
 
     End Sub
-
     Public Shared Function ConvertToRecordset(ByVal inTable As System.Data.DataTable) As ADODB.Recordset
         Dim result As ADODB.Recordset = New ADODB.Recordset()
         Dim Value As String = ""
@@ -166,7 +162,6 @@ Public Class MSExcel
             Return Nothing
         End Try
     End Function
-
     Shared Function TranslateType(ByVal columnType As Type) As ADODB.DataTypeEnum
         Select Case columnType.UnderlyingSystemType.ToString()
 
@@ -218,6 +213,103 @@ Public Class MSExcel
         Return ADODB.DataTypeEnum.adVarChar
 
     End Function
+    ''' <summary>
+    ''' Read a MS Excel file 2010+
+    ''' </summary>
+    ''' <param name="FilePath">File path</param>
+    ''' <param name="Sheet">Sheet where data is</param>
+    ''' <param name="FirstCol_Has_ColNames">If first row has columns name, Columns in datatable will have the same name </param>
+    ''' <returns>Datatable</returns>
+    ''' <remarks></remarks>
+    Public Function Read_XLSX(ByVal FilePath As String, ByVal Sheet As String, ByVal FirstCol_Has_ColNames As Boolean) As System.Data.DataTable
+        Dim ConnectionString As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=""" & FilePath & """;Extended Properties=""Excel 12.0 Xml;HDR=NO;IMEX=1;ReadOnly=true;"""
+        Dim conn As New OleDb.OleDbConnection(ConnectionString)
+        Dim selString As String = "SELECT * FROM [" & Sheet & "$]"
+        Dim CmdSelect As New OleDb.OleDbCommand(selString, conn)
+        Dim Adapter As New OleDb.OleDbDataAdapter(CmdSelect)
+        Dim ds As DataSet = New DataSet
+        Dim rawDataTbl As New System.Data.DataTable
 
+        Try
+            If Sheet_Exist(FilePath, Sheet) Then
+                Adapter.Fill(ds)
+                rawDataTbl = ds.Tables(0)
+                conn.Close()
+                conn = Nothing
+
+                If rawDataTbl.Rows.Count > 0 Then
+                    Dim I As Integer
+                    If FirstCol_Has_ColNames Then
+                        I = 0
+                        For Each Col As DataColumn In rawDataTbl.Columns
+                            If Not DBNull.Value.Equals(rawDataTbl.Rows(0)(Col.ColumnName)) Then
+                                If rawDataTbl.Columns.IndexOf(rawDataTbl.Rows(0)(Col.ColumnName)) > 0 Then
+                                    Col.ColumnName = rawDataTbl.Rows(0)(Col.ColumnName) & "_" & I.ToString
+                                    I += 1
+                                Else
+                                    Col.ColumnName = rawDataTbl.Rows(0)(Col.ColumnName)
+                                End If
+                            Else
+                                Col.ColumnName = "No Col Name" & "_" & I
+                                I += 1
+                            End If
+                        Next
+                        rawDataTbl.Rows(0).Delete()
+                        rawDataTbl.AcceptChanges()
+                    End If
+                End If
+            Else
+                MsgBox("Sheet in file not found. Data must be in sheet name: '" & Sheet & "' in order to be uploaded", MsgBoxStyle.Exclamation, "Sheet: " & Sheet & " not found")
+            End If
+        Catch e As Exception
+            MsgBox("Error while querying file as follows: " & vbCrLf & e.Message, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return rawDataTbl
+    End Function
+    ''' <summary>
+    ''' Returns a list of sheets in file
+    ''' </summary>
+    ''' <param name="FilePath">File path</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Function Get_XL_Sheets(ByVal FilePath As String) As List(Of String)
+        Dim _Sheets As New List(Of String)
+        Dim xlApp As New Excel.Application
+        Dim wb As Excel.Workbook
+
+        wb = xlApp.Workbooks.Open(Filename:=FilePath)
+        For Each sheet As Excel.Worksheet In wb.Worksheets
+            _Sheets.Add(sheet.Name)
+        Next
+
+        wb.Close()
+        wb = Nothing
+        xlApp.Quit()
+        xlApp = Nothing
+        Return _Sheets
+    End Function
+    ''' <summary>
+    ''' Verify if the sheet exists
+    ''' </summary>
+    ''' <param name="FilePath">File path</param>
+    ''' <param name="Sheet_Name">Sheet to be found</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Function Sheet_Exist(ByVal FilePath$, ByVal Sheet_Name$) As Boolean
+        Dim _Found As Boolean = False
+        Dim _Sheets As New List(Of String)
+
+        _Sheets = Get_XL_Sheets(FilePath)
+        For Each XLSheet In _Sheets
+            If XLSheet = Sheet_Name Then
+                _Found = True
+            End If
+        Next
+
+        Return _Found
+    End Function
 End Class
+
+
 

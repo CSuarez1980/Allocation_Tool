@@ -69,8 +69,10 @@ Partial Class frmSearch
         Me.dtgSearch.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtgSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dtgSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgSearch.Location = New System.Drawing.Point(6, 49)
+        Me.dtgSearch.MultiSelect = False
         Me.dtgSearch.Name = "dtgSearch"
         Me.dtgSearch.ReadOnly = True
         Me.dtgSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect

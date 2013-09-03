@@ -102,6 +102,12 @@
     <Compile Include="clm_Tasks_Type.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="cp_Forecast.Designer.vb">
+      <DependentUpon>cp_Forecast.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cp_Forecast.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Custom.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -189,6 +195,12 @@
     <Compile Include="frmTask_Entry_Values.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmTesting.Designer.vb">
+      <DependentUpon>frmTesting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTesting.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmUsers.Designer.vb">
       <DependentUpon>frmUsers.vb</DependentUpon>
     </Compile>
@@ -247,6 +259,12 @@
     <Compile Include="pss_Report.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Splash.Designer.vb">
+      <DependentUpon>Splash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Splash.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="clm_Report.resx">
@@ -260,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="clm_Tasks_Type.resx">
       <DependentUpon>clm_Tasks_Type.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cp_Forecast.resx">
+      <DependentUpon>cp_Forecast.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms.resx">
       <DependentUpon>Forms.vb</DependentUpon>
@@ -303,6 +324,9 @@
     <EmbeddedResource Include="frmTask_Entry_Values.resx">
       <DependentUpon>frmTask_Entry_Values.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTesting.resx">
+      <DependentUpon>frmTesting.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUsers.resx">
       <DependentUpon>frmUsers.vb</DependentUpon>
     </EmbeddedResource>
@@ -331,6 +355,9 @@
     <EmbeddedResource Include="pss_Report.resx">
       <DependentUpon>pss_Report.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Splash.resx">
+      <DependentUpon>Splash.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -344,10 +371,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Custom\Custom.vbproj">
-      <Project>{4A670AC1-D5D2-4102-BD51-3989D877A6C1}</Project>
-      <Name>Custom</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Objects\Objects.vbproj">
       <Project>{5B83ABD0-0595-4985-B08A-32267692FB26}</Project>
       <Name>Objects</Name>
@@ -426,6 +449,13 @@
     <None Include="Resources\agt_login.png" />
     <None Include="Resources\agt_softwareD.png" />
     <None Include="Resources\advancedsettings.png" />
+    <None Include="Resources\pss delivery.png" />
+    <None Include="Resources\pss delivery 2 .png" />
+    <None Include="Resources\pss delivery 2 1.png" />
+    <None Include="Resources\CAPLogo.PNG" />
+    <None Include="Resources\messagebox_warning.png" />
+    <None Include="Resources\loopnone.png" />
+    <None Include="Resources\messagebox_info.png" />
     <Content Include="ServerConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

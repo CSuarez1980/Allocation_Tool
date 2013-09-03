@@ -48,6 +48,7 @@
         For Each ET As Objects.Task_Entry In _Entry_List
             ET.Allow_Action(True)
             ET.Created_By = Environ("USERID")
+
             If Not ET.Save() Then
                 Saved = False
             End If
@@ -65,3 +66,5 @@
 #End Region
 
 End Class
+
+

@@ -17,7 +17,6 @@
         Contractor = 6
         Development_Resource = 7
     End Enum
-
     Public Class CM_Project
         Inherits Base
 #Region "Events"
@@ -371,12 +370,12 @@
     End Class
     Public Class CM_Task
         Inherits Base
-
 #Region "Variables"
         Private _Task_ID As Integer
         Private _Task_Type As New Objects.Collaboration_Module.Task_Type
         Private _Allocation As Double
         Private _Resources As New List(Of CM_Resource)
+        Private _Hours As Double
 #End Region
 #Region "Properties"
         Public Property ID() As Integer
@@ -408,6 +407,16 @@
                 _Resources = value
             End Set
         End Property
+        Public ReadOnly Property Allocation() As Double
+            Get
+                Return Math.Round(_Allocation, 2)
+            End Get
+        End Property
+        Public ReadOnly Property Hours() As Double
+            Get
+                Return Math.Round(_Hours, 2)
+            End Get
+        End Property
 #End Region
 #Region "Methods"
         Public Sub New()
@@ -418,7 +427,6 @@
             Load(ID)
             Object_Status = Objects.Object_Status.Update
         End Sub
-
         Public Sub New(ByVal _Type As String)
             Clear()
             Object_Status = Objects.Object_Status.Insert
@@ -444,6 +452,7 @@
             _Task_ID = 0
             _Task_Type = New Objects.Collaboration_Module.Task_Type
             _Allocation = 0
+            _Hours = 0
             _Resources.Clear()
         End Sub
         Public Overrides Function Get_Delete() As Transaction_Group
@@ -536,19 +545,15 @@
         End Function
         Public Overrides Function Load(Optional ByVal Code_ID As Object = Nothing) As Boolean
             MyBase.Load(Code_ID)
-
             If Not Data Is Nothing AndAlso Not Code_ID Is Nothing Then
                 _Task_ID = Data(0)("ID").ToString
                 _Task_Type.Load(Data(0)("Task_Type_ID").ToString)
                 _Allocation = Data(0)("Allocation").ToString
-
                 'Load task resources:
                 Dim TR As New DataTable
                 TR = GetTable("Select * From clm_Task_Resource Where ID_Task = " & Code_ID)
-
                 If TR.Rows.Count > 0 Then
                     For Each r As DataRow In TR.Rows
-
                         Dim RS As New CM_Resource(r("IDResource"))
                         If RS.ID > 0 Then
                             _Resources.Add(RS)
@@ -556,6 +561,7 @@
                     Next
                 End If
             End If
+            Get_Allocation_Value()
         End Function
         Public Sub Remove_Resource(ByVal Resource_ID As Integer)
             For Each r As CM_Resource In _Resources
@@ -578,11 +584,23 @@
                         Exit Sub
                     End If
 
+                    Get_Allocation_Value()
                 End If
             Next
         End Sub
-#End Region
 
+        Private Sub Get_Allocation_Value()
+            _Allocation = 0
+            _Hours = 0
+
+            For Each r In _Resources
+                _Allocation += r.MonthlyFTE
+                _Hours += r.Hours
+            Next
+            _Allocation = _Allocation
+            _Hours = _Hours
+        End Sub
+#End Region
     End Class
     Public Class CM_Resource
         Inherits Base
@@ -613,7 +631,6 @@
                 If Not _Resource_Type.Load(value) Then
                     MsgBox("Invalid resource type code.", MsgBoxStyle.Information, "Resource type: " & value)
                 End If
-
             End Set
         End Property
         Public ReadOnly Property Res_Type_Description() As String
@@ -812,7 +829,6 @@
             _ID = 0
             _Description = ""
         End Sub
-
         Public Overrides Function Get_Delete() As Transaction_Group
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
@@ -825,7 +841,6 @@
 
             Return TG
         End Function
-
         Public Overrides Function Get_Insert() As Transaction_Group
             Dim SP As New Objects.Stored_Procedure
             Dim TG As New Objects.Transaction_Group
@@ -847,13 +862,11 @@
 
             Return TG
         End Function
-
         Public Overrides Function Get_Search_List() As Transaction
             Dim T As New Transaction
             T.SQL_String = "Select ID as Code, [Description] as Value From [clm_Task_Type]"
             Return T
         End Function
-
         Public Overrides Function Get_Select(Optional ByVal Code_ID As Object = Nothing) As Transaction
             Dim T As New Transaction
             T.SQL_String = "Select * From clm_Task_Type Where ID = @ID"
@@ -862,8 +875,6 @@
 
             Return T
         End Function
-
-
         Public Overrides Function Get_Update() As Transaction_Group
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
@@ -877,7 +888,6 @@
 
             Return TG
         End Function
-
         Public Overrides Function Load(Optional ByVal Code_ID As Object = Nothing) As Boolean
             If MyBase.Load(Code_ID) Then
                 _ID = Data.Rows(0)("ID")
@@ -1000,7 +1010,6 @@
     Public Class CM_Resource_Entry
         Inherits Objects.Base
         'Month Name @SQLServer: CAST(DATENAME(dbo.clm_Resource.Month, dbo.clm_Resource.Month) AS varchar(10)) + ' ' + CAST(DATEPART(year, dbo.clm_Resource.Month) AS varchar(4))
-
 #Region "Variables"
         Private _Value As Double
         Private _Project_ID As Integer
@@ -1403,7 +1412,6 @@
         End Function
 #End Region
     End Class
-
     Namespace Variants
         Public Class clm_Variant
 #Region "Variables"
@@ -1413,7 +1421,6 @@
             Private _Owner As New List(Of clm_Var)
             Private _Resource As New List(Of clm_Var)
 #End Region
-
 #Region "Properties"
             Public ReadOnly Property Projects() As List(Of clm_Var)
                 Get
@@ -1507,7 +1514,6 @@
                 End Get
             End Property
 #End Region
-
 #Region "Methods"
             Private Function Count_Selected(ByVal List As List(Of clm_Var)) As Integer
                 Dim c As Integer = 0
@@ -1601,14 +1607,12 @@
             End Function
 #End Region
         End Class
-
         Public Class clm_Var
 #Region "Variables"
             Private _Selected As Boolean
             Private _ID As Object
             Private _Name As String
 #End Region
-
 #Region "Properties"
             Public Property Selected() As Boolean
                 Get
@@ -1636,7 +1640,6 @@
             End Property
 
 #End Region
-
 #Region "Methods"
             Public Sub New()
 
@@ -1649,7 +1652,6 @@
                 End If
             End Sub
 #End Region
-
         End Class
     End Namespace
 End Namespace

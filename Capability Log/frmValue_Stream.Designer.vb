@@ -65,8 +65,8 @@ Partial Class frmValue_Stream
         Me.Controls.Add(Me.lblDescription)
         Me.Controls.Add(Me.txtID)
         Me.Controls.Add(Me.lblID)
-        Me.Message = ""
         Me.Name = "frmValue_Stream"
+        Me.Text = "Value stream"
         Me.Controls.SetChildIndex(Me.lblID, 0)
         Me.Controls.SetChildIndex(Me.txtID, 0)
         Me.Controls.SetChildIndex(Me.lblDescription, 0)

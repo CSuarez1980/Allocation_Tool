@@ -8,7 +8,6 @@
         dtgProfile.DataBindings.Add("DataSource", BS, "Profile_Table", True, DataSourceUpdateMode.OnPropertyChanged)
 
     End Sub
-
     Private Function Check_User() As Boolean
         If _Users.TNumber = "" Then
             cmdCancel.PerformClick()
@@ -19,7 +18,6 @@
             Me.ShowMessage(Msg, MsgType.Warning)
         End If
     End Function
-
     Private Sub cmdAddProfile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAdd.Click
         Dim SF As New frmSearch
         Dim NPF As Integer = 0
@@ -40,13 +38,19 @@
         _Users.Remove_Profile(PFL)
     End Sub
 
-
-
     Public Overrides Sub Lock_Gui()
+        cmdAdd.Enabled = False
+        cmdRemove.Enabled = False
 
+        txtTNumber.Enabled = False
+        txtName.Enabled = False
     End Sub
 
     Public Overrides Sub Unlock_GUI(Optional ByVal Unlock_Type As Unlock_Type = Unlock_Type.Create_Record)
+        cmdAdd.Enabled = True
+        cmdRemove.Enabled = True
 
+        txtTNumber.Enabled = True
+        txtName.Enabled = True
     End Sub
 End Class

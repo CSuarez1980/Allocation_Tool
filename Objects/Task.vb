@@ -198,7 +198,7 @@
         Dim T As New Transaction
         Dim TG As New Transaction_Group
 
-        T.SQL_String = "Update [Task] Set Del_Ind = 0 Where ID = @ID"
+        T.SQL_String = "Update [Task] Set Del_Ind = 1 Where ID = @ID"
         T.Include_Parameter("@ID", _ID)
         TG.Include_Transaction(T)
 

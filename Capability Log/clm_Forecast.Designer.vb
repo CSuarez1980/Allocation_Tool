@@ -195,6 +195,7 @@ Partial Class clm_Forecast
         Me.txtMMAllocation.ReadOnly = True
         Me.txtMMAllocation.Size = New System.Drawing.Size(61, 20)
         Me.txtMMAllocation.TabIndex = 14
+        Me.txtMMAllocation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label4
         '
@@ -214,6 +215,7 @@ Partial Class clm_Forecast
         Me.txtMMHours.ReadOnly = True
         Me.txtMMHours.Size = New System.Drawing.Size(61, 20)
         Me.txtMMHours.TabIndex = 12
+        Me.txtMMHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label3
         '
@@ -337,6 +339,7 @@ Partial Class clm_Forecast
         Me.txtTWAllocation.ReadOnly = True
         Me.txtTWAllocation.Size = New System.Drawing.Size(61, 20)
         Me.txtTWAllocation.TabIndex = 22
+        Me.txtTWAllocation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label5
         '
@@ -451,6 +454,7 @@ Partial Class clm_Forecast
         Me.txtHCAllocation.ReadOnly = True
         Me.txtHCAllocation.Size = New System.Drawing.Size(61, 20)
         Me.txtHCAllocation.TabIndex = 22
+        Me.txtHCAllocation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label8
         '
@@ -470,6 +474,7 @@ Partial Class clm_Forecast
         Me.txtHCHours.ReadOnly = True
         Me.txtHCHours.Size = New System.Drawing.Size(61, 20)
         Me.txtHCHours.TabIndex = 20
+        Me.txtHCHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label9
         '
@@ -584,6 +589,7 @@ Partial Class clm_Forecast
         Me.txtMTAllocation.ReadOnly = True
         Me.txtMTAllocation.Size = New System.Drawing.Size(61, 20)
         Me.txtMTAllocation.TabIndex = 26
+        Me.txtMTAllocation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label11
         '
@@ -603,6 +609,7 @@ Partial Class clm_Forecast
         Me.txtMTHours.ReadOnly = True
         Me.txtMTHours.Size = New System.Drawing.Size(61, 20)
         Me.txtMTHours.TabIndex = 24
+        Me.txtMTHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label12
         '
@@ -717,6 +724,7 @@ Partial Class clm_Forecast
         Me.txtSDAllocation.ReadOnly = True
         Me.txtSDAllocation.Size = New System.Drawing.Size(61, 20)
         Me.txtSDAllocation.TabIndex = 22
+        Me.txtSDAllocation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label14
         '
@@ -736,6 +744,7 @@ Partial Class clm_Forecast
         Me.txtSDHours.ReadOnly = True
         Me.txtSDHours.Size = New System.Drawing.Size(61, 20)
         Me.txtSDHours.TabIndex = 20
+        Me.txtSDHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label15
         '
@@ -850,6 +859,7 @@ Partial Class clm_Forecast
         Me.txtXPAllocation.ReadOnly = True
         Me.txtXPAllocation.Size = New System.Drawing.Size(61, 20)
         Me.txtXPAllocation.TabIndex = 22
+        Me.txtXPAllocation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label17
         '
@@ -869,6 +879,7 @@ Partial Class clm_Forecast
         Me.txtXPHours.ReadOnly = True
         Me.txtXPHours.Size = New System.Drawing.Size(61, 20)
         Me.txtXPHours.TabIndex = 20
+        Me.txtXPHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label18
         '

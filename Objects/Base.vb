@@ -27,6 +27,7 @@ Public MustInherit Class Base
     Private _Action As SQL_Action = Objects.SQL_Action.Nothing
     Private _Execute_Action As Boolean
     Private _Object_Status As Object_Status
+    Private _GlobalUser As String = ""
 #End Region
 #Region "Properties"
     Protected Friend ReadOnly Property Data() As DataTable
@@ -144,10 +145,10 @@ Public MustInherit Class Base
     End Sub
     Public Sub New()
         _Object_Status = Objects.Object_Status.Insert
+        _GlobalUser = Environ("UserID")
     End Sub
 #End Region
 End Class
-
 Public Class Transaction
 #Region "Variables"
     Private _SQL_String As String = Nothing
@@ -196,7 +197,6 @@ Public Class Transaction
     End Sub
 #End Region
 End Class
-
 Public Class Transaction_Group
 #Region "Variables"
     Private _Transactions As New List(Of Transaction)
@@ -233,7 +233,6 @@ Public Class Transaction_Group
     End Sub
 #End Region
 End Class
-
 Public Class Connection
     'Inherits Transaction
 #Region "Variables"
@@ -278,7 +277,6 @@ Public Class Connection
 
             Dim oServer As New Server
             Return oServer.GetConnectionString
-
 
         End Get
     End Property
@@ -361,6 +359,32 @@ Public Class Connection
     '    End If
     '    Return _Result
     'End Function
+
+    Public Function AppendTableToSqlServer(ByVal TableInServer$, ByVal DataTable As DataTable) As Boolean
+        Dim SqlBulkCopy As System.Data.SqlClient.SqlBulkCopy
+        If Me.OpenConnection Then
+            SqlBulkCopy = New SqlClient.SqlBulkCopy(_ConnectionDB)
+            Try
+                SqlBulkCopy.BulkCopyTimeout = 10000
+                SqlBulkCopy.DestinationTableName = TableInServer
+                SqlBulkCopy.WriteToServer(DataTable)
+                Return True
+            Catch ex As Exception
+                'Throw New Exception(ex.Message)
+                'MsgBox(ex.Message)
+                Return False
+            Finally
+                SqlBulkCopy.Close()
+            End Try
+        Else
+            MsgBox("Unable to open SQL connection.")
+            Return False
+        End If
+
+        SqlBulkCopy = Nothing
+    End Function
+
+
     Public Overridable Function Execute(ByVal pTransaction As Transaction) As Boolean
         Dim _Result As Boolean = False
         If Not pTransaction Is Nothing Then
@@ -544,7 +568,6 @@ Public Class Connection
     Public Event Exec_Result(ByVal pSuccess As Boolean, ByVal pMessage As String)
 #End Region
 End Class
-
 Friend Class Server
 #Region "Variables"
     Private _ServerName As String
@@ -652,7 +675,6 @@ Friend Class Server
     End Sub
 #End Region
 End Class
-
 Public Class A_Parameter
 #Region "Variables"
     Private _Value As Object
@@ -702,7 +724,6 @@ Public Class A_Parameter
     End Sub
 #End Region
 End Class
-
 Public Class Stored_Procedure
     Inherits Objects.Connection
 #Region "Variables"
@@ -800,7 +821,6 @@ Public Class Stored_Procedure
     End Function
 #End Region
 End Class
-
 Namespace Functions
     Namespace Collaboration_Module
         Public Module CM_Functions
@@ -809,7 +829,7 @@ Namespace Functions
 
                 Select Case InputType
                     Case CM_Input_Type.Materials
-                        Returned_Value = (Value * (0.033 / 60)) / 173.33
+                        Returned_Value = (Value * 0.033 / 60) / 173.33
                     Case CM_Input_Type.Hours
                         Returned_Value = Value / 173.33
                 End Select
@@ -831,7 +851,5 @@ Namespace Functions
                 Return _Total
             End Function
         End Module
-
-
     End Namespace
 End Namespace

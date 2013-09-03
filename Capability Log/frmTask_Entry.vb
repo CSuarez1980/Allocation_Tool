@@ -2,6 +2,7 @@
     Private _Projects As DataTable
     Private _Task_List As New List(Of Objects.Task)
     Private _Task As DataTable
+    Private _OpenTask As New DataTable
 
     Private Sub frmTask_Entry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim db As New Objects.Connection
@@ -17,6 +18,13 @@
         Else
             MsgBox("You don't have actives projects at this moment.", MsgBoxStyle.Information)
         End If
+
+        Tr = New Objects.Transaction
+        Tr.Set_SQLString("Select * From vw_CI_Open_Task Where Owner = @Owner")
+        Tr.Include_Parameter("@Owner", goUser.TNumber)
+        _OpenTask = db.GetTable(Tr)
+
+        dtg_OpenTask.DataSource = _OpenTask
     End Sub
 
     Private Sub dtgProjects_RowEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dtgProjects.RowEnter
@@ -57,4 +65,21 @@
         End If
     End Sub
 
+    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
+        dtg_OpenTask.EndEdit()
+        _Task_List.Clear()
+
+        For Each R As DataGridViewRow In dtg_OpenTask.Rows
+            If R.Cells("CK").Value Then
+                Dim TE As New Objects.Task(R.Cells("Task ID").Value)
+                _Task_List.Add(TE)
+            End If
+        Next
+
+        If _Task_List.Count > 0 Then
+            Dim frm As New frmTask_Entry_Values
+            frm.Tasks = _Task_List
+            frm.ShowDialog()
+        End If
+    End Sub
 End Class

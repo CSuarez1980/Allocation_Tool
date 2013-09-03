@@ -275,6 +275,7 @@
         Private _Task_Type As New Objects.PSS_Projects.Task_Type
         Private _Allocation As Double
         Private _Resources As New List(Of PSS_Resource)
+        Private _Hours As Double
 #End Region
 #Region "Properties"
         Public Property ID() As Integer
@@ -446,6 +447,7 @@
                     Next
                 End If
             End If
+            Get_Allocation_Value()
         End Function
         Public Sub Remove_Resource(ByVal Resource_ID As Integer)
             For Each r As PSS_Resource In _Resources
@@ -470,6 +472,17 @@
 
                 End If
             Next
+        End Sub
+        Private Sub Get_Allocation_Value()
+            _Allocation = 0
+            _Hours = 0
+
+            For Each r In _Resources
+                _Allocation += r.MonthlyFTE
+                _Hours += r.Hours
+            Next
+            _Allocation = _Allocation
+            _Hours = _Hours
         End Sub
 #End Region
 

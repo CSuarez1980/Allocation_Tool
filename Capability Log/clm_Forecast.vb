@@ -30,6 +30,23 @@
         cboProject_Type.DataBindings.Add("SelectedValue", BS, "Type", True, DataSourceUpdateMode.OnPropertyChanged)
         cboStatus.DataBindings.Add("SelectedValue", BS, "Status", True, DataSourceUpdateMode.OnPropertyChanged)
 
+        txtMMAllocation.DataBindings.Add("Text", BS, "Mapping_Matching.Allocation", True, DataSourceUpdateMode.OnPropertyChanged)
+        txtMMHours.DataBindings.Add("Text", BS, "Mapping_Matching.Hours", True, DataSourceUpdateMode.OnPropertyChanged)
+
+        txtTWAllocation.DataBindings.Add("Text", BS, "Transactional.Allocation", True, DataSourceUpdateMode.OnPropertyChanged)
+
+        txtHCAllocation.DataBindings.Add("Text", BS, "HyperCare.Allocation", True, DataSourceUpdateMode.OnPropertyChanged)
+        txtHCHours.DataBindings.Add("Text", BS, "HyperCare.Hours", True, DataSourceUpdateMode.OnPropertyChanged)
+
+        txtMTAllocation.DataBindings.Add("Text", BS, "Meeting.Allocation", True, DataSourceUpdateMode.OnPropertyChanged)
+        txtMTHours.DataBindings.Add("Text", BS, "Meeting.Hours", True, DataSourceUpdateMode.OnPropertyChanged)
+
+        txtSDAllocation.DataBindings.Add("Text", BS, "Scope.Allocation", True, DataSourceUpdateMode.OnPropertyChanged)
+        txtSDHours.DataBindings.Add("Text", BS, "Scope.Hours", True, DataSourceUpdateMode.OnPropertyChanged)
+
+        txtXPAllocation.DataBindings.Add("Text", BS, "Expertise.Allocation", True, DataSourceUpdateMode.OnPropertyChanged)
+        txtXPHours.DataBindings.Add("Text", BS, "Expertise.Hours", True, DataSourceUpdateMode.OnPropertyChanged)
+
         dtgMapingAndMatching.DataSource = BS1
         dtgTransWork.DataSource = BS2
         dtgHypercare.DataSource = BS3

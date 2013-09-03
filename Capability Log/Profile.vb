@@ -39,7 +39,7 @@
         _BSForms.ResetBindings(False)
     End Sub
     Private Sub cmdRemoveProfile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdRemoveForm.Click
-        Dim FRM As String = (dtgForms.CurrentRow.Cells("ID Form").Value)
+        Dim FRM As String = (dtgForms.CurrentRow.Cells("ID").Value)
         _Profile.Remove_Form(FRM)
     End Sub
 
