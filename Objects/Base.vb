@@ -197,6 +197,7 @@ Public Class Transaction
     End Sub
 #End Region
 End Class
+
 Public Class Transaction_Group
 #Region "Variables"
     Private _Transactions As New List(Of Transaction)
@@ -233,6 +234,7 @@ Public Class Transaction_Group
     End Sub
 #End Region
 End Class
+
 Public Class Connection
     'Inherits Transaction
 #Region "Variables"
@@ -568,6 +570,7 @@ Public Class Connection
     Public Event Exec_Result(ByVal pSuccess As Boolean, ByVal pMessage As String)
 #End Region
 End Class
+
 Friend Class Server
 #Region "Variables"
     Private _ServerName As String

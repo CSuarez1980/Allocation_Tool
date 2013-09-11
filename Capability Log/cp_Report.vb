@@ -1,7 +1,9 @@
-﻿Public Class clm_Report
-    Private _Variant As New Objects.Collaboration_Module.Variants.clm_Variant
+﻿Public Class cp_Report
+
+    Private _Variant As New Objects.Corporate_Projects.Variants.cp_Variant
 
     Private Sub clm_Report_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'CapabilityLogDataSet.vw_cp_Raw_Data' table. You can move, or remove it, as needed.
         AddHandler dtpStart.ValueChanged, AddressOf Refresh_Variant
         AddHandler dtpEnd.ValueChanged, AddressOf Refresh_Variant
 
@@ -23,7 +25,7 @@
         Dim AD As New System.Data.SqlClient.SqlDataAdapter
         Dim Str As String = ""
 
-        Str = "Select * From vw_CM_Raw_Data Where ([Date] Between '" & (dtpStart.Value).ToShortDateString & "' and '" & (dtpEnd.Value).ToShortDateString & "')" & _Variant.Get_Filter
+        Str = "Select * From vw_cp_Raw_Data Where ([Date] Between '" & Year(dtpStart.Value.ToString) & Format(Month(dtpStart.Value.ToString), "00") & "' and '" & Year(dtpEnd.Value.ToString) & Format(Month(dtpEnd.Value.ToString), "00") & "')" & _Variant.Get_Filter
 
         cmd.CommandText = Str
         cmd.CommandType = CommandType.Text
@@ -53,9 +55,13 @@
         Dim DB As New Objects.Connection
         Dim T As New Objects.Transaction
 
-        T.Set_SQLString("Select * From vw_CM_Raw_Data Where [Date] between @Start and @End")
-        T.Include_Parameter("@Start", dtpStart.Value)
-        T.Include_Parameter("@End", dtpEnd.Value)
+        T.Set_SQLString("Select * From vw_cp_Raw_Data Where [Date] between @Start and @End")
+        T.Include_Parameter("@Start", Year(dtpStart.Value.ToString) & Format(Month(dtpStart.Value.ToString), "00"))
+        T.Include_Parameter("@End", Year(dtpEnd.Value.ToString) & Format(Month(dtpEnd.Value.ToString), "00"))
+
+        'T.Include_Parameter("@Start", dtpStart.Value)
+        'T.Include_Parameter("@End", dtpEnd.Value)
+
         Data = DB.GetTable(T)
 
         If Data.Rows.Count > 0 Then
@@ -67,58 +73,58 @@
 
             'Select Project based on date range
             Dim Q = (From P In Data _
-                     Group P By PI = P("ID"), PN = P("Project Name") Into Group _
+                     Group P By PI = P("Project"), PN = P("Name") Into Group _
                      Select New With { _
                                       .ID = PI, _
                                       .Name = PN})
 
             'Load variants:
             For Each I In Q
-                _Variant.Projects.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
+                _Variant.Projects.Add(New Objects.Corporate_Projects.Variants.cp_Var(I.ID, I.Name))
             Next
 
             'Select project types based on date range
             Dim PT = (From P In Data _
-                    Group P By PI = P("Project_Type_ID"), PN = P("Type_Description") Into Group _
+                    Group P By PI = P("Project Type"), PN = P("Project Type Description") Into Group _
                     Select New With { _
                                      .ID = PI, _
                                      .Name = PN})
             'Load variants:
             For Each I In PT
-                _Variant.Project_Types.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
+                _Variant.Project_Types.Add(New Objects.Corporate_Projects.Variants.cp_Var(I.ID, I.Name))
             Next
 
-            'Select tasks based on date range
-            Dim TT = (From P In Data _
-                    Group P By PI = P("Task ID"), PN = P("Task Name") Into Group _
-                    Select New With { _
-                                     .ID = PI, _
-                                     .Name = PN})
-            'Load variants:
-            For Each I In TT
-                _Variant.Task.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
-            Next
+            ''Select tasks based on date range
+            'Dim TT = (From P In Data _
+            '        Group P By PI = P("Task ID"), PN = P("Task Name") Into Group _
+            '        Select New With { _
+            '                         .ID = PI, _
+            '                         .Name = PN})
+            ''Load variants:
+            'For Each I In TT
+            '    _Variant.Task.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
+            'Next
 
             'Select contacts based on date range
             Dim CT = (From P In Data _
-                   Group P By PI = P("Owner"), PN = P("Name") Into Group _
+                   Group P By PI = P("Owner"), PN = P("Owner Name") Into Group _
                    Select New With { _
                                     .ID = PI, _
                                     .Name = PN})
             'Load variants:
             For Each I In CT
-                _Variant.Owner.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
+                _Variant.Owner.Add(New Objects.Corporate_Projects.Variants.cp_Var(I.ID, I.Name))
             Next
 
             'Select resources based on date range
             Dim RT = (From P In Data _
-                  Group P By PI = P("Resource_Type_ID"), PN = P("Resource description") Into Group _
+                  Group P By PI = P("Resource"), PN = P("Resource Description") Into Group _
                   Select New With { _
                                    .ID = PI, _
                                    .Name = PN})
             'Load variants:
             For Each I In RT
-                _Variant.Resource.Add(New Objects.Collaboration_Module.Variants.clm_Var(I.ID, I.Name))
+                _Variant.Resource.Add(New Objects.Corporate_Projects.Variants.cp_Var(I.ID, I.Name))
             Next
         Else
             'MsgBox("No data found.")
@@ -159,7 +165,13 @@
 
     End Sub
 
-    Private Sub GroupBox2_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox2.Enter
+
+    Private Sub FillByToolStripButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Try
+            Me.vw_CM_Raw_DataTableAdapter.FillBy(Me.CapabilityLogDataSet.vw_CM_Raw_Data)
+        Catch ex As System.Exception
+            System.Windows.Forms.MessageBox.Show(ex.Message)
+        End Try
 
     End Sub
 End Class

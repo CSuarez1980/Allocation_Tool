@@ -10,14 +10,14 @@ End Enum
 Public Class CalendarColumn
     Inherits DataGridViewColumn
 
-    Public Sub New(ByVal Format As CalendarFormat)
+    Public Sub New(ByVal Format As CalendarFormat, Optional ByVal ColName As String = "Date")
         MyBase.New(New CalendarCell(Format))
-        HeaderText = "Month"
-        Name = "dtpMonth"
+        HeaderText = ColName
+        Name = ColName
     End Sub
     Public Sub New()
         MyBase.New(New CalendarCell())
-        Name = "dtpMonth"
+        Name = "Date"
     End Sub
     Public Overrides Property CellTemplate() As DataGridViewCell
         Get
@@ -265,6 +265,56 @@ Public Class EntryTypeColumn
 
         HeaderText = "Entry Type"
         Name = "cboEntryType"
+        FlatStyle = Windows.Forms.FlatStyle.Popup
+        DisplayStyle = Windows.Forms.DataGridViewComboBoxDisplayStyle.DropDownButton
+    End Sub
+End Class
+
+Public Class CP_ResourceColumn
+    Inherits DataGridViewComboBoxColumn
+
+    Public Sub New()
+        Dim cn As New Objects.Connection
+        Dim Data As New DataTable
+
+        Data = cn.GetTable("Select CAST(ID AS int) as ID, Description From clm_Resource_Type Order By ID")
+
+        If Data.Rows.Count > 0 Then
+            DataSource = Data
+            DisplayMember = "Description"
+            ValueMember = "ID"
+            AutoComplete = True
+            HeaderText = "Resource Type"
+            FlatStyle = Windows.Forms.FlatStyle.Popup
+            DisplayStyle = Windows.Forms.DataGridViewComboBoxDisplayStyle.DropDownButton
+            Name = "ResourceType"
+            ValueType = GetType(Integer)
+        End If
+
+    End Sub
+End Class
+
+
+Public Class CP_ProjectColumn
+    Inherits DataGridViewComboBoxColumn
+
+    Public Sub New()
+        Dim cn As New Objects.Connection
+        Dim Data As New DataTable
+
+        Data = cn.GetTable("Select CAST(ID AS int) as ID, Name From CP_Project Order By ID")
+
+        If Data.Rows.Count > 0 Then
+            DataSource = Data
+            DisplayMember = "Name"
+            ValueMember = "ID"
+            AutoComplete = True
+            HeaderText = "Project Name"
+            FlatStyle = Windows.Forms.FlatStyle.Popup
+            DisplayStyle = Windows.Forms.DataGridViewComboBoxDisplayStyle.DropDownButton
+            Name = "Project"
+            ValueType = GetType(Integer)
+        End If
     End Sub
 End Class
 

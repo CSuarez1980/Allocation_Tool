@@ -102,10 +102,22 @@
     <Compile Include="clm_Tasks_Type.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="cp_Actuals.Designer.vb">
+      <DependentUpon>cp_Actuals.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cp_Actuals.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="cp_Forecast.Designer.vb">
       <DependentUpon>cp_Forecast.vb</DependentUpon>
     </Compile>
     <Compile Include="cp_Forecast.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cp_Report.Designer.vb">
+      <DependentUpon>cp_Report.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cp_Report.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom.vb">
@@ -279,8 +291,14 @@
     <EmbeddedResource Include="clm_Tasks_Type.resx">
       <DependentUpon>clm_Tasks_Type.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cp_Actuals.resx">
+      <DependentUpon>cp_Actuals.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cp_Forecast.resx">
       <DependentUpon>cp_Forecast.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cp_Report.resx">
+      <DependentUpon>cp_Report.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms.resx">
       <DependentUpon>Forms.vb</DependentUpon>
@@ -355,6 +373,7 @@
     <EmbeddedResource Include="pss_Report.resx">
       <DependentUpon>pss_Report.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cp_Allocation.rdlc" />
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.vb</DependentUpon>
     </EmbeddedResource>

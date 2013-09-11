@@ -25,19 +25,12 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.MenuStrip = New System.Windows.Forms.MenuStrip
         Me.nmuSystem = New System.Windows.Forms.ToolStripMenuItem
-        Me.StatusStrip = New System.Windows.Forms.StatusStrip
-        Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel
-        Me.grp = New System.Windows.Forms.GroupBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.trvProjects = New System.Windows.Forms.TreeView
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox
         Me.mnuExit = New System.Windows.Forms.ToolStripMenuItem
         Me.CollaborationModuleToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.ProjectsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.MyTasksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.OnGoingResourcesCalculationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ProjectForecast2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ActualsInput2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.Report2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.PSSProjectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ProjectForecastToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ActualInputToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -58,7 +51,13 @@ Partial Class Main
         Me.CollaborationModuleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.TaskTypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ResourceTypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ProjectForecast2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.StatusStrip = New System.Windows.Forms.StatusStrip
+        Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel
+        Me.grp = New System.Windows.Forms.GroupBox
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.trvProjects = New System.Windows.Forms.TreeView
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.grp.SuspendLayout()
@@ -83,78 +82,6 @@ Partial Class Main
         Me.nmuSystem.Size = New System.Drawing.Size(57, 20)
         Me.nmuSystem.Text = "&System"
         '
-        'StatusStrip
-        '
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 633)
-        Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Size = New System.Drawing.Size(1186, 22)
-        Me.StatusStrip.TabIndex = 7
-        Me.StatusStrip.Text = "StatusStrip"
-        '
-        'ToolStripStatusLabel
-        '
-        Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
-        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(39, 17)
-        Me.ToolStripStatusLabel.Text = "Status"
-        '
-        'grp
-        '
-        Me.grp.Controls.Add(Me.GroupBox1)
-        Me.grp.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grp.Location = New System.Drawing.Point(0, 24)
-        Me.grp.Name = "grp"
-        Me.grp.Size = New System.Drawing.Size(1186, 609)
-        Me.grp.TabIndex = 9
-        Me.grp.TabStop = False
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox1.Controls.Add(Me.trvProjects)
-        Me.GroupBox1.Controls.Add(Me.PictureBox1)
-        Me.GroupBox1.Controls.Add(Me.PictureBox2)
-        Me.GroupBox1.Location = New System.Drawing.Point(906, 9)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(276, 594)
-        Me.GroupBox1.TabIndex = 1
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "My Projects"
-        '
-        'trvProjects
-        '
-        Me.trvProjects.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.trvProjects.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.trvProjects.Location = New System.Drawing.Point(10, 24)
-        Me.trvProjects.Name = "trvProjects"
-        Me.trvProjects.Size = New System.Drawing.Size(261, 513)
-        Me.trvProjects.TabIndex = 3
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox1.Image = Global.Capability_Log.My.Resources.Resources.CAPLogo
-        Me.PictureBox1.Location = New System.Drawing.Point(146, 543)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(125, 44)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 1
-        Me.PictureBox1.TabStop = False
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox2.Image = Global.Capability_Log.My.Resources.Resources.pss_delivery
-        Me.PictureBox2.Location = New System.Drawing.Point(6, 543)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(138, 44)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 2
-        Me.PictureBox2.TabStop = False
-        '
         'mnuExit
         '
         Me.mnuExit.Image = Global.Capability_Log.My.Resources.Resources._exit
@@ -164,32 +91,11 @@ Partial Class Main
         '
         'CollaborationModuleToolStripMenuItem1
         '
-        Me.CollaborationModuleToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectsToolStripMenuItem1, Me.MyTasksToolStripMenuItem, Me.ReportToolStripMenuItem, Me.OnGoingResourcesCalculationToolStripMenuItem, Me.ProjectForecast2ToolStripMenuItem})
+        Me.CollaborationModuleToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OnGoingResourcesCalculationToolStripMenuItem, Me.ProjectForecast2ToolStripMenuItem, Me.ActualsInput2ToolStripMenuItem, Me.Report2ToolStripMenuItem})
         Me.CollaborationModuleToolStripMenuItem1.Image = Global.Capability_Log.My.Resources.Resources.agt_softwareD
         Me.CollaborationModuleToolStripMenuItem1.Name = "CollaborationModuleToolStripMenuItem1"
         Me.CollaborationModuleToolStripMenuItem1.Size = New System.Drawing.Size(133, 20)
         Me.CollaborationModuleToolStripMenuItem1.Text = "&Corporate Projects"
-        '
-        'ProjectsToolStripMenuItem1
-        '
-        Me.ProjectsToolStripMenuItem1.Image = Global.Capability_Log.My.Resources.Resources.agt_internet
-        Me.ProjectsToolStripMenuItem1.Name = "ProjectsToolStripMenuItem1"
-        Me.ProjectsToolStripMenuItem1.Size = New System.Drawing.Size(238, 22)
-        Me.ProjectsToolStripMenuItem1.Text = "&Project forecast"
-        '
-        'MyTasksToolStripMenuItem
-        '
-        Me.MyTasksToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.edit
-        Me.MyTasksToolStripMenuItem.Name = "MyTasksToolStripMenuItem"
-        Me.MyTasksToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
-        Me.MyTasksToolStripMenuItem.Text = "&Actuals input"
-        '
-        'ReportToolStripMenuItem
-        '
-        Me.ReportToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.playlist
-        Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
-        Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
-        Me.ReportToolStripMenuItem.Text = "&Reports"
         '
         'OnGoingResourcesCalculationToolStripMenuItem
         '
@@ -197,6 +103,27 @@ Partial Class Main
         Me.OnGoingResourcesCalculationToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
         Me.OnGoingResourcesCalculationToolStripMenuItem.Text = "&On going resources calculation"
         Me.OnGoingResourcesCalculationToolStripMenuItem.Visible = False
+        '
+        'ProjectForecast2ToolStripMenuItem
+        '
+        Me.ProjectForecast2ToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.agt_internet
+        Me.ProjectForecast2ToolStripMenuItem.Name = "ProjectForecast2ToolStripMenuItem"
+        Me.ProjectForecast2ToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.ProjectForecast2ToolStripMenuItem.Text = "Project forecast"
+        '
+        'ActualsInput2ToolStripMenuItem
+        '
+        Me.ActualsInput2ToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.edit
+        Me.ActualsInput2ToolStripMenuItem.Name = "ActualsInput2ToolStripMenuItem"
+        Me.ActualsInput2ToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.ActualsInput2ToolStripMenuItem.Text = "Actuals input"
+        '
+        'Report2ToolStripMenuItem
+        '
+        Me.Report2ToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.playlist
+        Me.Report2ToolStripMenuItem.Name = "Report2ToolStripMenuItem"
+        Me.Report2ToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.Report2ToolStripMenuItem.Text = "Report"
         '
         'PSSProjectsToolStripMenuItem
         '
@@ -327,11 +254,77 @@ Partial Class Main
         Me.ResourceTypeToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.ResourceTypeToolStripMenuItem.Text = "Resource type"
         '
-        'ProjectForecast2ToolStripMenuItem
+        'StatusStrip
         '
-        Me.ProjectForecast2ToolStripMenuItem.Name = "ProjectForecast2ToolStripMenuItem"
-        Me.ProjectForecast2ToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
-        Me.ProjectForecast2ToolStripMenuItem.Text = "Project forecast 2"
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel})
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 633)
+        Me.StatusStrip.Name = "StatusStrip"
+        Me.StatusStrip.Size = New System.Drawing.Size(1186, 22)
+        Me.StatusStrip.TabIndex = 7
+        Me.StatusStrip.Text = "StatusStrip"
+        '
+        'ToolStripStatusLabel
+        '
+        Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
+        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(39, 17)
+        Me.ToolStripStatusLabel.Text = "Status"
+        '
+        'grp
+        '
+        Me.grp.Controls.Add(Me.GroupBox1)
+        Me.grp.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grp.Location = New System.Drawing.Point(0, 24)
+        Me.grp.Name = "grp"
+        Me.grp.Size = New System.Drawing.Size(1186, 609)
+        Me.grp.TabIndex = 9
+        Me.grp.TabStop = False
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.trvProjects)
+        Me.GroupBox1.Controls.Add(Me.PictureBox1)
+        Me.GroupBox1.Controls.Add(Me.PictureBox2)
+        Me.GroupBox1.Location = New System.Drawing.Point(906, 9)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(276, 594)
+        Me.GroupBox1.TabIndex = 1
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "My Projects"
+        '
+        'trvProjects
+        '
+        Me.trvProjects.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.trvProjects.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.trvProjects.Location = New System.Drawing.Point(10, 24)
+        Me.trvProjects.Name = "trvProjects"
+        Me.trvProjects.Size = New System.Drawing.Size(261, 513)
+        Me.trvProjects.TabIndex = 3
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox1.Image = Global.Capability_Log.My.Resources.Resources.CAPLogo
+        Me.PictureBox1.Location = New System.Drawing.Point(146, 543)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(125, 44)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 1
+        Me.PictureBox1.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox2.Image = Global.Capability_Log.My.Resources.Resources.pss_delivery
+        Me.PictureBox2.Location = New System.Drawing.Point(6, 543)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(138, 44)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 2
+        Me.PictureBox2.TabStop = False
         '
         'Main
         '
@@ -382,9 +375,6 @@ Partial Class Main
     Friend WithEvents TaskTypeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ResourceTypeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CollaborationModuleToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ProjectsToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MyTasksToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PSSProjectsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OnGoingResourcesCalculationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ProjectForecastToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -396,5 +386,7 @@ Partial Class Main
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents trvProjects As System.Windows.Forms.TreeView
     Friend WithEvents ProjectForecast2ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ActualsInput2ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Report2ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

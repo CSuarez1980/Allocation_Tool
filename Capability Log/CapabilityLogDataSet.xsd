@@ -9,31 +9,41 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_CM_Raw_DataTableAdapter" GeneratorDataComponentClassName="vw_CM_Raw_DataTableAdapter" Name="vw_CM_Raw_Data" UserDataComponentName="vw_CM_Raw_DataTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="mxl1380q1v.CapabilityLog.dbo" DbObjectName="CapabilityLog.dbo.vw_CM_Raw_Data" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="mxl1380q1v.CapabilityLog.dbo" DbObjectName="CapabilityLog.dbo.vw_cp_Raw_Data" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT * FROM dbo.vw_CM_Raw_Data</CommandText>
+                    <CommandText>SELECT        Project, Name, Month, [Monthly FTE REQ], Owner, [Owner Name], [Actual FTE], Resource, [Resource Description], Date, [Project Type], 
+                         [Project Type Description]
+FROM            vw_cp_Raw_Data</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="ID" DataSetColumn="ID" />
-              <Mapping SourceColumn="Project Name" DataSetColumn="Project Name" />
-              <Mapping SourceColumn="Task Name" DataSetColumn="Task Name" />
-              <Mapping SourceColumn="Task Month" DataSetColumn="Task Month" />
-              <Mapping SourceColumn="Monthly task value" DataSetColumn="Monthly task value" />
               <Mapping SourceColumn="Owner" DataSetColumn="Owner" />
               <Mapping SourceColumn="Name" DataSetColumn="Name" />
-              <Mapping SourceColumn="Actual task value" DataSetColumn="Actual task value" />
-              <Mapping SourceColumn="Actual task FTE" DataSetColumn="Actual task FTE" />
-              <Mapping SourceColumn="Entry type" DataSetColumn="Entry type" />
-              <Mapping SourceColumn="Resource description" DataSetColumn="Resource description" />
-              <Mapping SourceColumn="Type_Description" DataSetColumn="Type_Description" />
-              <Mapping SourceColumn="Monthly FET Required" DataSetColumn="Monthly FET Required" />
+              <Mapping SourceColumn="Project" DataSetColumn="Project" />
+              <Mapping SourceColumn="Month" DataSetColumn="Month" />
+              <Mapping SourceColumn="Monthly FTE REQ" DataSetColumn="Monthly FTE REQ" />
+              <Mapping SourceColumn="Owner Name" DataSetColumn="Owner Name" />
+              <Mapping SourceColumn="Actual FTE" DataSetColumn="Actual FTE" />
+              <Mapping SourceColumn="Resource" DataSetColumn="Resource" />
+              <Mapping SourceColumn="Resource Description" DataSetColumn="Resource Description" />
+              <Mapping SourceColumn="Date" DataSetColumn="Date" />
+              <Mapping SourceColumn="Project Type" DataSetColumn="Project Type" />
+              <Mapping SourceColumn="Project Type Description" DataSetColumn="Project Type Description" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="mxl1380q1v.CapabilityLog.dbo" DbObjectName="CapabilityLog.dbo.vw_cp_Raw_Data" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT [Actual FTE], Date, Month, [Monthly FTE REQ], Name, Owner, [Owner Name], Project, [Project Type], [Project Type Description], Resource, [Resource Description] FROM vw_cp_Raw_Data</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -46,29 +56,6 @@
         <xs:element name="vw_CM_Raw_Data" msprop:Generator_UserTableName="vw_CM_Raw_Data" msprop:Generator_RowDeletedName="vw_CM_Raw_DataRowDeleted" msprop:Generator_RowChangedName="vw_CM_Raw_DataRowChanged" msprop:Generator_RowClassName="vw_CM_Raw_DataRow" msprop:Generator_RowChangingName="vw_CM_Raw_DataRowChanging" msprop:Generator_RowEvArgName="vw_CM_Raw_DataRowChangeEvent" msprop:Generator_RowEvHandlerName="vw_CM_Raw_DataRowChangeEventHandler" msprop:Generator_TableClassName="vw_CM_Raw_DataDataTable" msprop:Generator_TableVarName="tablevw_CM_Raw_Data" msprop:Generator_RowDeletingName="vw_CM_Raw_DataRowDeleting" msprop:Generator_TablePropName="vw_CM_Raw_Data">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:decimal" />
-              <xs:element name="Project_x0020_Name" msprop:Generator_UserColumnName="Project Name" msprop:Generator_ColumnPropNameInRow="Project_Name" msprop:Generator_ColumnVarNameInTable="columnProject_Name" msprop:Generator_ColumnPropNameInTable="Project_NameColumn" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="250" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Task_x0020_Name" msprop:Generator_UserColumnName="Task Name" msprop:Generator_ColumnPropNameInRow="Task_Name" msprop:Generator_ColumnVarNameInTable="columnTask_Name" msprop:Generator_ColumnPropNameInTable="Task_NameColumn" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="250" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Task_x0020_Month" msprop:Generator_UserColumnName="Task Month" msprop:Generator_ColumnPropNameInRow="Task_Month" msprop:Generator_ColumnVarNameInTable="columnTask_Month" msprop:Generator_ColumnPropNameInTable="Task_MonthColumn" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Monthly_x0020_task_x0020_value" msprop:Generator_UserColumnName="Monthly task value" msprop:Generator_ColumnPropNameInRow="Monthly_task_value" msprop:Generator_ColumnVarNameInTable="columnMonthly_task_value" msprop:Generator_ColumnPropNameInTable="Monthly_task_valueColumn" type="xs:double" />
               <xs:element name="Owner" msprop:Generator_UserColumnName="Owner" msprop:Generator_ColumnPropNameInRow="Owner" msprop:Generator_ColumnVarNameInTable="columnOwner" msprop:Generator_ColumnPropNameInTable="OwnerColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -83,30 +70,46 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Actual_x0020_task_x0020_value" msprop:Generator_UserColumnName="Actual task value" msprop:Generator_ColumnPropNameInRow="Actual_task_value" msprop:Generator_ColumnVarNameInTable="columnActual_task_value" msprop:Generator_ColumnPropNameInTable="Actual_task_valueColumn" type="xs:double" minOccurs="0" />
-              <xs:element name="Actual_x0020_task_x0020_FTE" msprop:Generator_UserColumnName="Actual task FTE" msprop:Generator_ColumnPropNameInRow="Actual_task_FTE" msprop:Generator_ColumnVarNameInTable="columnActual_task_FTE" msprop:Generator_ColumnPropNameInTable="Actual_task_FTEColumn" type="xs:double" minOccurs="0" />
-              <xs:element name="Entry_x0020_type" msprop:Generator_UserColumnName="Entry type" msprop:Generator_ColumnPropNameInRow="Entry_type" msprop:Generator_ColumnVarNameInTable="columnEntry_type" msprop:Generator_ColumnPropNameInTable="Entry_typeColumn" minOccurs="0">
+              <xs:element name="Project" msprop:Generator_UserColumnName="Project" msprop:Generator_ColumnVarNameInTable="columnProject" msprop:Generator_ColumnPropNameInRow="Project" msprop:Generator_ColumnPropNameInTable="ProjectColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Month" msprop:Generator_UserColumnName="Month" msprop:Generator_ColumnVarNameInTable="columnMonth" msprop:Generator_ColumnPropNameInRow="Month" msprop:Generator_ColumnPropNameInTable="MonthColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
+                    <xs:maxLength value="35" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Resource_x0020_description" msprop:Generator_UserColumnName="Resource description" msprop:Generator_ColumnPropNameInRow="Resource_description" msprop:Generator_ColumnVarNameInTable="columnResource_description" msprop:Generator_ColumnPropNameInTable="Resource_descriptionColumn" minOccurs="0">
+              <xs:element name="Monthly_x0020_FTE_x0020_REQ" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Monthly FTE REQ" msprop:Generator_ColumnVarNameInTable="columnMonthly_FTE_REQ" msprop:Generator_ColumnPropNameInRow="Monthly_FTE_REQ" msprop:Generator_ColumnPropNameInTable="Monthly_FTE_REQColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="Owner_x0020_Name" msprop:Generator_UserColumnName="Owner Name" msprop:Generator_ColumnVarNameInTable="columnOwner_Name" msprop:Generator_ColumnPropNameInRow="Owner_Name" msprop:Generator_ColumnPropNameInTable="Owner_NameColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="250" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Type_Description" msprop:Generator_UserColumnName="Type_Description" msprop:Generator_ColumnPropNameInRow="Type_Description" msprop:Generator_ColumnVarNameInTable="columnType_Description" msprop:Generator_ColumnPropNameInTable="Type_DescriptionColumn" minOccurs="0">
+              <xs:element name="Actual_x0020_FTE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Actual FTE" msprop:Generator_ColumnVarNameInTable="columnActual_FTE" msprop:Generator_ColumnPropNameInRow="Actual_FTE" msprop:Generator_ColumnPropNameInTable="Actual_FTEColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="Resource" msprop:Generator_UserColumnName="Resource" msprop:Generator_ColumnVarNameInTable="columnResource" msprop:Generator_ColumnPropNameInRow="Resource" msprop:Generator_ColumnPropNameInTable="ResourceColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Resource_x0020_Description" msprop:Generator_UserColumnName="Resource Description" msprop:Generator_ColumnVarNameInTable="columnResource_Description" msprop:Generator_ColumnPropNameInRow="Resource_Description" msprop:Generator_ColumnPropNameInTable="Resource_DescriptionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Date" msprop:Generator_UserColumnName="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="_Date" msprop:Generator_ColumnPropNameInTable="DateColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Project_x0020_Type" msprop:Generator_UserColumnName="Project Type" msprop:Generator_ColumnVarNameInTable="columnProject_Type" msprop:Generator_ColumnPropNameInRow="Project_Type" msprop:Generator_ColumnPropNameInTable="Project_TypeColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Project_x0020_Type_x0020_Description" msprop:Generator_UserColumnName="Project Type Description" msprop:Generator_ColumnVarNameInTable="columnProject_Type_Description" msprop:Generator_ColumnPropNameInRow="Project_Type_Description" msprop:Generator_ColumnPropNameInTable="Project_Type_DescriptionColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Monthly_x0020_FET_x0020_Required" msprop:Generator_UserColumnName="Monthly FET Required" msprop:Generator_ColumnVarNameInTable="columnMonthly_FET_Required" msprop:Generator_ColumnPropNameInRow="Monthly_FET_Required" msprop:Generator_ColumnPropNameInTable="Monthly_FET_RequiredColumn" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -196,6 +196,7 @@
         Public Sub New()
             Clear()
         End Sub
+
         Public Overrides Sub Clear()
             _ID = 0
             _Name = ""
@@ -1133,6 +1134,10 @@
             End If
         End Function
 #End Region
+
+        Public Sub New()
+
+        End Sub
     End Class
     Public Class CM_Entry
         Inherits Base

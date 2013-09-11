@@ -78,13 +78,13 @@ Public Class Main
     Private Sub ResourceTypeToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ResourceTypeToolStripMenuItem.Click
         Launch("clm_Resource_Type")
     End Sub
-    Private Sub ProjectsToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProjectsToolStripMenuItem1.Click
+    Private Sub ProjectsToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Launch("clm_Forecast")
     End Sub
-    Private Sub MyTasksToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyTasksToolStripMenuItem.Click
+    Private Sub MyTasksToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Launch("clm_Actual_Entry")
     End Sub
-    Private Sub ReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReportToolStripMenuItem.Click
+    Private Sub ReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Launch("clm_Report")
     End Sub
     Private Sub ProjectForecastToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProjectForecastToolStripMenuItem.Click
@@ -98,6 +98,12 @@ Public Class Main
     End Sub
     Private Sub ProjectForecast2ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProjectForecast2ToolStripMenuItem.Click
         Launch("cp_Forecast")
+    End Sub
+    Private Sub ActualsInput2ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ActualsInput2ToolStripMenuItem.Click
+        Launch("cp_Actuals")
+    End Sub
+    Private Sub Report2ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Report2ToolStripMenuItem.Click
+        Launch("cp_Report")
     End Sub
 #End Region
 #Region "Form Methods"
@@ -153,7 +159,6 @@ Public Class Main
                         childnode.ForeColor = Color.Indigo
                         ParentNode.Nodes.Add(childnode)
                     Next
-
                 End If
             Next
             trvProjects.Nodes.Add(CPNode)
@@ -183,7 +188,6 @@ Public Class Main
                         childnode.ForeColor = Color.Chocolate
                         ParentNode.Nodes.Add(childnode)
                     Next
-
                 End If
             Next
             trvProjects.Nodes.Add(PSSNode)
@@ -213,7 +217,6 @@ Public Class Main
                         childnode.ForeColor = Color.SeaGreen
                         ParentNode.Nodes.Add(childnode)
                     Next
-
                 End If
             Next
             trvProjects.Nodes.Add(CINode)
@@ -221,4 +224,7 @@ Public Class Main
         End If
     End Sub
 #End Region
+
+
+
 End Class

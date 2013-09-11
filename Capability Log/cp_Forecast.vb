@@ -1,6 +1,7 @@
 ﻿Public Class cp_Forecast
     Private WithEvents _Project As New Objects.Corporate_Projects.CP_Project
-    Dim BS1 As New BindingSource
+    Private BS1 As New BindingSource
+    Private BSFiles As New BindingSource
 
     Private Sub cp_Forecast_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim cn As New Objects.Connection
@@ -24,9 +25,11 @@
         cboStatus.DataBindings.Add("SelectedValue", BS, "Status", True, DataSourceUpdateMode.OnPropertyChanged)
 
         BS1.DataSource = _Project.Tasks
-        dtgResources.DataSource = BS1
-        Fix_DataGrid()
+        BSFiles.DataSource = _Project.Documents
 
+        dtgResources.DataSource = BS1
+        dtgFiles.DataSource = BSFiles
+        Fix_DataGrid()
     End Sub
 
     Public Overrides Sub Unlock_GUI(Optional ByVal Unlock_Type As Unlock_Type = Unlock_Type.Create_Record)
@@ -39,6 +42,9 @@
 
         cmdShowResources.Enabled = True
         cmdDeleteResource.Enabled = True
+
+        dtgResources.AllowUserToDeleteRows = True
+        dtgResources.AllowUserToAddRows = True
     End Sub
     Public Overrides Sub Lock_Gui()
         txtProjectName.ReadOnly = True
@@ -50,15 +56,19 @@
 
         cmdShowResources.Enabled = False
         cmdDeleteResource.Enabled = False
+
+        dtgResources.AllowUserToDeleteRows = False
+        dtgResources.AllowUserToAddRows = False
     End Sub
 
     Private Sub Refresh_Binding() Handles _Project.Loaded
         BS1.DataSource = _Project.Tasks
         BS.ResetBindings(False)
         BS1.ResetBindings(False)
+        BSFiles.ResetBindings(False)
     End Sub
 
-    Private Sub cmdShowResources_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdShowResources.Click
+    Private Sub cmdShowResources_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim SF As New frmSearch
         Dim Res As Object
         Res = SF.Search(New Objects.Collaboration_Module.Resource_Type)
@@ -70,14 +80,14 @@
         End If
     End Sub
 
-    Private Sub cmdDeleteResource_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDeleteResource.Click
+    Private Sub cmdDeleteResource_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Not dtgResources.CurrentRow Is Nothing Then
             ' _Project.Tasks.Remove_Resource(dtgResources.CurrentRow.Cells("ID").Value)
         End If
         Refresh_Binding()
     End Sub
 
-    Private Sub dtgResources_UserDeletingRow(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewRowCancelEventArgs) Handles dtgResources.UserDeletingRow
+    Private Sub dtgResources_UserDeletingRow(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewRowCancelEventArgs)
         If e.Row.Cells("ID").Value <> 0 Then
             If MsgBox("Do you really want to delete this resource?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Delete Resource?") = MsgBoxResult.Yes Then
                 _Project.Delete_Resource(e.Row.Cells("ID").Value)
@@ -125,9 +135,10 @@
             .Columns("Event").Visible = False
             .Columns("Entry_Type").Visible = False
             .Columns("ID").Visible = False
+            .Columns("Project").Visible = False
 
             .Columns("cboEvent").DisplayIndex = 3
-            .Columns("dtpMonth").DisplayIndex = 7
+            .Columns("Date").DisplayIndex = 7
             .Columns("cboEntryType").DisplayIndex = 9
 
         End With
@@ -136,4 +147,26 @@
     End Sub
    
     
+    Private Sub cmdUploadFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdUploadFile.Click
+        fodFile.ShowDialog()
+
+        Dim F As New Objects.Corporate_Projects.CP_Project_Files()
+        F.File_Name = fodFile.SafeFileName
+        If F.Upload_File(fodFile.FileName, goUser.TNumber, _Project.ID) Then
+
+            ShowMessage("File: " & sfdFile.FileName & " uploaded.", MsgType.Information)
+            _Project.Documents.Add(F)
+            Refresh_Binding()
+        End If
+    End Sub
+
+    Private Sub cmdShowResources_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdShowResources.Click
+        Dim SF As New frmSearch
+        Dim Res As Object
+        Res = SF.Search(New Objects.Corporate_Projects.CP_Resource)
+
+        If Not Res Is Nothing Then
+            dtgResources.CurrentRow.Cells("Resource_Type_ID").Value = Res
+        End If
+    End Sub
 End Class
