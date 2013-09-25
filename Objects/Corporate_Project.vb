@@ -273,7 +273,7 @@
                 Return _Owner.TNumber
             End Get
             Set(ByVal value As String)
-                If _Owner.Load(value) Then
+                If Not _Owner.Load(value) Then
                     _Owner.Name = "Not Found"
                 End If
             End Set

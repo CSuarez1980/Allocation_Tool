@@ -75,7 +75,7 @@ Public Class frmMant
     Private Sub Get_New(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNew.Click
         _Object.Set_Action(Objects.SQL_Action.Insert)
         _Object.clear()
-        BS.ResetBindings(False)
+        Reset_Bindings()
         HideTools()
         Unlock_GUI(Unlock_Type.Create_Record)
         ShowMessage("Create new record.", MsgType.Information)
@@ -97,8 +97,7 @@ Public Class frmMant
         End If
     End Sub
     Private Sub Save(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSave.Click
-        BS.ResetBindings(False)
-
+        Reset_Bindings()
         If Not _isFromTools Then
             _Object.Allow_Action(True)
             If _Object.save() Then
@@ -125,7 +124,7 @@ Public Class frmMant
             _Closed_By_User = False
             Me.Hide()
         End If
-
+        Reset_Bindings()
         Lock_GUI()
     End Sub
     Private Sub Search(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSearch.Click
@@ -135,7 +134,7 @@ Public Class frmMant
         Res = SF.Search(_Object)
         If Not Res Is Nothing Then
             _Object.load(Res)
-            BS.ResetBindings(False)
+            Reset_Bindings()
         End If
     End Sub
 
@@ -147,7 +146,5 @@ Public Class frmMant
     End Sub
 #End Region
 
-    Private Sub frmMant_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-    End Sub
 End Class

@@ -87,7 +87,7 @@
         Refresh_Binding()
     End Sub
 
-    Private Sub dtgResources_UserDeletingRow(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewRowCancelEventArgs)
+    Private Sub dtgResources_UserDeletingRow(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewRowCancelEventArgs) Handles dtgResources.UserDeletingRow
         If e.Row.Cells("ID").Value <> 0 Then
             If MsgBox("Do you really want to delete this resource?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Delete Resource?") = MsgBoxResult.Yes Then
                 _Project.Delete_Resource(e.Row.Cells("ID").Value)

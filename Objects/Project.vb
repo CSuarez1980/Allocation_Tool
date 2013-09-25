@@ -6,7 +6,6 @@
     Public Event Project_Clear()
 
 #End Region
-
 #Region "Variables"
     Private _ID As Integer
     Private _Project_Key As String

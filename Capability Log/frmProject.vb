@@ -6,8 +6,8 @@
         AddHandler cmdCancel.Click, AddressOf Me.Refresh_Tasks
 
         Me.Object = _Project
-        txtDescription.DataBindings.Add("Text", BS, "Description", True, DataSourceUpdateMode.OnPropertyChanged)
         txtName.DataBindings.Add("Text", BS, "Name", True, DataSourceUpdateMode.OnPropertyChanged)
+        txtDescription.DataBindings.Add("Text", BS, "Description", True, DataSourceUpdateMode.OnPropertyChanged)
         dtgTask.DataBindings.Add("DataSource", BS, "Task_Table", True, DataSourceUpdateMode.OnPropertyChanged)
         txtStart.DataBindings.Add("Text", BS, "Project_Starts", True, DataSourceUpdateMode.OnPropertyChanged)
         txtEnd.DataBindings.Add("Text", BS, "Project_Ends", True, DataSourceUpdateMode.OnPropertyChanged)

@@ -105,6 +105,14 @@ Public Class Main
     Private Sub Report2ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Report2ToolStripMenuItem.Click
         Launch("cp_Report")
     End Sub
+    Private Sub ProjectAllocationToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProjectAllocationToolStripMenuItem.Click
+        Launch("CI_Allocation")
+    End Sub
+
+    Private Sub ActualsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ActualsToolStripMenuItem.Click
+        Launch("ci_Actual")
+    End Sub
+
 #End Region
 #Region "Form Methods"
     Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -224,7 +232,6 @@ Public Class Main
         End If
     End Sub
 #End Region
-
 
 
 End Class

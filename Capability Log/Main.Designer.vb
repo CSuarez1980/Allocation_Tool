@@ -39,6 +39,7 @@ Partial Class Main
         Me.ProjectMaintenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.TaskInputToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.TasksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ProjectAllocationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ProjectCategoriesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -58,6 +59,8 @@ Partial Class Main
         Me.trvProjects = New System.Windows.Forms.TreeView
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.PictureBox2 = New System.Windows.Forms.PictureBox
+        Me.ActualsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.grp.SuspendLayout()
@@ -153,7 +156,7 @@ Partial Class Main
         '
         'ProjectsToolStripMenuItem
         '
-        Me.ProjectsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectMaintenanceToolStripMenuItem, Me.TaskInputToolStripMenuItem, Me.TasksToolStripMenuItem})
+        Me.ProjectsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProjectMaintenanceToolStripMenuItem, Me.TaskInputToolStripMenuItem, Me.TasksToolStripMenuItem, Me.ToolStripSeparator1, Me.ProjectAllocationToolStripMenuItem, Me.ActualsToolStripMenuItem})
         Me.ProjectsToolStripMenuItem.Image = Global.Capability_Log.My.Resources.Resources.agt_add_to_autorun
         Me.ProjectsToolStripMenuItem.Name = "ProjectsToolStripMenuItem"
         Me.ProjectsToolStripMenuItem.Size = New System.Drawing.Size(165, 20)
@@ -176,6 +179,12 @@ Partial Class Main
         Me.TasksToolStripMenuItem.Name = "TasksToolStripMenuItem"
         Me.TasksToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
         Me.TasksToolStripMenuItem.Text = "Tasks &maintenance"
+        '
+        'ProjectAllocationToolStripMenuItem
+        '
+        Me.ProjectAllocationToolStripMenuItem.Name = "ProjectAllocationToolStripMenuItem"
+        Me.ProjectAllocationToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
+        Me.ProjectAllocationToolStripMenuItem.Text = "Project Allocation"
         '
         'ToolStripMenuItem1
         '
@@ -326,6 +335,17 @@ Partial Class Main
         Me.PictureBox2.TabIndex = 2
         Me.PictureBox2.TabStop = False
         '
+        'ActualsToolStripMenuItem
+        '
+        Me.ActualsToolStripMenuItem.Name = "ActualsToolStripMenuItem"
+        Me.ActualsToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
+        Me.ActualsToolStripMenuItem.Text = "Actuals"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(172, 6)
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -388,5 +408,8 @@ Partial Class Main
     Friend WithEvents ProjectForecast2ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ActualsInput2ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Report2ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProjectAllocationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ActualsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

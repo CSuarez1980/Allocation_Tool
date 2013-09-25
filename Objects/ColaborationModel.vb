@@ -930,7 +930,6 @@
             _ID = 0
             _Description = ""
         End Sub
-
         Public Overrides Function Get_Delete() As Transaction_Group
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
@@ -943,7 +942,6 @@
 
             Return TG
         End Function
-
         Public Overrides Function Get_Insert() As Transaction_Group
             Dim SP As New Objects.Stored_Procedure
             Dim TG As New Objects.Transaction_Group
@@ -963,13 +961,11 @@
 
             Return TG
         End Function
-
         Public Overrides Function Get_Search_List() As Transaction
             Dim T As New Transaction
             T.SQL_String = "Select ID as Code, [Description] as Value From [clm_Resource_Type]"
             Return T
         End Function
-
         Public Overrides Function Get_Select(Optional ByVal Code_ID As Object = Nothing) As Transaction
             Dim T As New Transaction
 
@@ -981,7 +977,6 @@
 
             Return T
         End Function
-
         Public Overrides Function Get_Update() As Transaction_Group
             Dim TG As New Objects.Transaction_Group
             Dim T As New Objects.Transaction
@@ -995,7 +990,6 @@
 
             Return TG
         End Function
-
         Public Overrides Function Load(Optional ByVal Code_ID As Object = Nothing) As Boolean
             If MyBase.Load(Code_ID) Then
                 _ID = Data.Rows(0)("ID")

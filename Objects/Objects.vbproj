@@ -66,10 +66,10 @@
   <ItemGroup>
     <Compile Include="Base.vb" />
     <Compile Include="ColaborationModel.vb" />
+    <Compile Include="Continuous_Improvement.vb" />
     <Compile Include="Corporate_Project.vb" />
     <Compile Include="CustomObjects.vb" />
     <Compile Include="Forms.vb" />
-    <Compile Include="Global_Functions.vb" />
     <Compile Include="MS Tools.vb" />
     <Compile Include="Profile.vb" />
     <Compile Include="Project.vb" />

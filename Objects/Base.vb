@@ -824,6 +824,7 @@ Public Class Stored_Procedure
     End Function
 #End Region
 End Class
+
 Namespace Functions
     Namespace Collaboration_Module
         Public Module CM_Functions
@@ -852,6 +853,15 @@ Namespace Functions
                 End While
 
                 Return _Total
+            End Function
+
+            Public Function Is_Working_Date(ByVal [Date] As Date) As Boolean
+                Select Case [Date].DayOfWeek
+                    Case DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday
+                        Return True
+                    Case Else
+                        Return False
+                End Select
             End Function
         End Module
     End Namespace

@@ -63,10 +63,10 @@ Partial Class frmProject
         Me.Label15 = New System.Windows.Forms.Label
         Me.dtgTask = New System.Windows.Forms.DataGridView
         Me.tlbTask = New System.Windows.Forms.ToolStrip
-        Me.cmdAdd = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdRemove = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
+        Me.cmdAdd = New System.Windows.Forms.ToolStripButton
+        Me.cmdRemove = New System.Windows.Forms.ToolStripButton
         Me.cmdEditTask = New System.Windows.Forms.ToolStripButton
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -531,6 +531,16 @@ Partial Class frmProject
         Me.tlbTask.TabIndex = 5
         Me.tlbTask.Text = "ToolStrip1"
         '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
         'cmdAdd
         '
         Me.cmdAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -542,11 +552,6 @@ Partial Class frmProject
         Me.cmdAdd.Text = "ToolStripButton1"
         Me.cmdAdd.ToolTipText = "Add task"
         '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
-        '
         'cmdRemove
         '
         Me.cmdRemove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -557,11 +562,6 @@ Partial Class frmProject
         Me.cmdRemove.Size = New System.Drawing.Size(23, 22)
         Me.cmdRemove.Text = "ToolStripButton2"
         Me.cmdRemove.ToolTipText = "Remove task"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
         '
         'cmdEditTask
         '

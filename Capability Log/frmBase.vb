@@ -1,10 +1,9 @@
 ﻿Public Class frmBase
-    ''' <summary>
-    ''' Establece el texto en la barra de estado
-    ''' </summary>
-    ''' <value></value>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+#Region "Events"
+    Public Event Reset_Binding()
+#End Region
+
+#Region "Properties"
     Public Property Message() As String
         Get
             Return txtMessage.Text
@@ -45,6 +44,9 @@
             pgStatus.Style = value
         End Set
     End Property
+
+#End Region
+#Region "Methods"
     Private Sub Base_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.txtMessage.Text = ""
         Me.lblFormName.Text = Me.Name
@@ -69,7 +71,9 @@
         txtMessage.Text = Message
         tmrTime.Enabled = True
     End Sub
-
-   
+    Public Overridable Sub Reset_Bindings() Handles Me.Reset_Binding
+        BS.ResetBindings(False)
+    End Sub
+#End Region
 
 End Class

@@ -7,6 +7,7 @@
     Private _Profile As New List(Of Objects.Profile)
     Private _Profile_Table As DataTable
     Private _Has_Access As Boolean = False
+    Private _LoadProfile As Boolean
 #End Region
 #Region "Properties"
     Public Property TNumber() As String
@@ -45,7 +46,7 @@
     Public Sub New()
         Clear()
     End Sub
-    Public Sub New(ByVal TNumber As String)
+    Public Sub New(ByVal TNumber As String, Optional ByVal LoadProfile As Boolean = False)
         Load(TNumber)
     End Sub
     Public Overrides Sub Clear()
@@ -143,14 +144,19 @@
         Return TG
     End Function
     Public Overrides Function Load(Optional ByVal Code_ID As Object = Nothing) As Boolean
+        Dim _Loaded As Boolean = False
         MyBase.Load(Code_ID)
 
         If Data.Rows.Count > 0 AndAlso Not Code_ID Is Nothing Then
             _TNumber = Data(0)("TNumber").ToString
             _Name = Data(0)("Name").ToString
-            Get_User_Profiles()
+            If _LoadProfile Then
+                Get_User_Profiles()
+            End If
+            _Loaded = True
             _Has_Access = True
         End If
+        Return _Loaded
     End Function
 
     Public Sub Add_Profile(ByVal pProfile As Objects.Profile)

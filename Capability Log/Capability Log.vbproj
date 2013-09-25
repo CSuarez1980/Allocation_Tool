@@ -78,6 +78,30 @@
     <Compile Include="CapabilityLogDataSet.vb">
       <DependentUpon>CapabilityLogDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ci_Actual.Designer.vb">
+      <DependentUpon>ci_Actual.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ci_Actual.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ci_Actual_Mant.Designer.vb">
+      <DependentUpon>ci_Actual_Mant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ci_Actual_Mant.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CI_Allocation.Designer.vb">
+      <DependentUpon>CI_Allocation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CI_Allocation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ci_New_Actual_Line.Designer.vb">
+      <DependentUpon>ci_New_Actual_Line.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ci_New_Actual_Line.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="clm_Report.Designer.vb">
       <DependentUpon>clm_Report.vb</DependentUpon>
     </Compile>
@@ -279,6 +303,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ci_Actual.resx">
+      <DependentUpon>ci_Actual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ci_Actual_Mant.resx">
+      <DependentUpon>ci_Actual_Mant.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CI_Allocation.resx">
+      <DependentUpon>CI_Allocation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ci_New_Actual_Line.resx">
+      <DependentUpon>ci_New_Actual_Line.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="clm_Report.resx">
       <DependentUpon>clm_Report.vb</DependentUpon>
     </EmbeddedResource>

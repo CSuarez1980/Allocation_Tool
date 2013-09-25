@@ -40,9 +40,9 @@ Partial Class frmBase
         'tlbEstado
         '
         Me.tlbEstado.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImgInfo, Me.ImgError, Me.ImgWarning, Me.txtMessage, Me.pgStatus, Me.lblFormName})
-        Me.tlbEstado.Location = New System.Drawing.Point(0, 181)
+        Me.tlbEstado.Location = New System.Drawing.Point(0, 235)
         Me.tlbEstado.Name = "tlbEstado"
-        Me.tlbEstado.Size = New System.Drawing.Size(378, 22)
+        Me.tlbEstado.Size = New System.Drawing.Size(426, 22)
         Me.tlbEstado.TabIndex = 1
         Me.tlbEstado.Text = "StatusStrip1"
         '
@@ -70,7 +70,7 @@ Partial Class frmBase
         'txtMessage
         '
         Me.txtMessage.Name = "txtMessage"
-        Me.txtMessage.Size = New System.Drawing.Size(293, 17)
+        Me.txtMessage.Size = New System.Drawing.Size(341, 17)
         Me.txtMessage.Spring = True
         Me.txtMessage.Text = "Form message"
         Me.txtMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -96,7 +96,7 @@ Partial Class frmBase
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(252, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(378, 203)
+        Me.ClientSize = New System.Drawing.Size(426, 257)
         Me.Controls.Add(Me.tlbEstado)
         Me.Name = "frmBase"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

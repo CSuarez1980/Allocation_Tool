@@ -10,10 +10,13 @@ End Enum
 Public Class CalendarColumn
     Inherits DataGridViewColumn
 
-    Public Sub New(ByVal Format As CalendarFormat, Optional ByVal ColName As String = "Date")
+    Public Sub New(ByVal Format As CalendarFormat, Optional ByVal ColName As String = "Date", Optional ByVal Linked_To_Property As String = "")
         MyBase.New(New CalendarCell(Format))
         HeaderText = ColName
         Name = ColName
+        If Linked_To_Property <> "" Then
+            DataPropertyName = Linked_To_Property
+        End If
     End Sub
     Public Sub New()
         MyBase.New(New CalendarCell())
